@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>年度复盘统计</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Noto Sans SC',system-ui,sans-serif;font-size:13px;line-height:1.5;background:#EEF2F8;color:#1C2536}
+
+:root{
+  --nav:#111827;
+  --nav-t:rgba(255,255,255,.62);--nav-t2:rgba(255,255,255,.3);
+  --nav-accent:#4F7AFF;
+  --pri:#3D5AFE;--pri-d:#2A3FE0;--pri-l:#EEF0FF;
+  --bdr:#E4E9F2;--bdr2:#CCD5E5;
+  --bg:#EEF2F8;--sfc:#FFFFFF;
+  --txt:#1C2536;--txt2:#5E6E8A;--txt3:#A0AEBF;
+  --hi:#0D9E5A;--mid:#E07B00;--lo:#D93025;
+}
+
+/* ══ LAYOUT ══ */
+.sidebar{position:fixed;top:0;left:0;width:220px;height:100vh;background:var(--nav);display:flex;flex-direction:column;z-index:100}
+.main{margin-left:220px;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+
+/* ══ SIDEBAR ══ */
+.sb-brand{display:flex;align-items:center;gap:12px;padding:22px 20px 18px;border-bottom:1px solid rgba(255,255,255,.06)}
+.sb-logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(140deg,#6689FF 0%,#3D5AFE 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 8px rgba(61,90,254,.4)}
+.sb-logo svg{width:17px;height:17px;fill:#fff}
+.sb-name{font-size:14px;font-weight:700;color:#fff;letter-spacing:.01em;line-height:1.3}
+.sb-sub{font-size:10px;color:var(--nav-t2);margin-top:2px;letter-spacing:.03em}
+.nav-sec{padding:16px 12px 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--nav-t);font-size:13px;transition:all .15s;margin-bottom:1px;position:relative}
+.nav-item.active{background:rgba(79,122,255,.14);color:#fff;font-weight:500}
+.nav-item.active::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:18px;background:var(--nav-accent);border-radius:0 2px 2px 0}
+.nav-ic{width:16px;height:16px;flex-shrink:0;opacity:.7}
+.nav-item.active .nav-ic{opacity:1}
+.sb-user-sec{padding:10px 16px 14px;margin-top:auto}
+.sb-user-lbl{font-size:9.5px;font-weight:600;color:var(--nav-t2);letter-spacing:.1em;text-transform:uppercase;padding:0 2px;margin-bottom:7px}
+.sb-user-row{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:7px 10px}
+.sb-user-ic{flex-shrink:0;color:rgba(255,255,255,.5)}
+.sb-user-sel{flex:1;appearance:none;-webkit-appearance:none;background:transparent;border:none;color:rgba(255,255,255,.9);font-family:inherit;font-size:12.5px;font-weight:500;cursor:pointer;outline:none;min-width:0}
+.sb-user-sel option{background:#1f2937;color:#fff}
+.sb-role-badge{margin-top:8px;font-size:10.5px;padding:5px 9px;border-radius:6px;background:rgba(79,122,255,.14);color:#AFC0FF;letter-spacing:.02em}
+.sb-role-badge.admin{background:rgba(13,158,90,.16);color:#7CE0AC}
+.sb-foot{padding:10px 20px 16px;border-top:1px solid rgba(255,255,255,.05);font-size:11px;color:var(--nav-t2)}
+
+/* ══ TOPBAR ══ */
+.topbar{height:56px;flex-shrink:0;background:var(--sfc);border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:14px;padding:0 20px;z-index:40;box-shadow:0 1px 0 var(--bdr)}
+.topbar-page{font-size:14px;font-weight:700;color:var(--txt);white-space:nowrap;letter-spacing:.01em}
+.topbar-sep{width:1px;height:18px;background:var(--bdr);flex-shrink:0}
+.tabs{display:flex;gap:2px;background:#EEF1F7;border-radius:9px;padding:3px}
+.tab-btn{border:none;background:transparent;font-family:inherit;height:30px;padding:0 16px;border-radius:7px;font-size:13px;font-weight:500;color:var(--txt2);cursor:pointer;transition:all .15s;white-space:nowrap}
+.tab-btn:hover{color:var(--txt)}
+.tab-btn.active{background:#fff;color:var(--pri);box-shadow:0 1px 3px rgba(0,0,0,.08);font-weight:600}
+.topbar-r{display:flex;gap:8px;margin-left:auto;align-items:center}
+.btn{height:30px;padding:0 13px;border-radius:7px;font-size:12.5px;font-weight:500;font-family:inherit;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:5px;transition:all .15s;white-space:nowrap}
+.btn-default{background:var(--sfc);color:var(--txt2);border:1px solid var(--bdr)}
+.btn-default:hover{border-color:var(--bdr2);color:var(--txt)}
+.btn-outline{background:var(--sfc);color:var(--pri);border:1px solid rgba(61,90,254,.35)}
+.btn-outline:hover{background:var(--pri-l)}
+
+/* ══ TABLE AREA ══ */
+.table-area{flex:1;overflow:hidden;display:flex;flex-direction:column;padding:14px}
+.panel{flex:1;overflow:hidden;display:none;flex-direction:column;min-height:0}
+.panel.active{display:flex}
+.table-card{flex:1;overflow:hidden;display:flex;flex-direction:column;background:var(--sfc);border-radius:12px;border:1px solid var(--bdr);box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05)}
+.tc-head{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--bdr);flex-shrink:0;background:#FAFBFD}
+.tc-desc{font-size:12px;color:var(--txt2);flex:1}
+.exp-btn{font-size:11px;padding:4px 10px;border-radius:7px;cursor:pointer;background:#fff;color:var(--txt2);border:1px solid var(--bdr);transition:all .12s;font-family:inherit;font-weight:500;white-space:nowrap}
+.exp-btn:hover{background:var(--pri-l);color:var(--pri);border-color:rgba(61,90,254,.3)}
+.table-scroll{overflow:auto;flex:1}
+.table-scroll::-webkit-scrollbar{width:7px;height:7px}
+.table-scroll::-webkit-scrollbar-track{background:transparent}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--bdr2);border-radius:4px}
+
+table{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%}
+thead{position:sticky;top:0;z-index:30}
+
+/* Category (group) header row */
+.th-cat{padding:0 12px;height:30px;text-align:center;font-size:11px;font-weight:700;letter-spacing:.04em;white-space:nowrap;background:#F8FAFB;color:var(--txt2);border-bottom:1px solid var(--bdr);border-right:1px solid var(--bdr)}
+.th-cat.c-sum{border-top:2px solid #8B5CF6;color:#6D28D9}
+.th-cat.c-c0{border-top:2px solid #3D5AFE;color:#2A3FE0}
+.th-cat.c-c1{border-top:2px solid #059669;color:#047857}
+.th-cat.c-c2{border-top:2px solid #D97706;color:#B45309}
+.th-cat.c-c3{border-top:2px solid #DB2777;color:#9D174D}
+.th-cat.c-c4{border-top:2px solid #0891B2;color:#0E7490}
+.th-cat.c-c5{border-top:2px solid #65A30D;color:#3F6212}
+.th-cat.c-c6{border-top:2px solid #9333EA;color:#6B21A8}
+.th-cat.c-c7{border-top:2px solid #EA580C;color:#C2410C}
+
+/* Field header row */
+.th-field{padding:0 10px;height:30px;text-align:right;font-size:11px;font-weight:500;white-space:nowrap;border-bottom:1px solid var(--bdr);border-right:1px solid rgba(228,233,242,.7);background:#F8FAFB;color:var(--txt3)}
+
+/* Sticky first column (org tree / project group) */
+.th-name-wrap{position:sticky;left:0;z-index:40;background:#F8FAFB;border-right:1px solid var(--bdr);min-width:270px;width:270px;max-width:270px;border-bottom:1px solid var(--bdr)}
+.th-name-inner{padding:8px 14px;color:var(--txt2);font-size:11.5px;font-weight:700;letter-spacing:.04em}
+.td-name-wrap{position:sticky;left:0;z-index:10;min-width:270px;width:270px;max-width:270px;overflow:hidden;border-right:1px solid var(--bdr)!important}
+.td-name-inner{display:flex;align-items:center;gap:6px;padding:6px 12px;overflow:hidden;max-width:270px}
+.tog{flex-shrink:0;width:16px;height:16px;border-radius:4px;border:1px solid;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:9px;transition:all .12s;line-height:1;background:#fff;font-weight:700}
+.tog:hover{opacity:.7}.tog.leaf{visibility:hidden;pointer-events:none}
+.row-lbl{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;cursor:pointer}
+.row-lbl:hover{text-decoration:underline;color:var(--pri)}
+.row-tag{flex-shrink:0;font-size:9px;padding:1px 6px;border-radius:10px;font-weight:600;letter-spacing:.02em}
+
+.rl1 td{background:#FFFDF5!important}
+.rl2 td{background:#F9FBFF!important}
+.rl3 td{background:#FCFCFF!important}
+.rl4 td{background:#FFFFFF!important}
+tbody tr:hover td{filter:brightness(.97);transition:filter .1s}
+td{border-bottom:1px solid rgba(228,233,242,.8);border-right:1px solid rgba(228,233,242,.5);vertical-align:middle}
+
+.rl1 .row-lbl{color:#6B4D00;font-size:13px;font-weight:700}
+.rl1 .row-tag{background:#FEF3C7;color:#92400E}
+.rl1 .td-name-wrap{border-left:3px solid #F59E0B}
+.rl2 .row-lbl{color:#1C2536;font-size:12.5px;font-weight:600}
+.rl2 .row-tag{background:#EEF0FF;color:#3D5AFE}
+.rl2 .td-name-wrap{border-left:3px solid #3D5AFE}
+.rl3 .row-lbl{color:#2D3A55;font-weight:500}
+.rl3 .row-tag{background:#F0FDF9;color:#059669}
+.rl3 .td-name-wrap{border-left:3px solid #059669}
+.rl4 .row-lbl{color:#5A6A82;font-weight:400}
+.rl4 .row-tag{background:#FDF2F8;color:#DB2777}
+.rl4 .td-name-wrap{border-left:3px solid #DB2777}
+
+.td-num{text-align:right;padding:6px 14px;font-family:'DM Mono',monospace;font-size:12px;font-variant-numeric:tabular-nums;letter-spacing:-.02em;color:var(--txt)}
+.td-num.hi{color:var(--hi);font-weight:600}
+.td-num.mid{color:var(--mid);font-weight:600}
+.td-num.lo{color:var(--lo);font-weight:600}
+.td-num.muted{color:var(--txt3)}
+.td-txt{text-align:left;padding:6px 14px;font-size:12.5px;color:var(--txt2);white-space:nowrap}
+
+/* ══ ROLE PERMISSION BANNER ══ */
+.scope-banner{display:flex;align-items:center;gap:8px;padding:8px 14px;font-size:12px;color:var(--txt2);background:#F5F7FE;border-bottom:1px solid var(--bdr);flex-shrink:0}
+.scope-banner b{color:var(--pri)}
+
+/* ══ ANNUAL TARGET BAR (Tab1) ══ */
+.annual-target-bar{display:flex;flex-direction:row;align-items:center;gap:16px;padding:10px 14px;font-size:12.5px;color:var(--txt2);background:#FFF9EC;border-bottom:1px solid var(--bdr);flex-shrink:0;flex-wrap:wrap}
+.annual-target-bar b{color:#92400E;font-family:'DM Mono',monospace}
+.annual-target-bar .atb-diff.lo{color:var(--lo);font-weight:600}
+.annual-target-bar .atb-diff.hi{color:var(--hi);font-weight:600}
+
+/* ══ TOTALS ROW (Tab1) ══ */
+.rl-total td{background:#EEF0FF!important;font-weight:700;border-bottom:2px solid rgba(61,90,254,.25)!important}
+.rl-total .td-txt{color:var(--pri-d)}
+
+/* ══ PROJECT GROUP MULTI-SELECT PICKER ══ */
+.course-picker{position:relative}
+.course-pick-btn{height:30px;padding:0 12px;border:1px solid var(--bdr);border-radius:7px;background:#fff;color:var(--txt);font-family:inherit;font-size:12.5px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:border-color .15s;white-space:nowrap}
+.course-pick-btn:hover,.course-pick-btn.open{border-color:var(--pri)}
+.course-pick-warn{color:var(--mid);font-weight:600}
+.course-pick-backdrop{position:fixed;inset:0;z-index:199;display:none}
+.course-pick-backdrop.show{display:block}
+.course-pick-drop{position:absolute;top:calc(100% + 6px);left:0;width:320px;background:var(--sfc);border:1px solid var(--bdr);border-radius:10px;box-shadow:0 8px 28px rgba(0,0,0,.13);z-index:200;display:none;flex-direction:column;overflow:hidden}
+.course-pick-drop.show{display:flex}
+.course-pick-search{margin:8px;height:30px;padding:0 10px;border:1px solid var(--bdr);border-radius:6px;background:#F8FAFC;font-family:inherit;font-size:12.5px;color:var(--txt);outline:none}
+.course-pick-search:focus{border-color:var(--pri);background:#fff}
+.course-pick-actions{display:flex;gap:10px;padding:0 10px 8px;font-size:11.5px;color:var(--pri);font-weight:600}
+.course-pick-actions span{cursor:pointer}
+.course-pick-actions span:hover{text-decoration:underline}
+.course-pick-list{max-height:280px;overflow-y:auto;border-top:1px solid var(--bdr);padding:4px 0}
+.course-pick-item{display:flex;align-items:center;gap:8px;padding:7px 12px;font-size:12.5px;color:var(--txt);cursor:pointer}
+.course-pick-item:hover{background:#F4F6FA}
+.course-pick-item input{width:14px;height:14px;cursor:pointer;accent-color:var(--pri);flex-shrink:0}
+.course-pick-empty{padding:14px;text-align:center;color:var(--txt3);font-size:12px}
+
+/* ══ YEAR SELECT / BACK BUTTON ══ */
+.year-sel{height:30px;padding:0 10px;border:1px solid var(--bdr);border-radius:7px;background:#fff;color:var(--txt);font-family:inherit;font-size:12.5px;cursor:pointer;outline:none}
+.back-btn{display:flex;align-items:center;gap:5px;height:30px;padding:0 12px;border-radius:7px;border:1px solid var(--bdr);background:#fff;color:var(--txt2);font-family:inherit;font-size:12.5px;cursor:pointer}
+.back-btn:hover{border-color:var(--bdr2);color:var(--txt)}
+
+/* ══ SORTABLE HEADER ══ */
+.th-field.sortable{cursor:pointer;user-select:none}
+.th-field.sortable:hover{color:var(--pri)}
+
+/* ══ INLINE VALUE EDIT ══ */
+.val-edit-wrap{display:inline-flex;align-items:center;gap:5px;justify-content:flex-end;width:100%}
+.edit-ic{width:17px;height:17px;border:none;background:rgba(61,90,254,.1);color:var(--pri);border-radius:4px;cursor:pointer;font-size:10px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
+.edit-ic:hover{background:rgba(61,90,254,.22)}
+#numEditPop{position:fixed;z-index:500;background:#fff;border:1.5px solid var(--pri);border-radius:10px;box-shadow:0 12px 32px rgba(0,0,0,.18);padding:10px;display:none;flex-direction:column;gap:8px;width:210px}
+#numEditPop.show{display:flex}
+#numEditPop .nep-label{font-size:11.5px;color:var(--txt2);font-weight:600}
+#numEditPop .nep-extra{font-size:11px;color:var(--txt3);font-weight:400;margin-top:3px}
+.prov-diff{font-size:10.5px;font-weight:600;font-family:'DM Mono',monospace}
+.prov-diff.lo{color:var(--lo)}
+.prov-diff.hi{color:var(--hi)}
+#numEditPop input{height:32px;padding:0 10px;border:1.5px solid var(--bdr);border-radius:6px;font-family:'DM Mono',monospace;font-size:13px;outline:none}
+#numEditPop input:focus{border-color:var(--pri)}
+#numEditPop .nep-btns{display:flex;justify-content:flex-end;gap:6px}
+#numEditPop .nep-save{height:26px;padding:0 12px;border-radius:6px;background:var(--pri);color:#fff;border:none;font-family:inherit;font-size:11.5px;cursor:pointer;font-weight:600}
+#numEditPop .nep-cancel{height:26px;padding:0 10px;border-radius:6px;background:var(--bg);color:var(--txt2);border:1px solid var(--bdr);font-family:inherit;font-size:11.5px;cursor:pointer}
+
+/* ══ BREADCRUMB (Tab2 drill-down) ══ */
+.breadcrumb{display:flex;align-items:center;gap:5px;padding:8px 14px;font-size:12px;color:var(--txt2);background:#F5F7FE;border-bottom:1px solid var(--bdr);flex-shrink:0;flex-wrap:wrap}
+.breadcrumb .bc-item{cursor:pointer;color:var(--pri);font-weight:500}
+.breadcrumb .bc-item:hover{text-decoration:underline}
+.breadcrumb .bc-sep{color:var(--txt3)}
+.breadcrumb .bc-cur{color:var(--txt);font-weight:600}
+
+</style>
+</head>
+<body>
+
+<!-- ════ SIDEBAR ════ -->
+<aside class="sidebar">
+  <div class="sb-brand">
+    <div class="sb-logo">
+      <svg viewBox="0 0 24 24"><path d="M3 3h8v8H3zm10 0h8v8h-8zM3 13h8v8H3zm13 0a4 4 0 1 1 0 8 4 4 0 0 1 0-8z"/></svg>
+    </div>
+    <div><div class="sb-name">年度复盘统计</div><div class="sb-sub">CRM 管理系统</div></div>
+  </div>
+  <div class="nav-sec">
+    <div class="nav-item active">
+      <svg class="nav-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+      年度经营复盘
+    </div>
+  </div>
+  <div class="sb-user-sec">
+    <div class="sb-user-lbl">当前用户</div>
+    <div class="sb-user-row">
+      <svg class="sb-user-ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <select class="sb-user-sel" id="curUserSel" onchange="onUserChange(this.value)"></select>
+    </div>
+    <div class="sb-role-badge" id="roleBadge"></div>
+  </div>
+  <div class="sb-foot">年度复盘统计 · 2026</div>
+</aside>
+
+<!-- ════ MAIN ════ -->
+<div class="main">
+  <header class="topbar">
+    <span class="topbar-page">年度复盘统计</span>
+    <span class="topbar-sep"></span>
+    <select class="year-sel" id="yearSel" onchange="onYearChange(this.value)"></select>
+    <span class="topbar-sep"></span>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="summary" onclick="switchTab('summary')">汇总查看</button>
+      <button class="tab-btn" data-tab="region" onclick="switchTab('region')">省市情况</button>
+    </div>
+    <div class="topbar-r">
+      <button class="btn btn-default" onclick="alert('导出功能待接入')">导出</button>
+    </div>
+  </header>
+
+  <div class="table-area">
+
+    <!-- ═══ TAB 1: 汇总查看 ═══ -->
+    <div class="panel active" id="panel-summary">
+      <div class="table-card">
+        <div class="tc-head">
+          <span class="tc-desc">汇总查看：基于项目经营维度查看各项目营收情况。</span>
+          <div class="course-picker" id="focusPicker">
+            <button class="course-pick-btn" id="focusPickBtn" onclick="toggleFocusPicker(event)">
+              <span id="focusPickLabel"></span> ▾
+            </button>
+            <div class="course-pick-drop" id="focusPickDrop">
+              <input class="course-pick-search" id="focusPickSearch" placeholder="搜索项目组…" oninput="renderFocusPickList()">
+              <div class="course-pick-actions">
+                <span onclick="selectAllFocus()">全选</span>
+                <span onclick="clearAllFocus()">清空</span>
+              </div>
+              <div class="course-pick-list" id="focusPickList"></div>
+            </div>
+          </div>
+        </div>
+        <div class="course-pick-backdrop" id="focusPickBackdrop" onclick="closeFocusPicker()"></div>
+        <div class="annual-target-bar" id="annualTargetBar"></div>
+        <div class="table-scroll">
+          <table id="summaryTable">
+            <thead id="summaryHead"></thead>
+            <tbody id="summaryBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ TAB 2: 省市情况 ═══ -->
+    <div class="panel" id="panel-region">
+      <div class="table-card">
+        <div class="tc-head">
+          <span class="tc-desc">省市情况：查看各省市的销售的整体贡献情况。</span>
+          <span class="exp-btn" onclick="expandToDepth(0)">展开到小组</span>
+          <span class="exp-btn" onclick="expandToDepth(1)">展开到省份</span>
+          <span class="exp-btn" onclick="expandToDepth(2)">展开到城市组</span>
+          <div class="course-picker" id="coursePicker">
+            <button class="course-pick-btn" id="coursePickBtn" onclick="toggleCoursePicker(event)">
+              <span id="coursePickLabel"></span>
+              <span class="course-pick-warn" id="coursePickWarn" style="display:none">列较多</span>
+              ▾
+            </button>
+            <div class="course-pick-drop" id="coursePickDrop">
+              <input class="course-pick-search" id="coursePickSearch" placeholder="搜索项目组…" oninput="renderCoursePickList()">
+              <div class="course-pick-actions">
+                <span onclick="selectAllCourses()">全选</span>
+                <span onclick="clearAllCourses()">清空</span>
+              </div>
+              <div class="course-pick-list" id="coursePickList"></div>
+            </div>
+          </div>
+        </div>
+        <div class="course-pick-backdrop" id="coursePickBackdrop" onclick="closeCoursePicker()"></div>
+        <div class="scope-banner" id="scopeBanner"></div>
+        <div class="breadcrumb" id="regionBreadcrumb"></div>
+        <div class="table-scroll">
+          <table id="regionTable">
+            <thead id="regionHead"></thead>
+            <tbody id="regionBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="numEditPop">
+  <div class="nep-label"></div>
+  <input type="number">
+  <div class="nep-btns">
+    <button class="nep-cancel">取消</button>
+    <button class="nep-save">保存</button>
+  </div>
+</div>
+
+<script>
+/* ══════════════════ DATA ══════════════════ */
+/* 实际共 43 个课程项目组 */
+const ALL_COURSES = [
+  '领导力共创会','道德经','阳明心学','战略领导力','龙场训练营','互联网B课','冬季思考月','A课引流课',
+  '十亿的本质','润泽公开课','民企传承（二代领导力）','高管领导力','易经（K2）','家庭系列（F课）',
+  '家庭幸福型企业','百日成长（A系列）','百日成长（B系列）','润泽年课','润泽日讲','新教育','家庭幸福力',
+  '其他项目组','致28学习会','民企传承（E300项目组）','鲲鹏训练营','内部课程','民企传承（C50）',
+  '战略重塑营','白象专场训练营','致28专场训练营','「创新由心」2026新生代创业创新','女性领导力',
+  '润泽领导力','90后幸福项目','润泽1000企业家学习会','案例100','战略升维营','个人战略','战略心学',
+  '628大会','贝壳蓝血学习会','经典一刻','四位一体',
+];
+const CAT_PALETTE = ['c-c0','c-c1','c-c2','c-c3','c-c4','c-c5','c-c6','c-c7'];
+function courseCls(idx){ return CAT_PALETTE[idx % CAT_PALETTE.length]; }
+
+/* ══ 年份 ══ */
+const YEARS = [2024,2025,2026,2027];
+let currentYear = 2026;
+
+/* 每年重点经营的项目组（Tab1 行、Tab2 目标设置默认项目组均以此为参考） */
+const YEAR_FOCUS = {
+  2026: new Set(['经典一刻','阳明心学','易经（K2）','道德经','战略领导力','案例100','致28学习会','高管领导力','润泽年课','家庭幸福力']),
+  2025: new Set(['战略领导力','高管领导力','易经（K2）','阳明心学','润泽公开课','个人战略','致28学习会','鲲鹏训练营']),
+};
+function ensureYearFocus(year){
+  if(!YEAR_FOCUS[year]) YEAR_FOCUS[year] = new Set(ALL_COURSES.slice(0,10));
+  return YEAR_FOCUS[year];
+}
+
+/* 手动编辑覆盖值，按年份独立保存（产品目标/全部期数/区域目标） */
+const YEAR_OVERRIDES = {};
+function ensureYearOverride(year){
+  if(!YEAR_OVERRIDES[year]) YEAR_OVERRIDES[year] = {summary:{}, targets:{}};
+  return YEAR_OVERRIDES[year];
+}
+
+/* Tab2 项目组列选择器：默认仅勾选一部分，避免 43 个项目组全部铺开成宽表 */
+let selectedCourses = new Set(['经典一刻','阳明心学','易经（K2）','道德经']);
+function selectedList(){ return ALL_COURSES.filter(c=>selectedCourses.has(c)); }
+
+/* ── Tab 1: 项目组年度汇总（按 43 个项目组生成示例数据，含年份覆盖值）── */
+function genSummaryRow(name, year){
+  const seed = name+'_'+year;
+  const product = Math.round((150000+rand01(seed+'sp')*750000)/5000)*5000;
+  const sales = Math.round(product*(1.05+rand01(seed+'sm')*0.35)/5000)*5000;
+  const q = [1,2,3,4].map(qn=>Math.round(sales/4*(0.55+rand01(seed+'q'+qn)*0.5)/1000)*1000);
+  const opened = 1+Math.floor(rand01(seed+'op')*8);
+  const totalPeriods = opened + 1 + Math.floor(rand01(seed+'rm')*5);
+  const row = {name, product, sales, q, opened, totalPeriods};
+  const ov = YEAR_OVERRIDES[year] && YEAR_OVERRIDES[year].summary[name];
+  if(ov){ if(ov.product!=null) row.product=ov.product; if(ov.totalPeriods!=null) row.totalPeriods=ov.totalPeriods; }
+  return row;
+}
+function buildSummaryForYear(year){ return ALL_COURSES.map(name=>genSummaryRow(name, year)); }
+let SUMMARY_RAW = [];
+
+/* ── Tab 2: 组织架构树（小组 → 省份 → 城市组 → 城市），沿用 fupantongji/kanban.html 的组织数据 ── */
+const ORG_DEF = [
+  {name:'天火同人', type:'group', kids:[
+    {name:'江西省', type:'province'},
+    {name:'广东省', type:'province', kids:[
+      {name:'广州，肇庆，清远，云浮', type:'citygroup', kids:[
+        {name:'广州市', type:'city'},
+        {name:'肇庆市', type:'city'},
+        {name:'清远市', type:'city'},
+        {name:'云浮市', type:'city'},
+      ]},
+      {name:'深圳，潮州，汕头，揭阳，梅州，汕尾', type:'citygroup', kids:[
+        {name:'深圳市', type:'city'},
+        {name:'潮州市', type:'city'},
+        {name:'汕头市', type:'city'},
+        {name:'揭阳市', type:'city'},
+        {name:'梅州市', type:'city'},
+        {name:'汕尾市', type:'city'},
+      ]},
+      {name:'佛山，珠海，江门，中山，阳江', type:'citygroup', kids:[
+        {name:'佛山市', type:'city'},
+        {name:'珠海市', type:'city'},
+        {name:'江门市', type:'city'},
+        {name:'中山市', type:'city'},
+        {name:'阳江市', type:'city'},
+      ]},
+    ]},
+  ]},
+  {name:'守正创新', type:'group', kids:[
+    {name:'天津市', type:'province'},
+    {name:'北京市', type:'province'},
+    {name:'河北省', type:'province', kids:[
+      {name:'保定市，沧州市，秦皇岛市，张家口市，承德市', type:'citygroup', kids:[
+        {name:'保定市', type:'city'},
+        {name:'沧州市', type:'city'},
+        {name:'秦皇岛市', type:'city'},
+        {name:'张家口市', type:'city'},
+        {name:'承德市', type:'city'},
+      ]},
+      {name:'衡水市，邯郸市，邢台市，石家庄市，廊坊市，唐山市', type:'citygroup', kids:[
+        {name:'衡水市', type:'city'},
+        {name:'邯郸市', type:'city'},
+        {name:'邢台市', type:'city'},
+        {name:'石家庄市', type:'city'},
+        {name:'廊坊市', type:'city'},
+        {name:'唐山市', type:'city'},
+      ]},
+    ]},
+  ]},
+  {name:'尽锐出战', type:'group', kids:[
+    {name:'浙江省', type:'province', kids:[
+      {name:'宁波，绍兴，舟山', type:'citygroup', kids:[
+        {name:'宁波市', type:'city'},
+        {name:'绍兴市', type:'city'},
+        {name:'舟山市', type:'city'},
+      ]},
+      {name:'杭州，嘉兴，湖州', type:'citygroup', kids:[
+        {name:'嘉兴、湖州架构', type:'city'},
+        {name:'杭州架构', type:'city'},
+      ]},
+      {name:'温州，丽水，台州', type:'citygroup', kids:[
+        {name:'温州市', type:'city'},
+        {name:'丽水市', type:'city'},
+        {name:'台州市', type:'city'},
+      ]},
+    ]},
+    {name:'福建省', type:'province'},
+    {name:'上海市', type:'province'},
+  ]},
+  {name:'弘毅致远', type:'group', kids:[
+    {name:'山东省', type:'province', kids:[
+      {name:'青岛，烟台，威海，日照', type:'citygroup', kids:[
+        {name:'青岛市', type:'city'},
+        {name:'烟台市', type:'city'},
+        {name:'威海市', type:'city'},
+        {name:'日照市', type:'city'},
+      ]},
+      {name:'潍坊，淄博，滨州，东营', type:'citygroup', kids:[
+        {name:'潍坊市', type:'city'},
+        {name:'淄博市', type:'city'},
+        {name:'滨州市', type:'city'},
+        {name:'东营市', type:'city'},
+      ]},
+    ]},
+    {name:'山西省', type:'province'},
+  ]},
+];
+
+const TYPE_TAG = {group:'小组', province:'省份', citygroup:'城市组', city:'城市'};
+const TYPE_RL  = {group:'rl1', province:'rl2', citygroup:'rl3', city:'rl4'};
+
+/* ══ deterministic pseudo-random leaf data generator（含年份覆盖值）══ */
+function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return h;}
+function rand01(seed){return (hashStr(seed)%10000)/10000;}
+function genLeaf(name, year){
+  const m={};
+  const ov = YEAR_OVERRIDES[year];
+  ALL_COURSES.forEach(course=>{
+    const seed = name+course+'_'+year;
+    const target = Math.round((30000+rand01(seed+'t')*90000)/1000)*1000;
+    const rate = 0.55+rand01(seed+'r')*0.4;
+    let finalTarget = target;
+    if(ov && ov.targets[course] && ov.targets[course][name]!=null) finalTarget = ov.targets[course][name];
+    m[course] = {target: finalTarget, done: Math.round(target*rate)};
+  });
+  return m;
+}
+
+/* ══ build tree with bottom-up aggregation ══ */
+function buildNode(def, depth, year){
+  const node = {name:def.name, type:def.type, depth, children:[]};
+  if(def.kids && def.kids.length){
+    node.children = def.kids.map(k=>buildNode(k, depth+1, year));
+    node.m = {};
+    ALL_COURSES.forEach(course=>{
+      let target=0, done=0;
+      node.children.forEach(c=>{target+=c.m[course].target; done+=c.m[course].done;});
+      node.m[course] = {target, done};
+    });
+  } else {
+    node.m = genLeaf(def.name, year);
+  }
+  return node;
+}
+
+/* ══ flatten to rows with parent ids ══ */
+function flatten(node, pid, out){
+  const id = pid ? pid+'>'+node.name : node.name;
+  out.push({id, pid, name:node.name, type:node.type, depth:node.depth, m:node.m, hasKids:!!(node.children&&node.children.length)});
+  (node.children||[]).forEach(c=>flatten(c,id,out));
+}
+function buildTreeForYear(year){
+  const tree = ORG_DEF.map(g=>buildNode(g,0,year));
+  const out = [];
+  tree.forEach(g=>flatten(g,null,out));
+  return out;
+}
+let ALL_ROWS = [];
+
+/* ══ users / permission scoping ══ */
+const USERS = [
+  {name:'运营-王芳', role:'admin'},
+  {name:'孙峥嵘（广州组）',  role:'staff', scope:'广州，肇庆，清远，云浮'},
+  {name:'王大海（河北省）',  role:'staff', scope:'河北省'},
+  {name:'牛肖方（山西省）',  role:'staff', scope:'山西省'},
+  {name:'杨佳帅（嘉兴湖州）', role:'staff', scope:'嘉兴、湖州架构'},
+];
+let currentUser = USERS[0];
+
+function computeAllowedIds(user){
+  if(user.role==='admin') return null; // null = 不限制
+  const scopeRow = ALL_ROWS.find(r=>r.name===user.scope);
+  if(!scopeRow) return new Set();
+  const allowed = new Set([scopeRow.id]);
+  let queue=[scopeRow.id];
+  while(queue.length){
+    const cur=queue.shift();
+    ALL_ROWS.filter(r=>r.pid===cur).forEach(r=>{allowed.add(r.id); queue.push(r.id);});
+  }
+  let cur=scopeRow;
+  while(cur.pid){ allowed.add(cur.pid); cur=ALL_ROWS.find(r=>r.id===cur.pid); }
+  return allowed;
+}
+
+/* ══════════════════ FORMAT HELPERS ══════════════════ */
+function fmtMoney(n){ return Math.round(n).toLocaleString('zh-CN'); }
+function fmtPct(n){ return (n*100).toFixed(1)+'%'; }
+function rateCls(n){ return n>=0.9?'hi':n>=0.7?'mid':'lo'; }
+function isAdmin(){ return currentUser.role==='admin'; }
+
+/* ══════════════════ TAB SWITCH ══════════════════ */
+function switchTab(tab){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  document.getElementById('panel-summary').classList.toggle('active', tab==='summary');
+  document.getElementById('panel-region').classList.toggle('active', tab==='region');
+}
+
+/* ══════════════════ 本年度经营目标 ══════════════════ */
+const YEAR_ANNUAL_TARGET = {};
+function ensureAnnualTarget(year){
+  if(YEAR_ANNUAL_TARGET[year]==null){
+    const focus = ensureYearFocus(year);
+    YEAR_ANNUAL_TARGET[year] = SUMMARY_RAW.filter(r=>focus.has(r.name)).reduce((s,r)=>s+r.sales,0);
+  }
+  return YEAR_ANNUAL_TARGET[year];
+}
+function renderAnnualTargetBar(){
+  const el = document.getElementById('annualTargetBar');
+  const focus = ensureYearFocus(currentYear);
+  const rows = SUMMARY_RAW.filter(r=>focus.has(r.name));
+  const target = ensureAnnualTarget(currentYear);
+  const sum = rows.reduce((s,r)=>s+r.sales,0);
+  const diff = sum-target;
+  const diffSign = diff>=0 ? '+' : '-';
+  const admin = isAdmin();
+  el.innerHTML = `
+    <div>本年度经营目标（元）：<b>${fmtMoney(target)}</b>${admin?` <button class="edit-ic" onclick="openAnnualTargetEditor(event)">✎</button>`:''}</div>
+    <div>各项目组销售目标合计：<b>${fmtMoney(sum)}</b></div>
+    <div class="atb-diff ${diff>0?'lo':(diff<0?'hi':'')}">（目前相差 ${diffSign}${fmtMoney(Math.abs(diff))}，根据实际目前总目标计算）</div>
+    ${admin?'':'<span style="color:var(--txt3)">（仅管理员可编辑）</span>'}
+  `;
+}
+function openAnnualTargetEditor(e){
+  if(!isAdmin()) return;
+  e.stopPropagation();
+  openNumEditor(e.currentTarget, '本年度经营目标（元）', ensureAnnualTarget(currentYear), (val)=>{
+    YEAR_ANNUAL_TARGET[currentYear] = Math.max(0, Math.round(val));
+    renderAnnualTargetBar();
+  });
+}
+
+/* ══════════════════ RENDER TAB 1 ══════════════════ */
+let sortState1 = {key:null, dir:null};
+function sortArrow1(key){ if(sortState1.key!==key) return ''; return sortState1.dir==='asc' ? ' ▲' : ' ▼'; }
+function sortSummaryBy(key){
+  if(sortState1.key===key){ sortState1.dir = sortState1.dir==='desc'?'asc':(sortState1.dir==='asc'?null:'desc'); if(!sortState1.dir) sortState1.key=null; }
+  else { sortState1.key=key; sortState1.dir='desc'; }
+  renderSummary();
+}
+function renderSummaryHead(){
+  document.getElementById('summaryHead').innerHTML = `<tr>
+    <th class="th-cat th-name-wrap" style="text-align:left">课程项目组</th>
+    <th class="th-field">产品目标（元）</th>
+    <th class="th-field">销售目标（元）</th>
+    <th class="th-field sortable" onclick="sortSummaryBy('total')">年度总达成${sortArrow1('total')}</th>
+    <th class="th-field sortable" onclick="sortSummaryBy('rate')">达成率${sortArrow1('rate')}</th>
+    <th class="th-field">缺口</th>
+    <th class="th-field">剩余每期最小目标</th>
+    <th class="th-field">全部期数</th>
+    <th class="th-field">已开期数</th>
+    <th class="th-field">剩余期数</th>
+    <th class="th-field">1季度达成</th>
+    <th class="th-field">2季度达成</th>
+    <th class="th-field">3季度达成</th>
+    <th class="th-field">4季度达成</th>
+    <th class="th-field">上半年度达成</th>
+    <th class="th-field">下半年度达成</th>
+  </tr>`;
+}
+function minPerPeriodHtml(gap, remain){
+  if(gap<=0) return `<span class="td-num hi" style="text-align:right;display:block">已达标</span>`;
+  if(remain<=0) return `<span class="td-num muted" style="text-align:right;display:block">-</span>`;
+  return `<span class="td-num" style="text-align:right;display:block">${fmtMoney(gap/remain)}</span>`;
+}
+function renderSummary(){
+  renderSummaryHead();
+  renderAnnualTargetBar();
+  const focus = ensureYearFocus(currentYear);
+  let rows = SUMMARY_RAW.filter(r=>focus.has(r.name)).map(row=>{
+    const total = row.q.reduce((a,b)=>a+b,0);
+    const rate = row.sales>0 ? total/row.sales : 0;
+    return {row, total, rate};
+  });
+  if(sortState1.key){
+    rows.sort((a,b)=>{
+      const va = sortState1.key==='total'?a.total:a.rate;
+      const vb = sortState1.key==='total'?b.total:b.rate;
+      return (va-vb)*(sortState1.dir==='asc'?1:-1);
+    });
+  }
+
+  // 合计行
+  const tp = rows.reduce((s,x)=>s+x.row.product,0);
+  const ts = rows.reduce((s,x)=>s+x.row.sales,0);
+  const td = rows.reduce((s,x)=>s+x.total,0);
+  const trate = ts>0? td/ts:0;
+  const tgap = ts-td;
+  const topened = rows.reduce((s,x)=>s+x.row.opened,0);
+  const ttotalPeriods = rows.reduce((s,x)=>s+x.row.totalPeriods,0);
+  const tremain = rows.reduce((s,x)=>s+Math.max(0,x.row.totalPeriods-x.row.opened),0);
+  const tq = [0,1,2,3].map(i=>rows.reduce((s,x)=>s+x.row.q[i],0));
+  const th1 = tq[0]+tq[1], th2=tq[2]+tq[3];
+  const totalRowHtml = `<tr class="rl-total">
+    <td class="td-txt td-name-wrap" style="font-weight:800">合计（${rows.length} 个项目组）</td>
+    <td class="td-num">${fmtMoney(tp)}</td>
+    <td class="td-num">${fmtMoney(ts)}</td>
+    <td class="td-num">${fmtMoney(td)}</td>
+    <td class="td-num ${rateCls(trate)}">${fmtPct(trate)}</td>
+    <td class="td-num ${tgap>0?'lo':'hi'}">${tgap>0?fmtMoney(tgap):'0'}</td>
+    <td style="padding:0">${minPerPeriodHtml(tgap,tremain)}</td>
+    <td class="td-num">${ttotalPeriods}</td>
+    <td class="td-num">${topened}</td>
+    <td class="td-num">${tremain}</td>
+    <td class="td-num">${fmtMoney(tq[0])}</td>
+    <td class="td-num">${fmtMoney(tq[1])}</td>
+    <td class="td-num">${fmtMoney(tq[2])}</td>
+    <td class="td-num">${fmtMoney(tq[3])}</td>
+    <td class="td-num">${fmtMoney(th1)}</td>
+    <td class="td-num">${fmtMoney(th2)}</td>
+  </tr>`;
+
+  const bodyHtml = rows.map(({row,total,rate})=>{
+    const gap = row.sales - total;
+    const remain = Math.max(0, row.totalPeriods-row.opened);
+    return `<tr class="rl2">
+      <td class="td-txt td-name-wrap" style="font-weight:600">${row.name}</td>
+      <td class="td-num"><span class="val-edit-wrap"><span>${fmtMoney(row.product)}</span><button class="edit-ic" onclick="openProductEditor(event,'${row.name}')" title="编辑产品目标">✎</button></span></td>
+      <td class="td-num">${fmtMoney(row.sales)}</td>
+      <td class="td-num">${fmtMoney(total)}</td>
+      <td class="td-num ${rateCls(rate)}">${fmtPct(rate)}</td>
+      <td class="td-num ${gap>0?'lo':'hi'}">${gap>0?fmtMoney(gap):'0'}</td>
+      <td style="padding:0">${minPerPeriodHtml(gap,remain)}</td>
+      <td class="td-num"><span class="val-edit-wrap"><span>${row.totalPeriods}</span><button class="edit-ic" onclick="openPeriodsEditor(event,'${row.name}')" title="编辑全部期数">✎</button></span></td>
+      <td class="td-num">${row.opened}</td>
+      <td class="td-num">${remain}</td>
+      <td class="td-num">${fmtMoney(row.q[0])}</td>
+      <td class="td-num">${fmtMoney(row.q[1])}</td>
+      <td class="td-num">${fmtMoney(row.q[2])}</td>
+      <td class="td-num">${fmtMoney(row.q[3])}</td>
+      <td class="td-num">${fmtMoney(row.q[0]+row.q[1])}</td>
+      <td class="td-num">${fmtMoney(row.q[2]+row.q[3])}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('summaryBody').innerHTML = totalRowHtml + bodyHtml;
+}
+function openProductEditor(e, name){
+  e.stopPropagation();
+  const row = SUMMARY_RAW.find(r=>r.name===name);
+  openNumEditor(e.currentTarget, '产品目标（元）', row.product, (val)=>{
+    row.product = Math.max(0, Math.round(val));
+    const ov = ensureYearOverride(currentYear);
+    ov.summary[name] = Object.assign(ov.summary[name]||{}, {product: row.product});
+    renderSummary();
+  });
+}
+function openPeriodsEditor(e, name){
+  e.stopPropagation();
+  const row = SUMMARY_RAW.find(r=>r.name===name);
+  openNumEditor(e.currentTarget, '全部期数', row.totalPeriods, (val)=>{
+    row.totalPeriods = Math.max(0, Math.round(val));
+    const ov = ensureYearOverride(currentYear);
+    ov.summary[name] = Object.assign(ov.summary[name]||{}, {totalPeriods: row.totalPeriods});
+    renderSummary();
+  });
+}
+
+/* ══════════════════ RENDER TAB 2 ══════════════════ */
+/* ══ 省级维度目标（独立于自动汇总的目标值，用于对比） ══ */
+const PROVINCE_TARGET = {};
+function ensureProvinceTarget(year, row){
+  if(!PROVINCE_TARGET[year]) PROVINCE_TARGET[year] = {};
+  if(PROVINCE_TARGET[year][row.name] == null){
+    const list = selectedList();
+    PROVINCE_TARGET[year][row.name] = list.reduce((s,c)=>s+row.m[c].target,0);
+  }
+  return PROVINCE_TARGET[year][row.name];
+}
+function openProvinceTargetEditor(e, rowId){
+  e.stopPropagation();
+  const row = ALL_ROWS.find(r=>r.id===rowId);
+  const list = selectedList();
+  const sum = list.reduce((s,c)=>s+row.m[c].target,0);
+  const current = ensureProvinceTarget(currentYear, row);
+  openNumEditor(e.currentTarget, `${row.name} — 省级维度目标（元）`, current, (val)=>{
+    PROVINCE_TARGET[currentYear][row.name] = Math.max(0, Math.round(val));
+    renderRegionBody();
+  }, `当前合计目标：${fmtMoney(sum)}`);
+}
+
+let sortState2 = {key:null, dir:null};
+function sortArrow2(key){ if(sortState2.key!==key) return ''; return sortState2.dir==='asc' ? ' ▲' : ' ▼'; }
+function sortRegionBy(key){
+  if(sortState2.key===key){ sortState2.dir = sortState2.dir==='desc'?'asc':(sortState2.dir==='asc'?null:'desc'); if(!sortState2.dir) sortState2.key=null; }
+  else { sortState2.key=key; sortState2.dir='desc'; }
+  renderRegionHead();
+  renderRegionBody();
+}
+function renderRegionHead(){
+  const list = selectedList();
+  const catRow = `<tr>
+    <th class="th-cat th-name-wrap" rowspan="2" style="text-align:left">组织架构</th>
+    <th class="th-cat c-sum" colspan="3">汇总（已选项目组）</th>
+    ${list.map((g,i)=>`<th class="th-cat ${courseCls(i)}" colspan="3">${g}</th>`).join('')}
+  </tr>`;
+  const fieldRow = `<tr>` + ['汇总',...list].map((g,gi)=>{
+    if(gi===0){
+      return `<th class="th-field">目标</th>
+        <th class="th-field sortable" onclick="sortRegionBy('done')">达成${sortArrow2('done')}</th>
+        <th class="th-field sortable" onclick="sortRegionBy('rate')">达成率${sortArrow2('rate')}</th>`;
+    }
+    return `<th class="th-field">目标</th><th class="th-field">达成</th><th class="th-field">达成率</th>`;
+  }).join('') + `</tr>`;
+  document.getElementById('regionHead').innerHTML = catRow + fieldRow;
+}
+
+let expanded = new Set();
+let drillRootId = null;
+function expandToDepth(depth){
+  drillRootId = null;
+  expanded = new Set(ALL_ROWS.filter(r=>r.hasKids && r.depth<=depth).map(r=>r.id));
+  renderRegionHead();
+  renderRegionBody();
+  renderBreadcrumb();
+}
+function toggleRow(id){
+  if(expanded.has(id)) expanded.delete(id); else expanded.add(id);
+  renderRegionBody();
+}
+function drillInto(id){
+  drillRootId = id;
+  if(id) expanded.add(id);
+  renderRegionBody();
+  renderBreadcrumb();
+}
+function renderBreadcrumb(){
+  const el = document.getElementById('regionBreadcrumb');
+  if(!el) return;
+  if(!drillRootId){ el.innerHTML = `<span class="bc-cur">全部</span>`; return; }
+  const chain=[]; let cur = ALL_ROWS.find(r=>r.id===drillRootId);
+  while(cur){ chain.unshift(cur); cur = cur.pid ? ALL_ROWS.find(r=>r.id===cur.pid) : null; }
+  const parts = [`<span class="bc-item" onclick="drillInto(null)">全部</span>`];
+  chain.forEach((r,i)=>{
+    parts.push(`<span class="bc-sep">›</span>`);
+    parts.push(i===chain.length-1 ? `<span class="bc-cur">${r.name}</span>` : `<span class="bc-item" onclick="drillInto('${r.id}')">${r.name}</span>`);
+  });
+  el.innerHTML = parts.join('');
+}
+
+function nodeSumDoneRate(row){
+  const list = selectedList();
+  let target=0, done=0;
+  list.forEach(c=>{ target+=row.m[c].target; done+=row.m[c].done; });
+  return {target, done, rate: target>0?done/target:0};
+}
+function sortSiblings(rows){
+  if(!sortState2.key) return rows;
+  const withVal = rows.map(r=>({r, v: sortState2.key==='rate'?nodeSumDoneRate(r).rate:nodeSumDoneRate(r).done}));
+  withVal.sort((a,b)=>(a.v-b.v)*(sortState2.dir==='asc'?1:-1));
+  return withVal.map(x=>x.r);
+}
+function collectVisibleRows(){
+  const allowed = computeAllowedIds(currentUser);
+  const out = [];
+  function walk(pid){
+    let kids = ALL_ROWS.filter(r=>r.pid===pid);
+    if(allowed) kids = kids.filter(r=>allowed.has(r.id));
+    kids = sortSiblings(kids);
+    kids.forEach(row=>{
+      out.push(row);
+      if(expanded.has(row.id)) walk(row.id);
+    });
+  }
+  if(drillRootId){
+    const rootRow = ALL_ROWS.find(r=>r.id===drillRootId);
+    if(rootRow && (!allowed || allowed.has(rootRow.id))){
+      out.push(rootRow);
+      if(expanded.has(rootRow.id)) walk(rootRow.id);
+    }
+  } else {
+    walk(null);
+  }
+  return out;
+}
+
+function renderRegionBody(){
+  const list = selectedList();
+  const rows = collectVisibleRows();
+  const rootDepth = drillRootId ? (ALL_ROWS.find(r=>r.id===drillRootId)||{depth:0}).depth : 0;
+  const tbody = document.getElementById('regionBody');
+  tbody.innerHTML = rows.map(row=>{
+    const rl = TYPE_RL[row.type];
+    const tag = TYPE_TAG[row.type];
+    const relDepth = Math.max(0, row.depth - rootDepth);
+    const indent = 14 + relDepth*18;
+    const togCls = row.hasKids ? '' : 'leaf';
+    const arrow = expanded.has(row.id) ? '▾' : '▸';
+
+    let sumTarget=0, sumDone=0;
+    list.forEach(c=>{ sumTarget+=row.m[c].target; sumDone+=row.m[c].done; });
+    const sumRate = sumTarget>0 ? sumDone/sumTarget : 0;
+
+    let targetCellHtml = fmtMoney(sumTarget);
+    if(row.type==='province'){
+      const setTarget = ensureProvinceTarget(currentYear, row);
+      const diff = sumTarget - setTarget;
+      const diffCls = diff>0?'lo':(diff<0?'hi':'');
+      const sign = diff>=0?'+':'-';
+      targetCellHtml = `<span class="val-edit-wrap">
+        <span>${fmtMoney(sumTarget)} <span class="prov-diff ${diffCls}">(${sign}${fmtMoney(Math.abs(diff))})</span></span>
+        <button class="edit-ic" onclick="openProvinceTargetEditor(event,'${row.id}')" title="编辑省级维度目标">✎</button>
+      </span>`;
+    }
+
+    const sumCells = `
+      <td class="td-num">${targetCellHtml}</td>
+      <td class="td-num">${fmtMoney(sumDone)}</td>
+      <td class="td-num ${rateCls(sumRate)}">${fmtPct(sumRate)}</td>`;
+
+    const courseCells = list.map(c=>{
+      const d = row.m[c];
+      const r = d.target>0 ? d.done/d.target : 0;
+      return `<td class="td-num muted">${fmtMoney(d.target)}</td>
+              <td class="td-num">${fmtMoney(d.done)}</td>
+              <td class="td-num ${rateCls(r)}">${fmtPct(r)}</td>`;
+    }).join('');
+
+    return `<tr class="${rl}">
+      <td class="td-name-wrap">
+        <div class="td-name-inner" style="padding-left:${indent}px">
+          <span class="tog ${togCls}" onclick="toggleRow('${row.id}')">${arrow}</span>
+          <span class="row-lbl" title="点击查看「${row.name}」层级" onclick="drillInto('${row.id}')">${row.name}</span>
+          <span class="row-tag">${tag}</span>
+        </div>
+      </td>
+      ${sumCells}
+      ${courseCells}
+    </tr>`;
+  }).join('');
+}
+
+function renderScopeBanner(){
+  const el = document.getElementById('scopeBanner');
+  if(currentUser.role==='admin'){
+    el.innerHTML = `当前视角：<b>${currentUser.name}</b> · 运营角色，可查看全国所有小组/省份/城市组/城市数据。`;
+  } else {
+    el.innerHTML = `当前视角：<b>${currentUser.name}</b> · 仅可查看本人负责区域「<b>${currentUser.scope}</b>」及其上级归属路径，无法查看其他区域。`;
+  }
+}
+
+/* ══ user switcher ══ */
+function populateUserSelect(){
+  const sel = document.getElementById('curUserSel');
+  sel.innerHTML = USERS.map(u=>`<option value="${u.name}">${u.name}</option>`).join('');
+  sel.value = currentUser.name;
+}
+function onUserChange(name){
+  currentUser = USERS.find(u=>u.name===name) || USERS[0];
+  const badge = document.getElementById('roleBadge');
+  badge.textContent = currentUser.role==='admin' ? '运营角色 · 全部权限' : '员工角色 · 仅限负责区域';
+  badge.classList.toggle('admin', currentUser.role==='admin');
+  renderScopeBanner();
+  drillRootId = null;
+  if(currentUser.role!=='admin'){
+    const scopeRow = ALL_ROWS.find(r=>r.name===currentUser.scope);
+    expanded = new Set();
+    if(scopeRow){
+      let cur = scopeRow;
+      while(cur && cur.pid){ expanded.add(cur.pid); cur = ALL_ROWS.find(r=>r.id===cur.pid); }
+      if(scopeRow.hasKids) expanded.add(scopeRow.id);
+    }
+    renderRegionHead();
+    renderRegionBody();
+    renderBreadcrumb();
+  } else {
+    expandToDepth(1);
+  }
+  if(document.getElementById('panel-summary')) renderAnnualTargetBar();
+}
+
+/* ══ 项目组多选选择器（Tab2 列设置 —— 全局设置，仅管理员可修改）══ */
+function toggleCoursePicker(e){
+  e.stopPropagation();
+  const drop = document.getElementById('coursePickDrop');
+  const btn = document.getElementById('coursePickBtn');
+  const open = !drop.classList.contains('show');
+  drop.classList.toggle('show', open);
+  btn.classList.toggle('open', open);
+  document.getElementById('coursePickBackdrop').classList.toggle('show', open);
+  if(open){ document.getElementById('coursePickSearch').value=''; renderCoursePickList(); }
+}
+function closeCoursePicker(){
+  document.getElementById('coursePickDrop').classList.remove('show');
+  document.getElementById('coursePickBtn').classList.remove('open');
+  document.getElementById('coursePickBackdrop').classList.remove('show');
+}
+function renderCoursePickList(){
+  const admin = isAdmin();
+  const q = document.getElementById('coursePickSearch').value.trim();
+  const list = ALL_COURSES.filter(c=>c.includes(q));
+  const note = admin ? '' : `<div style="padding:6px 12px;font-size:11px;color:var(--txt3)">项目组列为全局设置，仅管理员可修改，当前为只读查看</div>`;
+  document.getElementById('coursePickList').innerHTML = note + (list.length ? list.map(c=>`
+    <label class="course-pick-item" style="${admin?'':'opacity:.65;cursor:default'}">
+      <input type="checkbox" ${selectedCourses.has(c)?'checked':''} ${admin?'':'disabled'} onchange="toggleCourseSel('${c}', this.checked)">
+      <span>${c}</span>
+    </label>`).join('') : `<div class="course-pick-empty">无匹配结果</div>`);
+  const actions = document.querySelector('#coursePicker .course-pick-actions');
+  if(actions) actions.style.display = admin ? 'flex' : 'none';
+}
+function refreshAfterCourseChange(){
+  updateCoursePickLabel();
+  renderRegionHead();
+  renderRegionBody();
+}
+function toggleCourseSel(name, checked){
+  if(!isAdmin()) return;
+  if(checked) selectedCourses.add(name); else selectedCourses.delete(name);
+  refreshAfterCourseChange();
+}
+function selectAllCourses(){ if(!isAdmin())return; ALL_COURSES.forEach(c=>selectedCourses.add(c)); renderCoursePickList(); refreshAfterCourseChange(); }
+function clearAllCourses(){ if(!isAdmin())return; selectedCourses.clear(); renderCoursePickList(); refreshAfterCourseChange(); }
+function updateCoursePickLabel(){
+  const n = selectedCourses.size;
+  document.getElementById('coursePickLabel').textContent = n ? `项目组列（全局）：已选 ${n} 个` : '项目组列（全局）：请选择';
+  document.getElementById('coursePickWarn').style.display = n>8 ? 'inline' : 'none';
+}
+
+/* ══ 本年度重点项目组选择器（Tab1 —— 全局设置，仅管理员可修改）══ */
+function toggleFocusPicker(e){
+  e.stopPropagation();
+  const drop = document.getElementById('focusPickDrop');
+  const btn = document.getElementById('focusPickBtn');
+  const open = !drop.classList.contains('show');
+  drop.classList.toggle('show', open);
+  btn.classList.toggle('open', open);
+  document.getElementById('focusPickBackdrop').classList.toggle('show', open);
+  if(open){ document.getElementById('focusPickSearch').value=''; renderFocusPickList(); }
+}
+function closeFocusPicker(){
+  document.getElementById('focusPickDrop').classList.remove('show');
+  document.getElementById('focusPickBtn').classList.remove('open');
+  document.getElementById('focusPickBackdrop').classList.remove('show');
+}
+function renderFocusPickList(){
+  const admin = isAdmin();
+  const q = document.getElementById('focusPickSearch').value.trim();
+  const focus = ensureYearFocus(currentYear);
+  const list = ALL_COURSES.filter(c=>c.includes(q));
+  const note = admin ? '' : `<div style="padding:6px 12px;font-size:11px;color:var(--txt3)">本年度重点项目组为全局设置，仅管理员可修改，当前为只读查看</div>`;
+  document.getElementById('focusPickList').innerHTML = note + (list.length ? list.map(c=>`
+    <label class="course-pick-item" style="${admin?'':'opacity:.65;cursor:default'}">
+      <input type="checkbox" ${focus.has(c)?'checked':''} ${admin?'':'disabled'} onchange="toggleFocusSel('${c}', this.checked)">
+      <span>${c}</span>
+    </label>`).join('') : `<div class="course-pick-empty">无匹配结果</div>`);
+  const actions = document.querySelector('#focusPicker .course-pick-actions');
+  if(actions) actions.style.display = admin ? 'flex' : 'none';
+}
+function toggleFocusSel(name, checked){
+  if(!isAdmin()) return;
+  const focus = ensureYearFocus(currentYear);
+  if(checked) focus.add(name); else focus.delete(name);
+  updateFocusPickLabel();
+  renderSummary();
+}
+function selectAllFocus(){ if(!isAdmin())return; YEAR_FOCUS[currentYear] = new Set(ALL_COURSES); renderFocusPickList(); updateFocusPickLabel(); renderSummary(); }
+function clearAllFocus(){ if(!isAdmin())return; YEAR_FOCUS[currentYear] = new Set(); renderFocusPickList(); updateFocusPickLabel(); renderSummary(); }
+function updateFocusPickLabel(){
+  const n = ensureYearFocus(currentYear).size;
+  document.getElementById('focusPickLabel').textContent = `${currentYear}年重点项目组（全局）：已选 ${n} 个`;
+}
+
+/* ══════════════════ 年份切换 ══════════════════ */
+function populateYearSelect(){
+  const sel = document.getElementById('yearSel');
+  sel.innerHTML = YEARS.map(y=>`<option value="${y}">${y} 年</option>`).join('');
+  sel.value = String(currentYear);
+}
+function onYearChange(v){
+  currentYear = Number(v);
+  document.getElementById('yearSel').value = String(currentYear);
+  SUMMARY_RAW = buildSummaryForYear(currentYear);
+  ALL_ROWS = buildTreeForYear(currentYear);
+  sortState1 = {key:null, dir:null};
+  sortState2 = {key:null, dir:null};
+  renderSummary();
+  updateFocusPickLabel();
+  onUserChange(currentUser.name);
+}
+
+/* ══════════════════ 通用数值编辑弹窗 ══════════════════ */
+function openNumEditor(anchorEl, label, initialVal, onSave, extraInfoHtml){
+  const pop = document.getElementById('numEditPop');
+  const rect = anchorEl.getBoundingClientRect();
+  pop.style.left = Math.min(rect.left, window.innerWidth-230) + 'px';
+  pop.style.top = (rect.bottom+6) + 'px';
+  pop.querySelector('.nep-label').innerHTML = label + (extraInfoHtml ? `<div class="nep-extra">${extraInfoHtml}</div>` : '');
+  const input = pop.querySelector('input');
+  input.value = initialVal;
+  pop.classList.add('show');
+  input.focus(); input.select();
+  const save = ()=>{ const v=Number(input.value); if(!isNaN(v)) onSave(v); closeNumEditor(); };
+  pop.querySelector('.nep-save').onclick = (ev)=>{ ev.stopPropagation(); save(); };
+  pop.querySelector('.nep-cancel').onclick = (ev)=>{ ev.stopPropagation(); closeNumEditor(); };
+  input.onclick = (ev)=>ev.stopPropagation();
+  input.onkeydown = (ev)=>{ if(ev.key==='Enter') save(); if(ev.key==='Escape') closeNumEditor(); };
+}
+function closeNumEditor(){ document.getElementById('numEditPop').classList.remove('show'); }
+
+/* ══ 全局点击关闭下拉/弹窗 ══ */
+document.addEventListener('click', (e)=>{
+  closeCoursePicker();
+  closeFocusPicker();
+  if(!e.target.closest('#numEditPop')) closeNumEditor();
+});
+['coursePickDrop','focusPickDrop','numEditPop'].forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) el.addEventListener('click', e=>e.stopPropagation());
+});
+
+/* ══════════════════ INIT ══════════════════ */
+populateYearSelect();
+SUMMARY_RAW = buildSummaryForYear(currentYear);
+ALL_ROWS = buildTreeForYear(currentYear);
+populateUserSelect();
+onUserChange(currentUser.name);
+renderSummary();
+updateCoursePickLabel();
+updateFocusPickLabel();
+</script>
+</body>
+</html>
