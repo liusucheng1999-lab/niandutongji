@@ -9,20 +9,16 @@
 :root{--nav:#111827;--bg:#eef2f8;--card:#fff;--line:#e1e8f2;--text:#172033;--muted:#66758d;--blue:#2563eb;--blue2:#eef4ff;--green:#0f9f6e;--green2:#ecfdf5;--orange:#d97706;--orange2:#fff7ed;--red:#dc2626;--red2:#fef2f2}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:13px;line-height:1.45;overflow:hidden}
 button,input,select{font:inherit}button{cursor:pointer}
-.app{display:grid;grid-template-columns:220px minmax(0,1fr);height:100vh}
-.side{background:var(--nav);color:#cbd5e1;padding:20px 12px;display:flex;flex-direction:column}
-.brand{display:flex;gap:10px;align-items:center;margin:0 8px 22px}.logo{width:34px;height:34px;border-radius:9px;background:#3b82f6;color:#fff;display:grid;place-items:center;font-weight:800}.brand h1{font-size:14px;color:#fff}.brand p{font-size:10px;color:#7c879a;margin-top:2px}
-.nav-title{font-size:11px;color:#64748b;margin:18px 10px 8px}.nav-item{height:38px;border-radius:8px;padding:0 12px;display:flex;align-items:center;gap:9px;color:#aeb7c8;margin-bottom:4px}.nav-item.active{background:#1d4ed826;color:#fff}.dot{width:7px;height:7px;border-radius:99px;background:#64748b}.active .dot{background:#60a5fa}
-.side-foot{margin-top:auto;background:#1f2937;border:1px solid #303b4f;border-radius:10px;padding:12px;font-size:12px;color:#aeb7c8}
-.main{min-width:0;display:flex;flex-direction:column}
-.top{min-height:58px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:8px 18px;flex-shrink:0;position:relative;z-index:30;overflow:visible}.top h2{font-size:17px}.top .sub{font-size:12px;color:var(--muted)}.top-r{margin-left:auto;display:flex;gap:8px;align-items:center}.top-context{display:flex;align-items:center;gap:6px;padding-left:8px;border-left:1px solid var(--line)}
+.app{height:100vh;display:flex;min-width:0}
+.main{min-width:0;width:100%;flex:1;display:flex;flex-direction:column}
+.top{min-height:48px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:8px 18px;flex-shrink:0;position:relative;z-index:30;overflow:visible}.top h2{font-size:17px}.top .sub{font-size:12px;color:var(--muted)}.top-r{margin-left:auto;display:flex;gap:8px;align-items:center}.top-context{display:flex;align-items:center;gap:6px;padding-left:8px;border-left:1px solid var(--line)}
 .select,.btn,.ipt{height:30px;border-radius:7px;border:1px solid #d5deec;background:#fff;color:#334155;padding:0 10px}.btn{font-weight:700}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn:disabled{opacity:.45;cursor:not-allowed}
-.tabs{height:46px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 16px;gap:6px;flex-shrink:0}.tab{height:32px;border:0;background:#eef2f7;color:#64748b;border-radius:8px;padding:0 18px;font-weight:700}.tab.active{background:#fff;color:var(--blue);box-shadow:0 1px 5px #0002;border:1px solid var(--line)}
+.tabs{height:46px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 16px;gap:6px;flex-shrink:0}.page-tabs{display:flex;align-items:center;gap:6px}.toolbar{justify-content:flex-start;overflow:visible}.toolbar .top-r{margin-left:0;width:100%;flex-wrap:wrap}.tab{height:32px;border:0;background:#eef2f7;color:#64748b;border-radius:8px;padding:0 18px;font-weight:700}.tab.active{background:#fff;color:var(--blue);box-shadow:0 1px 5px #0002;border:1px solid var(--line)}
 .content{flex:1;min-height:0;padding:14px;display:flex;flex-direction:column;gap:12px;overflow:hidden}.panel{display:none;min-height:0;flex:1;flex-direction:column;gap:12px;overflow:hidden}.panel.active{display:flex}
-.bar{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;flex-shrink:0}.bar-item{font-size:12px;color:var(--muted)}.bar-item b{font-size:14px;color:var(--text);font-variant-numeric:tabular-nums}.bar-item .red{color:var(--red)}.bar-item .green{color:var(--green)}
+.bar{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;flex-shrink:0}.bar-item{font-size:12px;color:var(--muted)}.bar-item b{font-size:14px;color:var(--text);font-variant-numeric:tabular-nums}.red{color:var(--red)!important}.green{color:var(--green)!important}
 .card{background:#fff;border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;min-height:0;overflow:visible;flex:1}.card-head{min-height:44px;border-bottom:1px solid var(--line);background:#fafcff;display:flex;align-items:center;gap:10px;padding:8px 12px;flex-shrink:0;border-radius:12px 12px 0 0}.card-head h3{font-size:14px}.card-head p{font-size:12px;color:var(--muted)}.tools{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.table-wrap{overflow:auto;min-height:180px;height:0;flex:1 1 auto;max-height:100%;overscroll-behavior:contain}.panel .card .table-wrap{height:0}table{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%}th,td{border-right:1px solid #e8edf5;border-bottom:1px solid #e8edf5;padding:5px 7px;white-space:nowrap;background:#fff;line-height:1.3}th{position:sticky;top:0;z-index:4;background:#f8fafc;color:#64748b;font-size:12px;text-align:center}.group-th{font-weight:800;color:#1e3a5f;border-top:2px solid #60a5fa;background:#f3f7fd}.sticky{position:sticky;left:0;z-index:5;background:#fff!important;min-width:190px;text-align:left}.sticky2{position:sticky;left:190px;z-index:5;background:#fff!important;min-width:124px;text-align:left}.sticky3{position:sticky;left:314px;z-index:5;background:#fff!important;min-width:78px;text-align:center}.sticky4{position:sticky;left:392px;z-index:5;background:#fff!important;min-width:78px;text-align:center}.num{text-align:right;font-variant-numeric:tabular-nums}.muted{color:var(--muted)}
-.th-filter{height:24px;max-width:92px;border:0;background:transparent;color:#64748b;font-weight:800;text-align:center;outline:none;padding:0 2px}.th-filter:focus{color:var(--blue)}
+.table-wrap{overflow:auto;min-height:180px;height:0;flex:1 1 auto;max-height:100%;overscroll-behavior:contain}.panel .card .table-wrap{height:0}table{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%}th,td{border-right:1px solid #e8edf5;border-bottom:1px solid #e8edf5;padding:5px 7px;white-space:nowrap;background:#fff;line-height:1.3}th{position:sticky;top:0;z-index:4;background:#f8fafc;color:#64748b;font-size:12px;text-align:center}thead tr:first-child th{top:0;z-index:18}thead tr:nth-child(2) th{top:var(--head-row1-height,30px);z-index:17}thead tr:first-child th[rowspan]{z-index:20}.group-th{font-weight:800;color:#1e3a5f;border-top:2px solid #60a5fa;background:#f3f7fd}.sticky{position:sticky;left:0;z-index:5;background:#fff!important;min-width:190px;text-align:left}.sticky2{position:sticky;left:190px;z-index:5;background:#fff!important;min-width:124px;text-align:left}.sticky3{position:sticky;left:314px;z-index:5;background:#fff!important;min-width:78px;text-align:center}.sticky4{position:sticky;left:392px;z-index:5;background:#fff!important;min-width:78px;text-align:center}thead .sticky{z-index:30!important}thead .sticky2{z-index:29!important}thead .sticky3{z-index:28!important}thead .sticky4{z-index:27!important}.num{text-align:right;font-variant-numeric:tabular-nums}.muted{color:var(--muted)}
+.th-filter{height:24px;max-width:92px;border:0;background:transparent;color:#64748b;font-weight:800;text-align:center;outline:none;padding:0 2px}.th-filter:focus{color:var(--blue)}.sort-head{border:0;background:transparent;color:inherit;font:inherit;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:0;cursor:pointer}.sort-head:hover{color:var(--blue)}.sort-arrow{display:inline-block;min-width:14px;color:#64748b;font-size:14px;line-height:1;font-weight:900}.sort-head.active .sort-arrow{color:var(--blue)}
 .project-picker{position:relative}.project-pick-btn{height:30px;padding:0 11px;border:1px solid #d5deec;border-radius:7px;background:#fff;color:#334155;display:flex;align-items:center;gap:6px;white-space:nowrap}.project-pick-btn:hover,.project-pick-btn.open{border-color:var(--blue);color:var(--blue)}.project-pick-warn{color:var(--orange);font-weight:800}.project-pick-drop{position:absolute;top:calc(100% + 6px);right:0;width:300px;background:#fff;border:1px solid #d5deec;border-radius:10px;box-shadow:0 12px 32px #0f172a2b;z-index:40;display:none;overflow:hidden}.project-pick-drop.show{display:block}.project-pick-search{width:calc(100% - 16px);height:32px;margin:8px;border:1px solid #d5deec;border-radius:7px;padding:0 10px;outline:none}.project-pick-search:focus{border-color:var(--blue)}.project-pick-actions{display:flex;gap:14px;padding:0 10px 8px;color:var(--blue);font-size:12px;font-weight:700}.project-pick-actions button{border:0;background:none;color:inherit;font-weight:inherit}.project-pick-list{max-height:240px;overflow-y:auto;border-top:1px solid var(--line);padding:4px 0}.project-pick-item{display:flex;align-items:center;gap:8px;padding:7px 12px;cursor:pointer}.project-pick-item:hover{background:#f4f7fb}.project-pick-item input{width:15px;height:15px;accent-color:var(--blue)}.project-pick-empty{padding:18px;text-align:center;color:var(--muted)}.empty-row{text-align:center!important;color:var(--muted);padding:34px!important}
 .lock-menu{position:relative}.lock-menu-drop{position:absolute;top:calc(100% + 6px);right:0;width:190px;background:#fff;border:1px solid #d5deec;border-radius:10px;box-shadow:0 12px 32px #0f172a2b;z-index:45;display:none;padding:5px}.lock-menu-drop.show{display:block}.lock-menu-drop button{width:100%;height:32px;border:0;background:#fff;border-radius:7px;text-align:left;padding:0 10px;color:#334155;font-weight:700}.lock-menu-drop button:hover{background:#f4f7fb;color:var(--blue)}
 .money{height:28px;width:120px;border:1px solid #d5deec;border-radius:7px;padding:0 8px;text-align:right;background:#fff}.money:disabled{background:#f1f5f9;color:#64748b}
@@ -31,11 +27,13 @@ button,input,select{font:inherit}button{cursor:pointer}
 .value-history{display:inline-flex;align-items:center;justify-content:flex-end;gap:5px}
 .cell-edit-wrap{display:inline-flex;align-items:center;justify-content:flex-end;gap:3px;width:100%}.cell-edit-icon{width:18px;height:18px;border:0;border-radius:4px;display:inline-grid;place-items:center;flex-shrink:0;padding:0;background:transparent;color:#64748b}.cell-edit-icon:hover{background:#eef2f7;color:#334155}.cell-edit-icon.lock-toggle{width:20px;height:20px;border-radius:6px;background:#f1f5f9;border:1px solid #dbe3ee;color:#94a3b8}.cell-edit-icon.lock-toggle:hover{background:#e8eef8;color:#475569}.cell-edit-icon.locked{background:#dcfce7;border-color:#86efac;color:#059669}.cell-edit-icon.locked:hover{background:#bbf7d0;color:#047857}.cell-edit-icon svg{width:11px;height:11px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.cell-edit-icon.lock-toggle svg{width:12px;height:12px}.status-cell{display:inline-flex;align-items:center;justify-content:center;gap:5px}.project-name-cell{display:flex;align-items:center;gap:7px}.project-name-cell>strong{margin-right:auto}.project-goal-cell .cell-edit-wrap{width:auto}
 .num-edit-pop{position:fixed;z-index:80;width:240px;background:#fff;border:1.5px solid var(--blue);border-radius:10px;box-shadow:0 12px 32px #0f172a2e;padding:10px;display:none;flex-direction:column;gap:8px}.num-edit-pop.show{display:flex}.num-edit-label{font-size:12px;color:#475569;font-weight:700}.num-edit-extra{font-size:11px;font-weight:800;line-height:1.45;border-radius:6px;padding:5px 7px}.num-edit-extra.deficit{color:var(--red);background:var(--red2)}.num-edit-extra.surplus{color:#047857;background:var(--green2)}.num-edit-pop input{height:32px;border:1px solid #d5deec;border-radius:7px;padding:0 9px;text-align:right;outline:none}.num-edit-pop input:focus{border-color:var(--blue)}.num-edit-actions{display:flex;justify-content:flex-end;gap:6px}
-.inline-diff{display:inline-flex;margin-top:2px;padding:0;font-size:10px;font-weight:800;line-height:1.25;text-align:right;background:none!important;border-radius:0}.inline-diff.deficit{color:var(--red)}.inline-diff.surplus{color:#047857}.project-goal-edit{align-items:flex-start;flex-direction:column}.project-goal-edit>.row-actions{align-self:flex-end}
+.inline-diff{display:inline-flex;margin-top:2px;padding:0;font-size:10px;font-weight:800;line-height:1.25;text-align:right;background:none!important;border-radius:0}.inline-diff.deficit{color:var(--red)}.inline-diff.surplus{color:#047857}.avg-fill-btn{border:0;background:#eef2ff;color:var(--blue);border-radius:5px;padding:1px 5px;margin-left:4px;font-size:10px;font-weight:900;cursor:pointer}.avg-fill-btn:hover{background:#dbeafe}.project-goal-edit{align-items:flex-start;flex-direction:column}.project-goal-edit>.row-actions{align-self:flex-end}
 .goal-with-diff{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:1px;min-width:86px}.goal-with-diff>.cell-edit-wrap{width:auto}.goal-with-diff>.inline-diff{display:block;margin-top:1px;white-space:nowrap}
 .project-goal-cell{display:flex;align-items:center;justify-content:flex-end;gap:3px;min-width:86px}.project-goal-cell.allocation-cell{flex-direction:column;align-items:flex-end;gap:1px}.project-goal-cell>span{display:inline-flex;gap:2px}.project-goal-cell.allocation-cell>.inline-diff{width:auto;align-self:flex-end}.project-goal-cell .tag,.project-goal-cell .lock-tag{font-size:10px;padding:2px 5px}.project-goal-edit{display:flex;align-items:center;gap:4px}.project-goal-edit .money{width:84px}
 .tree{display:flex;align-items:center;gap:5px}.tree-toggle,.tree-spacer{width:18px;height:18px;flex:0 0 18px}.tree-toggle{border:0;border-radius:5px;background:#e8eef8;color:#64748b;display:grid;place-items:center;font-size:9px;line-height:1}.tree-toggle:hover{background:#dbeafe;color:var(--blue)}.node{width:18px;height:18px;border-radius:5px;display:grid;place-items:center;font-size:10px;font-weight:900;background:#e8eef8;color:#475569}.advisor-list{display:block;max-width:160px;overflow:hidden;text-overflow:ellipsis}.lv1 td{background:#f5f8ff;font-weight:700}.lv1 .sticky,.lv1 .sticky2,.lv1 .sticky3,.lv1 .sticky4{background:#f5f8ff!important}.lv1 .sticky{border-left:4px solid #2563eb}.lv2 td{background:#fbfefd}.lv2 .sticky,.lv2 .sticky2,.lv2 .sticky3,.lv2 .sticky4{background:#fbfefd!important}.lv2 .sticky{border-left:4px solid #10b981;font-weight:700}.lv3 td{background:#fffbf5;color:#475569;font-size:12px}.lv3 .sticky,.lv3 .sticky2,.lv3 .sticky3,.lv3 .sticky4{background:#fffbf5!important}.lv3 .sticky{border-left:4px solid #f59e0b}.lv3 .sticky2{font-weight:700;color:#7c4a03}.indent1{padding-left:26px}.indent2{padding-left:52px}.summary-total-row td{background:#eaf2ff;font-weight:800;border-bottom:2px solid #60a5fa}.summary-total-row .sticky,.summary-total-row .sticky2,.summary-total-row .sticky3,.summary-total-row .sticky4{background:#eaf2ff!important}.summary-total-row .node{background:#2563eb;color:#fff}
 .rate-pill{display:inline;font-size:12px;font-weight:800}.rate-red{color:#dc2626}.rate-yellow{color:#b7791f}.rate-green{color:#059669}.rate-na{color:#94a3b8}.rate-cell{text-align:center!important}.fillable-cell{position:relative}.fillable-cell:hover{background:#f8fafc!important}
+.drill-link{border:0;background:transparent;color:inherit;font:inherit;font-weight:inherit;text-align:inherit;padding:0;cursor:pointer}.drill-link:hover{color:var(--blue);text-decoration:underline;text-underline-offset:2px}
+.hint{position:relative;display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;border:1px solid #cbd5e1;color:#64748b;font-size:10px;font-weight:900;margin-left:4px;background:#fff;vertical-align:middle;cursor:help}.hint:hover{border-color:var(--blue);color:var(--blue);background:#eff6ff}.floating-tip{position:fixed;z-index:9999;max-width:300px;white-space:pre-line;text-align:left;background:#111827;color:#fff;border-radius:8px;padding:8px 10px;font-size:12px;font-weight:600;line-height:1.55;box-shadow:0 8px 24px #0f172a33;pointer-events:none;display:none}.floating-tip.show{display:block}
 .notice{border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;border-radius:10px;padding:9px 12px;font-size:12px;flex-shrink:0}.notice.warn{border-color:#fed7aa;background:#fff7ed;color:#a4530a}
 .log{border-bottom:1px solid #edf1f7;padding:8px 0}.log:last-child{border-bottom:0}.log strong{display:block}.log span{font-size:12px;color:var(--muted)}
 .toast{position:fixed;right:18px;top:76px;background:#111827;color:white;border-radius:10px;padding:10px 13px;display:none;z-index:70}.toast.show{display:block}
@@ -43,28 +41,31 @@ button,input,select{font:inherit}button{cursor:pointer}
 .hidden{display:none!important}
 .unit-status-board{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;flex-shrink:0}.unit-status-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}.unit-status-head h3{font-size:13px}.unit-status-head span{font-size:12px;color:var(--muted)}.unit-status-list{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}.unit-card{min-width:220px;border:1px solid var(--line);border-radius:9px;padding:9px;background:#fafcff}.unit-card.province-unit{border-color:#93c5fd;background:#eff6ff}.unit-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px}.unit-card-name{font-weight:800;overflow:hidden;text-overflow:ellipsis}.unit-card-value{font-size:12px;color:var(--muted);margin:5px 0}.unit-card-actions{display:flex;gap:5px;align-items:center;flex-wrap:wrap}.lock-tag{display:inline-flex;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:800;background:#f1f5f9;color:#475569}.lock-tag.locked{background:#e2e8f0;color:#1e293b}.status-btns{display:inline-flex;gap:5px;flex-wrap:wrap}
 @media(max-width:1200px){.top{align-items:flex-start}.top-r{flex-wrap:wrap}.top-context{padding-left:0;border-left:0}}
-@media(max-width:900px){.app{grid-template-columns:1fr}.side{display:none}.top{height:auto;align-items:flex-start;flex-direction:column;padding:12px}.top-r{margin-left:0;flex-wrap:wrap}.tabs{overflow:auto}.content{padding:10px}}
+@media(max-width:900px){.top{height:auto;align-items:flex-start;flex-direction:column;padding:12px}.top-r{margin-left:0;flex-wrap:wrap}.tabs{overflow:auto}.content{padding:10px}}
 </style>
 </head>
 <body>
 <div class="app">
-  <aside class="side">
-    <div class="brand"><div class="logo">年</div><div><h1>年度目标与复盘</h1><p>模拟成品效果</p></div></div>
-    <div class="nav-title">核心页面</div>
-    <div class="nav-item active"><span class="dot"></span>汇总查看</div>
-    <div class="nav-item"><span class="dot"></span>省市情况</div>
-    <div class="nav-title">操作能力</div>
-    <div class="nav-item"><span class="dot"></span>保存草稿</div>
-    <div class="nav-item"><span class="dot"></span>按维度一键锁定</div>
-    <div class="side-foot" id="roleTip">当前角色：运营<br>可在每个省级行锁定汇总目标或项目组及下级目标。</div>
-  </aside>
-
   <main class="main">
     <header class="top">
-      <div><h2>年度目标编制与复盘</h2><div class="sub">目标按单元填写，编辑权限按业务维度统一控制。</div></div>
+      <div class="page-tabs">
+        <button class="tab active" data-tab="summary">项目组维度</button>
+        <button class="tab" data-tab="region">省市情况</button>
+        <button class="tab" data-tab="detail">项目明细</button>
+      </div>
+      <div class="top-r">
+        <select class="select" id="role"><option value="ops">运营</option><option value="province">成长顾问（浙江）</option><option value="city">成长顾问（山东、浙江）</option></select>
+      </div>
+    </header>
+
+    <div class="tabs toolbar">
       <div class="top-r">
         <select class="select" id="year"><option>2026 年</option><option>2025 年</option><option>2024 年</option></select>
-        <select class="select" id="role"><option value="ops">运营</option><option value="project">项目组负责人</option><option value="province">省负责人（浙江）</option><option value="city">市负责人（深圳-王五）</option></select>
+        <select class="select" id="achievementMode"><option value="activation">激活达成</option><option value="order">下单达成</option><option value="checkin">签到达成</option></select>
+        <div class="top-context detail-action hidden">
+          <span class="bar-item">项目组：<select class="select" id="detailProjectSelect"></select></span>
+          <span class="bar-item">当前来源：<b id="detailScopeText"></b></span>
+        </div>
         <div class="top-context summary-action">
           <div class="project-picker" data-picker="summary">
             <button class="project-pick-btn" data-picker-toggle="summary"><span id="summaryProjectPickLabel"></span><span>▾</span></button>
@@ -74,8 +75,7 @@ button,input,select{font:inherit}button{cursor:pointer}
               <div class="project-pick-list" id="summaryProjectPickList"></div>
             </div>
           </div>
-          <button class="btn ops-only" id="unlockAllProductBtn">一键放开本页编辑</button>
-          <button class="btn primary ops-only" id="lockAllProductBtn">一键锁定本页编辑</button>
+          <button class="btn" id="toggleSummaryTreeBtn">全部折叠</button>
         </div>
         <div class="top-context region-action hidden">
           <div class="project-picker" data-picker="region">
@@ -89,29 +89,14 @@ button,input,select{font:inherit}button{cursor:pointer}
           <button class="btn" id="toggleTreeBtn">全部折叠</button>
         </div>
       </div>
-    </header>
-
-    <div class="tabs">
-      <button class="tab active" data-tab="summary">汇总查看</button>
-      <button class="tab" data-tab="region">省市情况</button>
     </div>
 
     <section class="content">
       <section class="panel active" id="summary">
-        <div class="bar">
-          <div class="bar-item">宇佳设定本年度经营目标：<b id="annualTargetText"></b></div>
-          <div class="bar-item">各项目组销售目标合计：<b id="salesSumText"></b></div>
-          <div class="bar-item">目标差额：<b id="annualDiffText"></b></div>
-          <div class="bar-item">产品目标权限：<b id="productTargetLockText"></b></div>
-          <div class="tools"><span class="bar-item">提示：各项目组负责人进入后只编辑自己负责项目组</span></div>
-        </div>
         <div class="card">
           <div class="table-wrap">
             <table>
-              <thead>
-                <tr><th class="sticky" rowspan="2">课程项目组</th><th rowspan="2">产品目标（万）</th><th rowspan="2">销售目标（万）</th><th rowspan="2">产品/销售差异（万）</th><th rowspan="2">年度总达成（万）</th><th rowspan="2">达成率</th><th rowspan="2">缺口（万）</th><th rowspan="2">全部期数</th><th rowspan="2">已开期数</th><th rowspan="2">剩余期数</th><th rowspan="2">剩余每期最小目标（万）</th><th class="group-th" colspan="4">季度达成（万）</th></tr>
-                <tr><th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th></tr>
-              </thead>
+              <thead id="summaryHead"></thead>
               <tbody id="summaryRows"></tbody>
             </table>
           </div>
@@ -124,6 +109,17 @@ button,input,select{font:inherit}button{cursor:pointer}
             <table>
               <thead id="regionHead"></thead>
               <tbody id="regionRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="detail">
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead id="detailHead"></thead>
+              <tbody id="detailRows"></tbody>
             </table>
           </div>
         </div>
@@ -142,7 +138,7 @@ button,input,select{font:inherit}button{cursor:pointer}
 <div class="toast" id="toast"></div>
 
 <script>
-let state={role:"ops",activeTab:"summary",productTargetsLocked:false,provinceConfirmFilter:"all",pending:null,editing:null,openPicker:null,cellEditor:null,collapsedProvinces:new Set(),collapsedCities:new Set(),logs:[
+let state={role:"ops",achievementMode:"activation",activeTab:"summary",provinceConfirmFilter:"all",summarySort:{key:"",dir:"desc"},regionSort:{key:"",dir:"desc"},detailSort:{key:"",dir:"desc"},detailProject:"阳明心学",detailProvince:"",detailCity:"",pending:null,editing:null,openPicker:null,cellEditor:null,collapsedProvinces:new Set(),collapsedCities:new Set(),collapsedSummaryProjects:new Set(),collapsedSummaryProvinces:new Set(),collapsedDetailProvinces:new Set(),logs:[
   ["广东省-广州市-张三-经典一刻","目标从 286 万调整为 300 万 · 会议后调整：是"],
   ["阳明心学","全年期数从 15 调整为 16 · 会议后调整：否"]
 ]};
@@ -165,10 +161,9 @@ function allocateWanTotal(total,weights){
 const businessWeights=allProjectNames.map((name,i)=>i<coreProjectNames.length?[18,25,12,14,19,10][i]:2+(i*7%13));
 const salesWan=allocateWanTotal(39627,businessWeights),productWan=allocateWanTotal(35148,businessWeights.map((n,i)=>n*(.94+(i%4)*.025)));
 const projects=allProjectNames.map((name,i)=>{
-  const doneWan=Math.round(salesWan[i]*Math.min(.96,.36+(i%7)*.1)),qWan=allocateWanTotal(doneWan,[24+(i%3),26,23,27-(i%3)]),total=6+(i*3%11),opened=Math.min(total-1,2+(i%5));
-  return {name,status:i%4!==2?"done":"draft",product:amount(productWan[i]),sales:amount(salesWan[i]),done:amount(doneWan),total,opened,q:qWan.map(amount)};
+  const doneWan=Math.round(salesWan[i]*Math.min(.96,.36+(i%7)*.1)),lastYearDoneWan=Math.max(1,Math.round(doneWan*(.82+(i%6)*.07))),qWan=allocateWanTotal(doneWan,[24+(i%3),26,23,27-(i%3)]),total=6+(i*3%11),opened=Math.min(total-1,2+(i%5));
+  return {name,status:i%4!==2?"done":"draft",product:amount(productWan[i]),sales:amount(salesWan[i]),done:amount(doneWan),lastYearDone:amount(lastYearDoneWan),total,opened,q:qWan.map(amount)};
 });
-projects.forEach(p=>p.locked=state.productTargetsLocked);
 const summarySelectedProjects=new Set(coreProjectNames);
 const regionSelectedProjects=new Set(projects.slice(0,4).map(p=>p.name));
 const region={
@@ -228,21 +223,414 @@ const chinaProvinceCities={
   "香港特别行政区":"中西区|湾仔区|东区|南区|油尖旺区|深水埗区|九龙城区|黄大仙区|观塘区|葵青区|荃湾区|屯门区|元朗区|北区|大埔区|沙田区|西贡区|离岛区",
   "澳门特别行政区":"花地玛堂区|圣安多尼堂区|大堂区|望德堂区|风顺堂区|嘉模堂区|圣方济各堂区|路氹填海区"
 };
-const fakeOwnerNames=["陈昊","李然","周宁","王五","赵晨","孙悦","林嘉","吴越","郑航","钱宁","许安","何佳","刘洋","张敏","杨帆","高远","冯琳","罗欣","唐宇","宋宁","邓凯","梁悦","韩松","曹静"];
-const provinceOwnerNames=["王文浩","李佳宁","张宇辰","刘思远","陈雨桐","赵子轩","黄嘉怡","周明远","吴欣然","徐浩然","孙若溪","胡嘉诚","朱雅宁","高子涵","林思齐","何俊杰","郭晓彤","马致远","罗嘉欣","梁睿哲","宋雨晴","郑博文","谢安然","韩子墨","唐可欣","冯宇航","于诗涵","董明轩","萧雅琪","程俊熙","曹思雨","袁嘉豪","邓语晨","许泽宇"];
+const realPersonnelTsv=String.raw`省份	城市	人员名称	任职开始时间	任职结束时间	任职天数	2026天数
+上海市	上海全市	杨志宇	2024-02-01	至今	895	195
+上海市	-	刘璐璐	2025-09-04	2026-01-01	120	1
+上海市	-	刘宇滔	2024-02-01	2024-04-01	61	0
+上海市	-	杨方	2024-02-01	2024-04-01	61	0
+上海市	-	徐硕	2024-02-01	2024-04-01	61	0
+上海市	-	魏瑞德	2024-02-01	2024-04-01	61	0
+上海市	-	付家	2024-01-01	2024-01-01	1	0
+东三省	全省；黑龙江、辽宁、吉林	竭玉静	2025-01-16	2026-07-01	532	182
+东三省	-	李晴	2024-01-01	2025-01-01	367	0
+东三省	-	尹兆晶	2024-01-01	2024-08-09	222	0
+东三省	黑龙江、辽宁、吉林	刘宇涛	2025-01-16	2025-01-20	5	0
+云南省	-	余川	2024-01-01	2024-07-09	191	0
+云南省	-	王佳瑶	2025-05-01	2025-10-28	181	0
+云南省	-	刘靓欢	2024-09-10	2025-02-25	169	0
+云南省	-	王英杰	2026-01-29	至今	167	167
+云南省	-	刘奕	2025-11-13	2026-03-01	109	60
+云南省	-	李明严	2024-11-11	2025-02-25	107	0
+云南省	-	吕翠英	2024-02-01	2024-04-01	61	0
+云南省	-	郑保川	2024-08-09	2024-09-01	24	0
+内蒙古自治区	内蒙古全省	韩娟	2025-01-20	至今	541	195
+内蒙古自治区	-	王大海	2024-01-01	2025-02-25	422	0
+北京市	北京	刘友珠	2024-02-01	至今	895	195
+北京市	-	李晴	2024-09-10	2025-08-20	345	0
+北京市	-	兰鑫	2026-01-05	至今	191	191
+北京市	-	孟熙	2026-01-05	2026-07-07	184	184
+北京市	-	刘秉楠	2025-09-04	2026-02-05	155	36
+北京市	北京	王佳瑶	2024-02-01	2024-06-19	140	0
+北京市	-	张青彬	2024-09-01	2025-01-01	123	0
+北京市	-	王凯飞	2025-09-04	2026-01-01	120	1
+北京市	-	陈礼立	2024-06-28	2024-08-09	43	0
+北京市	北京	方晓东	2024-01-01	2024-01-01	1	0
+北京市	-	尹兆晶	2024-08-09	2024-08-09	1	0
+台湾省	-	张西峰	2024-01-01	2025-08-23	601	0
+台湾省	-	郑保川	2026-03-09	至今	128	128
+台湾省	-	刘宇韬	2025-12-01	2026-03-01	91	60
+台湾省	-	刘宇涛	2025-10-13	2025-11-13	32	0
+吉林省	吉林全省	竭玉静	2026-07-07	至今	8	8
+吉林省	-	尹兆晶	2024-03-21	2024-03-21	1	0
+吉林省	-	李晴	2024-03-21	2024-03-21	1	0
+四川省	四川全省；四川全省、成都；成都；成都市，泸州市，自贡市，内江市，资阳市；成都市，绵阳市，达州市，德阳市，乐山市，凉山彝族自治州，广安市，南充市，攀枝花市，遂宁市，雅安市，眉山市，宜宾市，甘孜藏族自治州，巴中市，阿坝藏族羌族自治州，广元市；成都市，绵阳市，达州市，德阳市，凉山彝族自治州，广安市，南充市，攀枝花市，遂宁市，雅安市，宜宾市，甘孜藏族自治州，巴中市，阿坝藏族羌族自治州，广元市	刘靓欢	2024-01-01	至今	926	195
+四川省	绵阳、达州、德阳、乐山、凉山、眉山、宜宾、广安、南充、攀枝花、遂宁、雅安、甘孜藏族自治州、巴中市、阿坝藏族羌族自治州、广元市；绵阳、达州、德阳、乐山、凉山、眉山、宜宾、甘孜藏族自治州、巴中市、阿坝藏族羌族自治州、广元市；绵阳市，达州市，德阳市，乐山市，凉山彝族自治州，广安市，南充市，攀枝花市，遂宁市，雅安市，眉山市，宜宾市，甘孜藏族自治州，巴中市，阿坝藏族羌族自治州，广元市	朱妍	2024-08-09	2025-09-04	392	0
+四川省	四川全省	闫小洋	2025-09-04	至今	314	195
+四川省	广安、泸州、南充、自贡、内江、攀枝花、遂宁、雅安、资阳；泸州、自贡、资阳、内江	王佳瑶	2024-08-09	2025-02-25	201	0
+四川省	泸州市，自贡市，内江市，资阳市；泸州市，自贡市，内江市，资阳市，乐山市，眉山市	刘声川	2026-01-05	2026-07-07	184	184
+四川省	-	王涛	2024-01-01	2024-03-01	61	0
+天津市	-	李修勤	2025-05-01	至今	440	195
+天津市	-	张淑霞	2024-01-01	2024-10-01	275	0
+天津市	-	苗红英	2024-09-01	2025-02-25	178	0
+天津市	-	张青彬	2024-10-20	2025-02-25	129	0
+天津市	-	王大海	2024-03-21	2024-07-09	111	0
+天津市	-	周云峰	2026-03-31	至今	106	106
+天津市	-	李晴	2025-09-04	2025-12-01	89	0
+天津市	-	王凯飞	2026-04-17	2026-07-07	82	82
+天津市	-	张红吉	2026-01-05	2026-01-29	25	25
+宁夏回族自治区	宁夏全省	刘秀	2026-07-07	至今	8	8
+宁夏回族自治区	-	徐克华	2024-03-21	2024-03-21	1	0
+宁甘青	-	刘秀	2024-04-01	2026-07-01	822	182
+宁甘青	-	徐克华	2024-01-01	2024-03-01	61	0
+宁甘青	-	张青彬	2024-08-09	2024-08-09	1	0
+安徽省	亳州市，合肥市，蚌埠市，淮南市；合肥市，蚌埠市，淮南市，六安市；合肥市，黄山市，蚌埠市，六安市，滁州市，马鞍山市，安庆市，铜陵市，宣城市，池州市，芜湖市；宿州市，淮北市，滁州市，马鞍山市，安庆市，铜陵市，宣城市，池州市，黄山市；芜湖市，阜阳市，六安市；马鞍山市，铜陵市，安庆市，池州市，六安市，宣城市，滁州市，蚌埠市，芜湖市；黄山市，蚌埠市，马鞍山市，安庆市，宣城市，池州市，铜陵市；黄山市，马鞍山市，安庆市，宣城市，池州市，芜湖市	解硕葆	2024-02-01	2026-07-07	888	188
+安徽省	亳州市，芜湖市，阜阳市；亳州市，阜阳市，淮北市，淮南市；亳州市，阜阳市，淮南市，淮北市，宿州市；亳州市，阜阳市，淮南市，淮北市，宿州市，蚌埠市；合肥市；芜湖市，阜阳市，六安市；黄山市，马鞍山市，安庆市，宣城市，池州市，芜湖市，滁州市，铜陵市	韩开丰	2024-05-01	至今	805	195
+安徽省	合肥市；安徽全省	魏跃	2025-05-01	至今	440	195
+安徽省	亳州市，阜阳市，淮南市，淮北市，宿州市，蚌埠市，六安市；合肥市；合肥市，滁州市，六安市，芜湖市；合肥市，滁州市，六安市，铜陵市	范杰	2025-12-01	至今	226	195
+安徽省	合肥市，宿州市，黄山市	李修勤	2024-08-09	2025-02-25	201	0
+安徽省	亳州市，合肥市，蚌埠市，淮南市；宿州市，淮北市，滁州市，马鞍山市，安庆市，铜陵市，宣城市，池州市，黄山市；芜湖市，阜阳市，六安市	李秀芹	2024-01-01	2024-07-09	191	0
+山东省	临沂市，枣庄市；山东全省；总体负责山东各城市；济南市，聊城市，菏泽市，德州市；济南市，聊城市，菏泽市，德州市，莱芜市；济宁市；潍坊市，淄博市，滨州市，东营市；青岛市，烟台市，威海市，日照市，泰安市	刘伟	2024-01-01	至今	926	195
+山东省	潍坊市，淄博市，滨州市，东营市	张昱瑄	2024-05-01	至今	805	195
+山东省	山东全省；泰安市，临沂市，枣庄市；泰安市，临沂市，枣庄市，济宁市，菏泽市，济南市，聊城市，德州市，莱芜市；泰安市，临沂市，枣庄市，济宁市，菏泽市，聊城市，莱芜市；泰安市，临沂市，枣庄市，济宁市，菏泽市，聊城市，莱芜市，济南市，德州市；泰安市，临沂市，枣庄市，烟台市，威海市，济宁市，菏泽市；青岛市；青岛市，临沂市，枣庄市	徐硕	2024-06-19	至今	756	195
+山东省	青岛市，济南市，聊城市，德州市，莱芜市，日照市；青岛市，烟台市，威海市，日照市	焦建浩	2025-01-20	至今	541	195
+山东省	烟台市，威海市，日照市，泰安市，济宁市；烟台市，威海市，日照市，青岛市，济宁市	姜波	2024-05-01	2025-02-14	290	0
+山东省	济南市，聊城市，菏泽市，德州市；济南市，聊城市，菏泽市，德州市，莱芜市	孙烨	2024-05-01	2024-11-11	195	0
+山东省	泰安市，临沂市，枣庄市，济宁市，菏泽市，聊城市，莱芜市，济南市，德州市；济南市，德州市	陈虎	2026-01-29	至今	167	167
+山东省	临沂市，枣庄市；总体负责山东各城市；济南市，聊城市，菏泽市，德州市；济宁市；潍坊市，淄博市，滨州市，东营市；青岛市，烟台市，威海市，日照市，泰安市	亢禹博	2024-02-01	2024-06-01	122	0
+山东省	山东全省	刘璐璐	2026-04-17	2026-07-07	82	82
+山东省	临沂市，枣庄市；襄阳市，十堰市，随州市，神农架林区	刘珊珊	2024-05-01	2024-07-09	70	0
+山东省	泰安市，临沂市，枣庄市，济宁市，菏泽市，聊城市，莱芜市，济南市，德州市	邹恺	2026-02-05	2026-03-23	47	47
+山西省	大同，朔州，吕梁，长治，阳泉，晋城，晋中	张凯棠	2024-01-01	2025-08-20	598	0
+山西省	山西全省	牛肖方	2025-08-01	至今	348	195
+山西省	运城、临汾	刘秀	2024-01-01	2024-08-09	222	0
+山西省	-	伍杜娟	2025-09-04	2026-01-29	148	29
+山西省	太原、忻州	张青彬	2024-08-09	2024-08-09	1	0
+广东省	亳州市，合肥市，蚌埠市，淮南市；南昌市，赣州市，九江市，吉安市，宜春市，鹰潭市，抚州市，景德镇市，萍乡市；宁波市，绍兴市，舟山市；宿州市，淮北市，滁州市，马鞍山市，安庆市，铜陵市，宣城市，池州市，黄山市；总体负责山东各城市；总体负责浙江各城市；新余市，上饶市；杭州市，嘉兴市，湖州市；济南市，聊城市，菏泽市，德州市；济宁市；深圳市，潮州市，汕头市，揭阳市，梅州市，汕尾市；温州市，丽水市，台州市；潍坊市，淄博市，滨州市，东营市；烟台市，威海市，日照市，泰安市；烟台市，威海市，日照市，泰安市，济宁市；芜湖市，阜阳市，六安市；金华市，义乌市，衢州市；青岛市	罗元雪	2024-05-01	至今	805	195
+广东省	亳州市，合肥市，蚌埠市，淮南市；南昌市，赣州市，九江市，吉安市，宜春市，鹰潭市，抚州市，景德镇市，萍乡市；宁波市，绍兴市，舟山市；宿州市，淮北市，滁州市，马鞍山市，安庆市，铜陵市，宣城市，池州市，黄山市；总体负责山东各城市；总体负责浙江各城市；新余市，上饶市；杭州市，嘉兴市，湖州市；济南市，聊城市，菏泽市，德州市；济宁市；深圳市，潮州市，汕头市，揭阳市，梅州市，汕尾市；温州市，丽水市，台州市；潍坊市，淄博市，滨州市，东营市；烟台市，威海市，日照市，泰安市；烟台市，威海市，日照市，泰安市，济宁市；芜湖市，阜阳市，六安市；金华市，义乌市，衢州市；青岛市	邓冬菊	2024-05-01	至今	805	195
+广东省	东莞市，河源市，韶关市；东莞市，河源市，韶关市、惠州市，湛江市，茂名市，阳江市；东莞市，河源市，韶关市、湛江市，茂名市，阳江市；惠州市（红军）；东莞市，河源市，韶关市，惠州市，湛江市，茂名市，阳江市；东莞市，河源市，韶关市，湛江市	张湘玲	2024-05-01	至今	805	195
+广东省	佛山市，珠海市，江门市，中山市；佛山市，珠海市，江门市，中山市，东沙群岛；佛山市，珠海市，江门市，中山市，东沙群岛，阳江市；佛山市，珠海市，江门市，中山市，清远市，云浮市，肇庆市，东沙群岛；佛山市，珠海市，江门市，中山市，阳江市东沙群岛；佛山市，珠海市，江门市，中山市，阳江市，东沙群岛	刘奕	2024-07-09	至今	736	195
+广东省	东莞市，河源市，韶关市、惠州市，湛江市，茂名市，阳江市；东莞市，河源市，韶关市、湛江市，茂名市，阳江市；惠州市（红军）；东莞市，河源市，韶关市，惠州市，湛江市，茂名市，阳江市；惠州市，湛江市，茂名市，阳江市；惠州市，茂名市	朱红军	2024-05-01	2026-03-09	678	68
+广东省	广州市；广州市，清远市，云浮市，肇庆市；广州市，清远市，云浮市，肇庆市，东沙群岛	孙峥嵘	2024-11-11	至今	611	195
+广东省	东莞市，河源市，韶关市，惠州市，湛江市，茂名市，阳江市；东莞市，河源市，韶关市，湛江市；惠州市，茂名市	易爱丽	2025-05-01	至今	440	195
+广东省	东莞市，河源市，韶关市；佛山市，珠海市，江门市，中山市；广州市；广州市，清远市，云浮市，肇庆市；广州市，清远市，云浮市，肇庆市，东沙群岛；惠州市，湛江市，茂名市，阳江市；深圳市，潮州市，汕头市，揭阳市，梅州市，汕尾市	张西峰	2024-01-01	2025-02-25	422	0
+广东省	广东省全省	刘宇涛	2025-01-16	2025-11-13	302	0
+广东省	东莞市，河源市，韶关市；佛山市，珠海市，江门市，中山市；广东省全省；惠州市，湛江市，茂名市，阳江市	刘宇滔	2024-05-01	2025-01-01	246	0
+广东省	深圳市，潮州市，汕头市，揭阳市，梅州市，汕尾市	宋如梅	2025-05-01	2025-12-01	215	0
+广东省	广东省全省	郑保川	2026-03-09	至今	128	128
+广东省	东莞市，河源市，韶关市；佛山市，珠海市，江门市，中山市；广州市，清远市，云浮市，肇庆市；惠州市，湛江市，茂名市，阳江市；深圳市，潮州市，汕头市，揭阳市，梅州市，汕尾市	陈璇	2024-02-01	2024-06-01	122	0
+广东省	广东省全省	刘宇韬	2025-12-01	2026-03-01	91	60
+广东省	佛山市，珠海市，江门市，中山市	周秦而	2024-05-01	2024-06-19	50	0
+广东省	广州市，清远市，云浮市，肇庆市	黄慈航	2026-06-08	至今	37	37
+广东省	亳州市，合肥市，蚌埠市，淮南市；南昌市，赣州市，九江市，吉安市，宜春市，鹰潭市，抚州市，景德镇市，萍乡市；宁波市，绍兴市，舟山市；宿州市，淮北市，滁州市，马鞍山市，安庆市，铜陵市，宣城市，池州市，黄山市；总体负责山东各城市；总体负责浙江各城市；新余市，上饶市；杭州市，嘉兴市，湖州市；济南市，聊城市，菏泽市，德州市；济宁市；温州市，丽水市，台州市；潍坊市，淄博市，滨州市，东营市；烟台市，威海市，日照市，泰安市；烟台市，威海市，日照市，泰安市，济宁市；芜湖市，阜阳市，六安市；金华市，义乌市，衢州市；青岛市	钮砚儒	2024-05-01	2024-06-01	32	0
+广东省	深圳市，潮州市，汕头市，揭阳市，梅州市，汕尾市	李庆乾	2026-07-01	至今	14	14
+广东省	惠州市，茂名市	汪心才	2026-07-01	至今	14	14
+广西壮族自治区	-	罗元雪	2025-05-01	2026-01-29	274	29
+广西壮族自治区	-	刘秀	2024-08-09	2025-02-25	201	0
+广西壮族自治区	-	吕翠英	2024-02-01	2024-07-09	160	0
+广西壮族自治区	-	张湘玲	2026-02-05	至今	160	160
+广西壮族自治区	-	余川	2024-01-01	2024-04-01	92	0
+新疆维吾尔自治区	-	刘友珠	2024-01-01	2025-09-08	617	0
+新疆维吾尔自治区	-	郑保川	2025-10-13	至今	275	195
+新疆维吾尔自治区	-	厉有洲	2026-01-29	2026-01-29	1	1
+江苏省	南京市，徐州市，盐城市，淮安市，扬州市，泰州市，连云港市，南通市，宿迁市；江苏全省；江苏省全省；盐城市，淮安市，扬州市，泰州市，连云港市	钮砚儒	2024-01-01	至今	926	195
+江苏省	江苏省全省；苏州市，无锡市，南通市，宿迁市；苏州市，无锡市，常州市，镇江市	亢禹博	2025-05-01	2025-10-13	166	0
+江苏省	淮安市，盐城市，南通市；淮安市，盐城市，扬州市，泰州市，连云港市	郑博文	2026-03-09	至今	128	128
+江苏省	苏州市，无锡市，常州市，镇江市	石喜红	2026-03-09	至今	128	128
+江苏省	宿迁市；宿迁市，扬州市，泰州市	朱小英	2026-03-09	至今	128	128
+江苏省	徐州市，南京市，南通市；徐州市，南京市，连云港市	鹿翠侠	2026-03-09	至今	128	128
+江苏省	南京市，常州市，镇江市，徐州市	张西峰	2025-05-01	2025-08-20	112	0
+江苏省	-	丁上海	2024-08-09	2024-10-20	73	0
+江苏省	-	张淑霞	2024-08-09	2024-09-10	33	0
+江苏省	-	孙海龙	2026-01-05	2026-01-05	1	1
+江西省	南昌市，赣州市，九江市，吉安市，宜春市，鹰潭市，抚州市，景德镇市，萍乡市；新余市，上饶市；赣州市，吉安市，鹰潭市，抚州市，萍乡市，新余市	丁上海	2024-01-01	至今	926	195
+江西省	南昌市，赣州市，九江市，吉安市，宜春市，鹰潭市，抚州市，景德镇市，萍乡市；新余市，上饶市	王利贞	2024-02-01	2024-06-19	140	0
+江西省	南昌市，宜春市，景德镇市，九江市，上饶市	张淑霞	2024-06-28	2024-07-09	12	0
+河北省	保定市，廊坊市，沧州市，唐山市，秦皇岛市，张家口市，承德市；周口市，商丘市，南阳市，信阳市，驻马店市；张家口市，廊坊市，承德市，保定市；武汉市，黄石市，鄂州市，黄冈市，咸宁市，荆门市，宜昌市，恩施土家族苗族自治州，孝感市，天门市，仙桃市，潜江市，荆州市；沧州市，石家庄市，廊坊市；沧州市，石家庄市，廊坊市，张家口市，承德市，保定市，邢台市；河北全省；衡水、沧州、秦皇岛、唐山、邯郸、邢台；衡水、沧州、邯郸、邢台、石家庄、廊坊；衡水市，沧州市，秦皇岛市，唐山市；衡水市，邯郸市，邢台市，石家庄市，廊坊市，唐山市；邢台市，石家庄市，保定市，沧州市，廊坊市，张家口市，承德市，唐山市，秦皇岛市；邢台市，石家庄市，廊坊市，唐山市；邯郸市，邢台市，石家庄市；邯郸市，邢台市，石家庄市，廊坊市，唐山市	王大海	2024-02-01	至今	895	195
+河北省	保定市，沧州市，秦皇岛市，张家口市，承德市；张家口、承德、保定、秦皇岛、唐山；张家口市，廊坊市，承德市，保定市；张家口市，廊坊市，承德市，保定市，石家庄市；张家口市，承德市，保定市，秦皇岛市，唐山市，邢台市；石家庄、廊坊、张家口、承德、保定；秦皇岛市，唐山市；衡水市，保定市，沧州市，秦皇岛市，张家口市，承德市；衡水市，沧州市，秦皇岛市，唐山市；衡水市，邯郸市，保定市，沧州市，秦皇岛市，张家口市，承德市；邯郸市，邢台市，石家庄市；邯郸市，邢台市，衡水市，石家庄市	宋亮	2024-01-01	2026-04-17	838	107
+河北省	张家口市，廊坊市，承德市，保定市；衡水、沧州、秦皇岛、唐山、邯郸、邢台；衡水市，沧州市，秦皇岛市，唐山市；衡水市，沧州市，秦皇岛市，唐山市，邯郸市，邢台市；邯郸市，邢台市，石家庄市	周瑞云	2024-01-01	2024-10-20	294	0
+河北省	衡水市，邯郸市	赵心爱	2025-05-01	2025-09-04	127	0
+河北省	衡水市，保定市，沧州市，秦皇岛市，张家口市，承德市；邯郸市，邢台市，石家庄市，廊坊市，唐山市	张红吉	2025-10-28	2025-11-13	17	0
+河北省	衡水市，邯郸市	王志远	2026-07-01	至今	14	14
+河南省	周口市，商丘市，南阳市，信阳市，驻马店市；河南全省；郑州、平顶山、洛阳、三门峡、新焦济、安濮鹤；郑州市，平顶山市，洛阳市，三门峡市，新乡市，焦作市，济源市，安阳市，濮阳市，鹤壁市，许昌市，开封市，漯河市	郑保川	2024-01-01	2026-01-05	736	5
+河南省	周口、南阳、信阳、商丘、驻马店；周口市，商丘市，南阳市，信阳市，驻马店市；周口市，商丘市，南阳市，信阳市，驻马店市，许昌市，开封市，漯河市；平顶山市，洛阳市，三门峡市；河南全省；郑州市，平顶山市，洛阳市，三门峡市，新乡市，焦作市，济源市，安阳市，濮阳市，鹤壁市，许昌市，开封市，漯河市；郑州市，新乡市，焦作市，济源市，安阳市，濮阳市，鹤壁市	厉有洲	2024-02-01	2026-01-29	729	29
+河南省	周口、南阳、信阳、商丘、驻马店、许昌、开封、漯河；周口市，商丘市，南阳市，信阳市，驻马店市，许昌市，开封市，漯河市；河南全省；许昌、开封、漯河	高林旭	2024-08-09	至今	705	195
+河南省	新乡市，焦作市，济源市，安阳市，濮阳市，鹤壁市；郑州市，新乡市，焦作市，济源市；郑州市，新乡市，焦作市，济源市，安阳市，濮阳市，鹤壁市	郑海霞	2025-01-16	至今	545	195
+河南省	平顶山市，洛阳市，三门峡市；平顶山市，洛阳市，三门峡市，安阳市，濮阳市，鹤壁市；郑州市，平顶山市，洛阳市，三门峡市	岳克培	2025-09-04	至今	314	195
+河南省	平顶山、洛阳，三门峡；平顶山市，洛阳市，三门峡市	牛肖方	2025-01-16	2025-08-23	220	0
+河南省	郑州、平顶山、洛阳、三门峡、新焦济、安濮鹤	肖方	2024-10-20	2025-01-01	74	0
+河南省	郑州	刘伟红	2025-01-16	2025-02-25	41	0
+浙江省	台州市；宁波市，绍兴市，舟山市；总体负责浙江各城市；杭州市，嘉兴市，湖州市；浙江全省；温州市，丽水市；温州市，丽水市，台州市；金华市，义乌市，衢州市	杨志宇	2024-01-01	至今	926	195
+浙江省	嘉兴市，湖州市；杭州市；杭州市，嘉兴市，湖州市；浙江全省	葛文香	2024-05-01	至今	805	195
+浙江省	北京；邯郸市，邢台市，石家庄市；金华市，义乌市，衢州市	庞玉梅	2024-05-01	至今	805	195
+浙江省	宁波市，绍兴市，舟山市	刘秀	2024-09-01	2026-06-08	646	159
+浙江省	总体负责浙江各城市；浙江全省；金华市，义乌市，衢州市	魏跃	2024-06-19	2025-02-25	252	0
+浙江省	台州市；宁波市，绍兴市，舟山市；广州市，清远市，云浮市，肇庆市；张家口市，廊坊市，承德市，保定市；总体负责浙江各城市；杭州市，嘉兴市，湖州市；温州市，丽水市；衡水市，沧州市，秦皇岛市，唐山市；金华市，义乌市，衢州市	杨方	2024-02-01	2024-08-09	191	0
+浙江省	宁波市，绍兴市，舟山市	丁上海	2025-09-04	2026-03-09	187	68
+浙江省	嘉兴市，湖州市；杭州市；杭州市，嘉兴市，湖州市	张青彬	2025-09-04	2026-01-29	148	29
+浙江省	台州市；宁波市，绍兴市，舟山市；总体负责浙江各城市；杭州市，嘉兴市，湖州市；温州市，丽水市；金华市，义乌市，衢州市	魏瑞德	2024-02-01	2024-06-01	122	0
+浙江省	温州市，丽水市，台州市	刘璐璐	2025-09-04	2026-01-01	120	1
+浙江省	宁波市，绍兴市，舟山市	厉有洲	2026-04-17	至今	89	89
+浙江省	温州市，丽水市，台州市	伍杜娟	2026-04-17	至今	89	89
+浙江省	嘉兴市，湖州市；杭州市	汪心才	2026-01-29	2026-04-17	79	79
+浙江省	宁波市，绍兴市，舟山市；广州市，清远市，云浮市，肇庆市；张家口市，廊坊市，承德市，保定市；衡水市，沧州市，秦皇岛市，唐山市	邵妃君	2024-05-01	2024-07-09	70	0
+浙江省	宁波市，绍兴市，舟山市；杭州市	谢维康	2026-01-29	2026-03-31	62	62
+浙江省	台州市；宁波市，绍兴市，舟山市；总体负责浙江各城市；杭州市，嘉兴市，湖州市；温州市，丽水市；金华市，义乌市，衢州市	刘宇滔	2024-02-01	2024-04-01	61	0
+浙江省	台州市；宁波市，绍兴市，舟山市；总体负责浙江各城市；杭州市，嘉兴市，湖州市；温州市，丽水市；金华市，义乌市，衢州市	徐硕	2024-02-01	2024-04-01	61	0
+浙江省	温州市，丽水市	蔡珍双	2024-05-01	2024-06-19	50	0
+浙江省	台州市	骆苏平	2024-05-01	2024-06-19	50	0
+浙江省	宁波市，绍兴市，舟山市；金华市，义乌市，衢州市	商凤羽	2025-09-04	2025-10-13	40	0
+浙江省	杭州市	章亦辰	2026-07-01	至今	14	14
+浙江省	嘉兴市，湖州市	杨佳帅	2026-07-01	至今	14	14
+浙江省	温州市，丽水市，台州市	解硕葆	2026-07-14	至今	1	1
+海南省	-	张西峰	2024-01-01	2025-02-25	422	0
+海南省	-	刘奕	2025-09-08	至今	310	195
+海南省	-	罗元雪	2025-05-01	2025-09-04	127	0
+湖北省	东莞市，河源市，韶关市；佛山市，珠海市，江门市，中山市；惠州市，湛江市，茂名市，阳江市；武汉市，黄石市，鄂州市，黄冈市，咸宁市，荆门市，宜昌市，恩施土家族苗族自治州，孝感市，天门市，仙桃市，潜江市，荆州市；深圳市，潮州市，汕头市，揭阳市，梅州市，汕尾市；湖北全省；襄阳市，十堰市，随州市，神农架林区	朱妍	2024-02-01	至今	895	195
+湖北省	武汉市，黄石市，鄂州市，黄冈市，咸宁市，荆门市，宜昌市，恩施土家族苗族自治州，孝感市，天门市，仙桃市，潜江市，荆州市；襄阳市，十堰市，随州市，神农架林区	熊宇	2024-02-01	2025-10-13	621	0
+湖北省	武汉市，黄石市，鄂州市，黄冈市，咸宁市，荆门市，宜昌市，恩施土家族苗族自治州，孝感市，天门市，仙桃市，潜江市，荆州市；襄阳市，十堰市，随州市，神农架林区	杨方	2024-01-01	2024-01-01	1	0
+湖南省	株洲市；湖南全省；湘潭市，娄底市，怀化市，张家界市，益阳市，湘西土家族苗族自治州；湘潭市，娄底市，邵阳市，怀化市，张家界市，益阳市；长沙、浏阳、怀化、娄底、湘西、常德、张家界；长沙市，浏阳市，怀化市，娄底市，湘西土家族苗族自治州，常德市，张家界市；长沙市，湘潭市	王涛	2024-01-01	至今	926	195
+湖南省	株洲、湘潭、益阳、岳阳；株洲市；株洲市，湘潭市，益阳市，岳阳市	易孝平	2024-11-11	至今	611	195
+湖南省	衡阳、邵阳、永州、郴州；衡阳市，邵阳市，永州市，郴州市；长沙市	钟丽菠	2024-08-09	2026-03-23	592	82
+湖南省	岳阳市，常德市；常德市，娄底市，怀化市，张家界市，益阳市，邵阳市，湘西土家族苗族自治州；长沙市；长沙市，岳阳市，常德市；长沙市，岳阳市，常德市，湘潭市，娄底市，怀化市，张家界市，益阳市，邵阳市，湘西土家族苗族自治州	曾严	2026-01-29	至今	167	167
+湖南省	株洲市；株洲市、衡阳市、永州市、郴州市；衡阳市、永州市、郴州市，邵阳市；衡阳市，永州市，郴州市；衡阳市，永州市，郴州市，岳阳市；衡阳市，永州市，郴州市，邵阳市	蒋祥	2026-01-29	至今	167	167
+湖南省	株洲、湘潭、益阳、岳阳	李明严	2024-08-09	2024-10-20	73	0
+湖南省	-	刘靓欢	2024-01-01	2024-03-01	61	0
+澳门特别行政区	-	张西峰	2024-01-01	2025-08-23	601	0
+澳门特别行政区	-	郑保川	2026-03-09	至今	128	128
+澳门特别行政区	-	刘宇韬	2025-12-01	2026-03-01	91	60
+澳门特别行政区	-	刘宇涛	2025-10-13	2025-11-13	32	0
+甘肃省	甘肃全省	刘秀	2026-07-07	至今	8	8
+甘肃省	-	徐克华	2024-03-21	2024-03-21	1	0
+福建省	福建全省	李明严	2024-01-01	至今	926	195
+福建省	福建全省	杨志宇	2026-03-23	至今	114	114
+福建省	-	钮砚儒	2024-01-01	2024-04-01	92	0
+福建省	-	林小明	2024-05-01	2024-07-09	70	0
+西藏自治区	-	刘秀	2024-04-01	2025-08-23	510	0
+西藏自治区	-	徐克华	2024-01-01	2024-03-21	81	0
+贵州省	贵州省	王佳瑶	2024-06-28	至今	747	195
+贵州省	-	刘友珠	2024-01-01	2024-07-09	191	0
+辽宁省	辽宁全省	尹兆晶	2024-03-21	至今	846	195
+辽宁省	-	李晴	2024-03-21	2024-03-21	1	0
+重庆市	-	刘靓欢	2024-01-01	2026-07-07	919	188
+重庆市	-	闫小洋	2025-09-04	至今	314	195
+重庆市	-	冯征	2026-01-29	至今	167	167
+重庆市	-	王涛	2024-01-01	2024-03-01	61	0
+重庆市	-	刘声川	2026-07-14	至今	1	1
+陕西省	西安市、宝鸡市、咸阳市、铜川市、渭南市、延安市、榆林市；西安市、延安市、榆林市；西安市，延安市，榆林市；陕西全省	张青彬	2024-08-09	至今	705	195
+陕西省	汉中市、安康市、商洛市；汉中市、安康市、商洛市、宝鸡市、咸阳市、铜川市、渭南市；汉中市，安康市，商洛市，宝鸡市，咸阳市，铜川市，渭南市；陕西全省	刘倩茹	2025-05-01	至今	440	195
+陕西省	-	刘秀	2024-01-01	2025-02-25	422	0
+陕西省	陕西全省	王乃鑫	2026-07-14	至今	1	1
+青海省	青海全省	刘秀	2026-07-07	至今	8	8
+青海省	-	徐克华	2024-03-21	2024-03-21	1	0
+香港特别行政区	-	张西峰	2024-01-01	2025-08-23	601	0
+香港特别行政区	-	郑保川	2026-03-09	至今	128	128
+香港特别行政区	-	刘宇韬	2025-12-01	2026-03-01	91	60
+香港特别行政区	-	刘宇涛	2025-10-13	2025-11-13	32	0
+黑龙江省	黑龙江全省	竭玉静	2026-07-07	至今	8	8
+黑龙江省	-	尹兆晶	2024-03-21	2024-03-21	1	0
+黑龙江省	-	李晴	2024-03-21	2024-03-21	1	0`;
+function parseRealPersonnelRows(){
+  const today=new Date("2026-07-23T00:00:00+08:00");
+  const parseDate=text=>{
+    if(!text||text==="至今")return null;
+    const d=new Date(`${text}T00:00:00+08:00`);
+    return Number.isNaN(d.getTime())?null:d;
+  };
+  const isActiveToday=row=>{
+    const start=parseDate(row.start),end=parseDate(row.end);
+    if(start&&start>today)return false;
+    if(row.end==="至今")return true;
+    return !!end&&end>=today;
+  };
+  return realPersonnelTsv.trim().split(/\n/).slice(1).map(line=>{
+    const [province,city,name,start,end,days,days2026]=line.split("\t");
+    return {province:(province||"").trim(),city:(city||"").trim(),name:(name||"").trim(),start:(start||"").trim(),end:(end||"").trim(),days2026:Number(days2026)||0};
+  }).filter(row=>row.name&&isActiveToday(row));
+}
+const provinceGroupMap={"东三省":["黑龙江省","辽宁省","吉林省"],"宁甘青":["宁夏回族自治区","甘肃省","青海省"]};
+function realProvincesFor(name){
+  if(provinceGroupMap[name])return provinceGroupMap[name];
+  return chinaProvinceCities[name]?[name]:[];
+}
+function normalizeRealCityName(token,provinceName){
+  let text=(token||"").trim();
+  if(!text||text==="-")return null;
+  const cities=(chinaProvinceCities[provinceName]||"").split("|");
+  if(text.includes("全省")||text.includes("全市")||text===provinceName||text===provinceName.replace(/[省市]$/,""))return "ALL";
+  if(cities.includes(text))return text;
+  const municipality={"北京市":"北京市","上海市":"上海市","天津市":"天津市","重庆市":"重庆市"};
+  if(municipality[provinceName]&&text===provinceName.replace("市",""))return municipality[provinceName];
+  const candidates=[text,text+"市",text+"地区",text+"盟",text+"自治州"];
+  for(const item of candidates)if(cities.includes(item))return item;
+  return cities.find(city=>city.startsWith(text)||text.startsWith(city.replace("市","")))||null;
+}
+function splitRealCityTokens(text){
+  return (text||"").replace(/[；;]/g,",").replace(/[，、]/g,",").split(",").map(x=>x.trim()).filter(Boolean);
+}
+function pushWeightedName(map,name,days){map[name]=Math.max(map[name]||0,days||0)}
+function buildRealAssignments(){
+  const assignments=Object.fromEntries(Object.keys(chinaProvinceCities).map(name=>[name,{provinceOwners:{},cityOwners:{}}]));
+  parseRealPersonnelRows().forEach(row=>{
+    realProvincesFor(row.province).forEach(provinceName=>{
+      const info=assignments[provinceName];
+      if(!info)return;
+      pushWeightedName(info.provinceOwners,row.name,row.days2026);
+      const tokens=splitRealCityTokens(row.city);
+      let targetCities=[];
+      if(!tokens.length||row.city==="-"||tokens.some(token=>token.includes("全省")||token.includes("全市"))){
+        targetCities=(chinaProvinceCities[provinceName]||"").split("|");
+      }else{
+        tokens.forEach(token=>{
+          const cityName=normalizeRealCityName(token,provinceName);
+          if(cityName==="ALL")targetCities=(chinaProvinceCities[provinceName]||"").split("|");
+          else if(cityName)targetCities.push(cityName);
+        });
+      }
+      [...new Set(targetCities)].forEach(cityName=>{
+        if(!info.cityOwners[cityName])info.cityOwners[cityName]={};
+        pushWeightedName(info.cityOwners[cityName],row.name,row.days2026);
+      });
+    });
+  });
+  return assignments;
+}
+function topRealNames(weightMap,limit=4){
+  return Object.entries(weightMap||{}).sort((a,b)=>b[1]-a[1]).slice(0,limit).map(([name])=>name);
+}
+const latestAreaTsv=String.raw`李庆乾	深圳，潮州，汕头，揭阳，梅州，汕尾
+王志远	衡水市，邯郸市
+吴童童	,泰安，临沂，枣庄，济宁，菏泽，济南，聊城，德州，莱芜
+王乃鑫	,陕西省
+王丰	山西省,
+杨佳帅	嘉兴、湖州,
+章亦辰	,杭州
+黄慈航	广州，肇庆，清远，云浮,
+汪心才	惠州，茂名
+陈虎	泰安，临沂，枣庄，济宁，菏泽，济南，聊城，德州，莱芜
+蒋祥	衡阳、永州、郴州、岳阳
+冯征	重庆市
+刘声川	重庆市
+王英杰	云南省
+范杰	亳州、阜阳、淮北、淮南、宿州、蚌埠、六安,合肥,安徽省
+孟熙
+曾严	常德、邵阳、怀化、娄底、湘西、张家界、益阳
+兰鑫	北京市
+岳克培	平顶山、洛阳，三门峡，安阳，濮阳，鹤壁
+闫小洋	四川省
+周云峰	二代部门,天津市
+刘倩茹	陕西省
+韩娟	内蒙古自治区
+易爱丽	东莞，河源，韶关，湛江,惠州，茂名
+竭玉静	吉林省,黑龙江吉林,黑龙江省
+朱小英	宿迁市,江苏省
+鹿翠侠	徐州市，南京市，南通市,江苏省
+郑博文	江苏省,淮安市，盐城市，扬州市，泰州市，连云港市,线上二级部门1组
+郑海霞	郑州市，新乡市，焦作市，济源市
+刘璐璐	线下团队
+孙峥嵘	广州，肇庆，清远，云浮
+焦建浩	青岛，烟台，威海，日照
+牛肖方	山西省
+易孝平	株洲,湖南省
+石喜红	江苏省,苏州市，无锡市，常州市，镇江市
+高林旭	周口、南阳、信阳、商丘、驻马店、许昌、开封、漯河,河南省
+张青彬
+刘奕	佛山，珠海，江门，中山，阳江,海南省
+王凯飞
+张子源	润泽园,线下团队
+杨志宇	上海市,,温州，丽水，台州,福建省
+刘宇韬	河南省
+邓冬菊	广东省,广西壮族自治区,深圳，潮州，汕头，揭阳，梅州，汕尾
+张昱瑄	潍坊，淄博，滨州，东营
+张湘玲	东莞，河源，韶关，湛江,广西壮族自治区
+罗元雪	深圳，潮州，汕头，揭阳，梅州，汕尾
+刘友珠	北京市
+李明严	福建省
+宋亮	河北省
+王大海	保定，沧州，秦皇岛，张家口，承德，邢台，唐山，廊坊，沧州,河北省
+王佳瑶	贵州省
+丁上海	江西省,线下团队
+韩开丰	合肥,安徽省,黄山市，马鞍山，安庆，宣城，池州，芜湖，滁州，铜陵
+解硕葆	温州，丽水，台州
+刘秀	宁夏回族自治区,宁甘青,甘肃省,青海省
+李修勤	天津市
+钮砚儒	江苏省
+刘靓欢	四川省
+朱妍	湖北省
+王涛	株洲,湖南省,长沙、湘潭
+厉有洲	宁波，绍兴，舟山
+郑保川	台湾省,广东省,新疆维吾尔自治区,澳门特别行政区,线下团队,西藏自治区,香港特别行政区
+徐硕	山东省,泰安，临沂，枣庄，济宁，菏泽，济南，聊城，德州，莱芜
+刘伟	山东省
+葛文香	上海市,嘉兴、湖州,杭州,杭州，嘉兴，湖州,浙江省,福建省
+魏跃	合肥,安徽省
+伍杜娟	温州，丽水，台州
+庞玉梅	金华，衢州，义乌`;
+const ignoredAreaTokens=new Set(["线下团队","线上二级部门1组","二代部门","润泽园",""]);
+function buildCityIndex(){
+  const index={};
+  Object.entries(chinaProvinceCities).forEach(([provinceName,cityText])=>cityText.split("|").forEach(cityName=>{
+    index[cityName]=[provinceName,cityName];
+    index[cityName.replace(/市$/,"")]=[provinceName,cityName];
+    index[cityName.replace(/自治州$/,"")]=[provinceName,cityName];
+    index[cityName.replace(/地区$/,"")]=[provinceName,cityName];
+    index[cityName.replace(/盟$/,"")]=[provinceName,cityName];
+  }));
+  index["义乌"]=["浙江省","金华市"];
+  index["黑龙江吉林"]=["GROUP",["黑龙江省","吉林省"]];
+  return index;
+}
+function resetAssignmentMaps(assignments){Object.keys(assignments).forEach(name=>{assignments[name].provinceOwners={};assignments[name].cityOwners={}})}
+function pushLatestProvince(assignments,provinceName,person,weight){
+  const info=assignments[provinceName];if(!info)return;
+  pushWeightedName(info.provinceOwners,person,weight);
+  (chinaProvinceCities[provinceName]||"").split("|").forEach(cityName=>{if(!info.cityOwners[cityName])info.cityOwners[cityName]={};pushWeightedName(info.cityOwners[cityName],person,weight)});
+}
+function applyLatestAreaAssignments(assignments){
+  resetAssignmentMaps(assignments);
+  const cityIndex=buildCityIndex();
+  latestAreaTsv.trim().split(/\n/).forEach((line,rowIndex)=>{
+    const [person,areaText=""]=line.split("	");
+    if(!person||!areaText.trim())return;
+    splitRealCityTokens(areaText).forEach(token=>{
+      if(ignoredAreaTokens.has(token))return;
+      if(provinceGroupMap[token]){provinceGroupMap[token].forEach(provinceName=>pushLatestProvince(assignments,provinceName,person,1000-rowIndex));return}
+      if(chinaProvinceCities[token]){pushLatestProvince(assignments,token,person,1000-rowIndex);return}
+      const hit=cityIndex[token];
+      if(!hit)return;
+      if(hit[0]==="GROUP"){hit[1].forEach(provinceName=>pushLatestProvince(assignments,provinceName,person,1000-rowIndex));return}
+      const [provinceName,cityName]=hit,info=assignments[provinceName];
+      if(!info.cityOwners[cityName])info.cityOwners[cityName]={};
+      pushWeightedName(info.cityOwners[cityName],person,1000-rowIndex);
+    });
+  });
+  Object.entries(assignments).forEach(([provinceName,info])=>{
+    if(Object.keys(info.provinceOwners).length)return;
+    const cityPeople={};
+    Object.values(info.cityOwners).forEach(ownerMap=>Object.entries(ownerMap).forEach(([name,weight])=>pushWeightedName(cityPeople,name,weight)));
+    info.provinceOwners=cityPeople;
+  });
+}
 Object.keys(region).forEach(name=>delete region[name]);
+const realAssignments=buildRealAssignments();
+applyLatestAreaAssignments(realAssignments);
 const cityEntries=Object.entries(chinaProvinceCities).flatMap(([provinceName,cityText],pi)=>cityText.split("|").map((cityName,ci)=>({provinceName,cityName,pi,ci}))),cityTargetWan=allocateWanTotal(39487,cityEntries.map(({pi,ci})=>18+(pi*11+ci*7)%83));
 let cityCursor=0;
 Object.entries(chinaProvinceCities).forEach(([provinceName,cityText],pi)=>{
+  const realInfo=realAssignments[provinceName]||{provinceOwners:{},cityOwners:{}};
+  const provinceOwners=topRealNames(realInfo.provinceOwners,3);
+  const fallbackOwner=provinceOwners[0]||"";
   const cities=cityText.split("|").map((cityName,ci)=>{
-    const target=amount(cityTargetWan[cityCursor]),done=amount(Math.round(cityTargetWan[cityCursor]*(.32+((pi+ci)%8)*.09))),twoOwners=(pi+ci)%6===0,firstName=cityName==="深圳市"?"王五":fakeOwnerNames[(pi*3+ci)%fakeOwnerNames.length],secondName=fakeOwnerNames[(pi*5+ci+7)%fakeOwnerNames.length];cityCursor++;
-    const owners=twoOwners?[[firstName,Math.round(target*.58),Math.round(done*.58)],[secondName,target-Math.round(target*.58),done-Math.round(done*.58)]]:[[firstName,target,done]];
+    const target=amount(cityTargetWan[cityCursor]),done=amount(Math.round(cityTargetWan[cityCursor]*(.32+((pi+ci)%8)*.09)));cityCursor++;
+    const ownerNames=topRealNames(realInfo.cityOwners[cityName],4);
+    const ownerWeights=ownerNames.map((_,i)=>1+(ownerNames.length-i));
+    const ownerTargetWan=ownerNames.length?allocateWanTotal(Math.round(target/AMOUNT_UNIT),ownerWeights):[],ownerDoneWan=ownerNames.length?allocateWanTotal(Math.round(done/AMOUNT_UNIT),ownerWeights):[];
+    const owners=ownerNames.map((name,i)=>[name,amount(ownerTargetWan[i]),amount(ownerDoneWan[i])]);
     return {name:cityName,target,done,status:"draft",owners,p:{}};
   });
-  region[provinceName]={owner:provinceOwnerNames[pi],target:cities.reduce((s,c)=>s+c.target,0),status:"draft",cities};
+  region[provinceName]={owner:provinceOwners.join("、")||"—",target:cities.reduce((s,c)=>s+c.target,0),status:"draft",cities};
 });
 Object.keys(chinaProvinceCities).forEach(name=>state.collapsedProvinces.add(name));
-state.collapsedProvinces.delete("广东省");state.collapsedProvinces.delete("浙江省");
+state.collapsedProvinces.delete("广东省");state.collapsedProvinces.delete("浙江省");state.collapsedProvinces.delete("山东省");
 const projectTargetWeights=projects.map(p=>p.sales),projectDoneWeights=projects.map(p=>p.done);
 function allocateAmount(total,weights){
   return allocateWanTotal(Math.round(total/AMOUNT_UNIT),weights).map(amount);
@@ -251,9 +639,10 @@ Object.entries(region).forEach(([provinceName,p],pi)=>{
   p.locked=false;
   p.confirmLocked=false;
   p.cities.forEach((c,ci)=>{
-    const ownerTargetWeights=c.owners.map(o=>Math.max(o[1],1)),ownerDoneWeights=c.owners.map(o=>Math.max(o[2],1));
     const cityProjectTargets=allocateAmount(c.target,projectTargetWeights),cityProjectDone=allocateAmount(c.done,projectDoneWeights);
     c.p={};projects.forEach((project,i)=>c.p[project.name]=[cityProjectTargets[i],cityProjectDone[i]]);
+    if(!c.owners.length){c.locked=false;return}
+    const ownerTargetWeights=c.owners.map(o=>Math.max(o[1],1)),ownerDoneWeights=c.owners.map(o=>Math.max(o[2],1));
     const ownerTargets=allocateAmount(c.target,ownerTargetWeights),ownerDone=allocateAmount(c.done,ownerDoneWeights);
     c.locked=false;
     c.owners.forEach((o,oi)=>{o[1]=ownerTargets[oi];o[2]=ownerDone[oi];o[4]=false;o[3]=(ci+oi+pi)%3!==0?"done":"draft"});
@@ -267,35 +656,56 @@ Object.entries(region).forEach(([provinceName,p],pi)=>{
   projects.forEach((project,i)=>{p.projectMeta[project.name]={status:(i+pi)%3!==0?"done":"draft",locked:false,target:p.cities.reduce((s,c)=>s+(c.p[project.name]?.[0]||0),0)}});
 });
 function shiftProvinceProjectTargets(provinceName,requestedDelta){const p=region[provinceName],second=p.projectMeta[projects[1].name],delta=Math.min(requestedDelta,Math.max(0,second.target-AMOUNT_UNIT));if(delta<=0)return;p.projectMeta[projects[0].name].target+=delta;second.target-=delta}
-// 演示初始进度为 12/32：通过项目拆分差额形成真实失衡，填写完成数仍由校验规则自动计算。
+function clearProvinceTargets(provinceName){
+  const p=region[provinceName];if(!p)return;
+  p.target=0;p.status="draft";p.confirmLocked=false;p.locked=false;
+  p.cities.forEach(c=>{
+    c.target=0;c.status="draft";
+    projects.forEach(project=>{if(!c.p[project.name])c.p[project.name]=[0,0];c.p[project.name][0]=0});
+    c.owners.forEach(o=>{o[1]=0;o[3]="draft";if(!o[5])o[5]={};projects.forEach(project=>o[5][project.name]=0)});
+  });
+  Object.values(p.projectMeta||{}).forEach(meta=>{meta.target=0;meta.status="draft";meta.locked=false});
+}
+// 演示初始进度为 12/32：通过项目拆分差额形成真实失衡，对齐目标数仍由校验规则自动计算。
 region["广东省"].target+=amount(140);shiftProvinceProjectTargets("广东省",amount(48));
 Object.keys(chinaProvinceCities).filter(name=>!["广东省","香港特别行政区","澳门特别行政区"].includes(name)).slice(0,19).forEach((provinceName,i)=>{
   shiftProvinceProjectTargets(provinceName,amount(1+(i%4)));
 });
+clearProvinceTargets("内蒙古自治区");
+clearProvinceTargets("陕西省");
 function fmt(n){return Number(n||0).toLocaleString("zh-CN")}
 function fmtAmount(n){return Math.trunc(Number(n||0)/AMOUNT_UNIT).toLocaleString("zh-CN")}
 function parseAmount(v){return Math.round((Number(String(v).replace(/[^\d.-]/g,""))||0)*AMOUNT_UNIT)}
 function unfmt(v){return Number(String(v).replace(/[^\d.-]/g,""))||0}
 function unitEditable(locked){return state.role==="ops"||!locked}
-function canEditSummary(){return state.role==="ops"||state.role==="project"}
+function canEditSummary(){return state.role==="ops"}
+function canViewSummary(){return state.role==="ops"||state.role==="province"||state.role==="city"}
 function canEditRegion(){return state.role==="ops"||state.role==="province"||state.role==="city"}
-function canEditProjectRow(name){return canEditSummary()&&unitEditable(state.productTargetsLocked)&&(state.role==="ops"||name==="经典一刻")}
+function canEditSummaryProject(name){return canEditSummary()&&(state.role==="ops"||name==="经典一刻")}
+function canEditProjectTotal(name){return canEditSummaryProject(name)}
 function canEditRegionRow(kind,provinceName,cityName,ownerName){
   const p=region[provinceName];
   if(p?.confirmLocked&&(kind==="province-project"||kind==="owner-project")) return false;
-  if(!canEditRegion()||!unitEditable(kind==="province"&&p?.locked)) return false;
+  if(kind==="province"&&p?.locked) return false;
+  if(!canEditRegion()) return false;
   if(state.role==="ops") return true;
   if(state.role==="province") return provinceName==="浙江省";
-  if(state.role==="city") return provinceName==="广东省"&&cityName==="深圳市"&&(!ownerName||ownerName==="王五");
+  if(state.role==="city") return ["浙江省","山东省"].includes(provinceName);
   return false;
 }
 function roleProvinceNames(){
   if(state.role==="province") return ["浙江省"];
-  if(state.role==="city") return ["广东省"];
+  if(state.role==="city") return ["山东省","浙江省"];
   return Object.keys(region);
 }
+function currentRegionProvinceNames(){
+  return roleProvinceNames().filter(name=>{
+    if(state.provinceConfirmFilter==="all")return true;
+    if(state.role==="ops"&&["香港特别行政区","澳门特别行政区"].includes(name))return false;
+    return isProvinceConfirmed(region[name])===(state.provinceConfirmFilter==="done");
+  });
+}
 function visibleCities(p){
-  if(state.role==="city") return p.cities.map((c,i)=>[c,i]).filter(([c])=>c.name==="深圳市");
   return p.cities.map((c,i)=>[c,i]);
 }
 function switchTab(tab){
@@ -311,20 +721,19 @@ function switchTab(tab){
 function updateTopActions(){
   document.querySelectorAll(".summary-action").forEach(el=>el.classList.toggle("hidden",state.activeTab!=="summary"));
   document.querySelectorAll(".region-action").forEach(el=>el.classList.toggle("hidden",state.activeTab!=="region"));
+  document.querySelectorAll(".detail-action").forEach(el=>el.classList.toggle("hidden",state.activeTab!=="detail"));
 }
 function applyRoleVisibility(){
   const isOps=state.role==="ops";
   document.querySelectorAll(".ops-only").forEach(el=>el.classList.toggle("hidden",!isOps));
-  document.querySelector('.tab[data-tab="summary"]').classList.toggle("hidden",state.role==="province"||state.role==="city");
-  document.querySelector('.tab[data-tab="region"]').classList.toggle("hidden",state.role==="project");
-  if(state.role==="project"&&state.activeTab==="region") switchTab("summary");
-  if((state.role==="province"||state.role==="city")&&state.activeTab==="summary") switchTab("region");
+  document.querySelector('.tab[data-tab="summary"]').classList.toggle("hidden",!canViewSummary());
+  document.querySelector('.tab[data-tab="region"]').classList.remove("hidden");
   if(isOps&&!document.querySelector(".tab.active")) switchTab("summary");
   updateTopActions();
 }
 function toast(t){let e=document.getElementById("toast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),2100)}
 function confirmTag(s){return s==="done"?'<span class="tag done">已确认</span>':'<span class="tag draft">待确认</span>'}
-function completeTag(done){return done?'<span class="tag done">已完成</span>':'<span class="tag draft">未完成</span>'}
+function completeTag(done){return done?'<span class="tag done">已对齐</span>':'<span class="tag draft">未对齐</span>'}
 function diffTag(n){return n===0?'<span class="tag ok">0</span>':`<span class="tag diff">${n>0?"+":""}${fmtAmount(n)}</span>`}
 function citySum(p){return p.cities.reduce((s,c)=>s+c.target,0)}
 function ownerSum(c){return c.owners.reduce((s,o)=>s+o[1],0)}
@@ -336,7 +745,30 @@ function cityProjectProvinceDiff(p,projectName){return p.cities.reduce((s,c)=>s+
 function balanceText(diff){return diff<0?`↓ 缺少 ${fmtAmount(Math.abs(diff))}`:diff>0?`↑ 多出 ${fmtAmount(diff)}`:""}
 function diffTone(diff){return diff<0?"deficit":"surplus"}
 function diffHint(diff){return diff===0?"":`<span class="inline-diff ${diffTone(diff)}">${balanceText(diff)}</span>`}
+function achievementFactor(){return state.achievementMode==="order"?1.12:(state.achievementMode==="checkin"?0.82:1)}
+function achieved(value){return Math.max(0,Math.round((Number(value)||0)*achievementFactor()/AMOUNT_UNIT)*AMOUNT_UNIT)}
 function rateBadge(done,target){if(!target)return '<span class="rate-pill rate-na">—</span>';const rate=Math.round(done/target*100),tone=rate>=80?"green":rate>=50?"yellow":"red";return `<span class="rate-pill rate-${tone}" title="绿色 ≥80%；黄色 50%–79%；红色 <50%">${rate}%</span>`}
+function yoyRate(done,lastDone){if(!lastDone)return '<span class="rate-pill rate-na">—</span>';const rate=Math.round((done-lastDone)/lastDone*100),tone=rate>=0?"green":"red";return `<span class="rate-pill rate-${tone}" title="与去年同期达成对比">${rate>0?"+":""}${rate}%</span>`}
+function shareRate(done,total){if(!total)return '<span class="muted">—</span>';const rate=done/total*100,text=rate>=10?Math.round(rate):rate.toFixed(1);return `<span class="green">${text}%</span>`}
+function unverifiedAmount(target,done,salt=0){return Math.max(0,Math.round((target-done)*(.08+(salt%5)*.015)/AMOUNT_UNIT)*AMOUNT_UNIT)}
+function efficiencyText(done,people){if(!people)return '<span class="muted">—</span>';return `${fmtAmount(done/people)}/人`}
+function provincePeople(p){return p.cities.reduce((s,c)=>s+c.owners.length,0)}
+function isHighRisk(done,target,opened,totalPeriods){
+  if(!target||done>=target||!opened)return false;
+  const remain=Math.max(totalPeriods-opened,0),avg=done/opened,gap=target-done,min=remain?gap/remain:gap;
+  return remain===0||min>avg;
+}
+function riskTag(done,target,opened,totalPeriods){
+  if(!target)return '<span class="tag done">正常</span>';
+  if(done>=target)return '<span class="tag done">已达成</span>';
+  if(!opened)return '<span class="tag draft">待开期</span>';
+  if(isHighRisk(done,target,opened,totalPeriods))return '<span class="tag diff">高风险</span>';
+  return '<span class="tag done">正常</span>';
+}
+function lastYearAmount(done,salt=0){if(!done)return 0;return Math.max(AMOUNT_UNIT,Math.round(done*(.82+(salt%6)*.07)/AMOUNT_UNIT)*AMOUNT_UNIT)}
+function periodLabel(i){return ["一","二","三","四","五","六","七","八","九","十","十一","十二"][i]||`${i+1}`}
+function splitDoneByPeriod(done,periods,salt=0){if(!periods)return [];return allocateWanTotal(Math.round(done/AMOUNT_UNIT),Array.from({length:periods},(_,i)=>18+((i+salt)*7%19))).map(amount)}
+function drillDone(value,projectName="",provinceName="",cityName=""){return `<button class="drill-link" data-action="open-project-detail" data-project="${projectName}" data-province="${provinceName}" data-city="${cityName}" title="查看项目明细">${value}</button>`}
 Object.values(region).forEach(p=>{if(provinceProjectDiff(p)!==0)Object.values(p.projectMeta).forEach(meta=>meta.status="draft")});
 function addLog(title,reason){let who=document.querySelector("#role option:checked").textContent;state.logs.unshift([title,`${who} · ${new Date().toLocaleString("zh-CN",{hour12:false})} · ${reason||"未填写原因"}`]);renderLogs()}
 function ask(title,fn){state.pending=fn;document.getElementById("modalTitle").textContent=title;document.getElementById("reason").value="";document.getElementById("modal").classList.add("show")}
@@ -348,14 +780,19 @@ function lockIcon(action,provinceName,locked,label){
   const icon=locked?'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>':'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/>';
   return `<button class="cell-edit-icon lock-toggle ${locked?"locked":"unlocked"}" data-action="${action}" data-province="${provinceName}" title="${locked?"已锁定，点击放开":"未锁定，点击锁定"}${label}" aria-label="${locked?"已锁定，点击放开":"未锁定，点击锁定"}${label}"><svg viewBox="0 0 24 24">${icon}</svg></button>`;
 }
+function headerLockIcon(action,locked,label){
+  if(state.role!=="ops")return "";
+  const icon=locked?'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>':'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/>';
+  return `<button class="cell-edit-icon lock-toggle ${locked?"locked":"unlocked"}" data-action="${action}" title="${locked?"全部已锁定，点击一键解锁":"点击一键锁定"}${label}" aria-label="${locked?"全部已锁定，点击一键解锁":"点击一键锁定"}${label}"><svg viewBox="0 0 24 24">${icon}</svg></button>`;
+}
 function closeNumEditor(){document.getElementById("numEditPop").classList.remove("show");document.getElementById("numEditExtra").classList.add("hidden");state.cellEditor=null}
 function positionNumEditor(anchor){const pop=document.getElementById("numEditPop"),rect=anchor.getBoundingClientRect();pop.style.left=`${Math.max(8,Math.min(rect.left,window.innerWidth-250))}px`;pop.style.top=`${Math.min(rect.bottom+6,window.innerHeight-170)}px`;pop.classList.add("show")}
 function openSummaryCellEditor(anchor,name,field,label){
-  const row=projects.find(p=>p.name===name);if(!row||!canEditProjectRow(name))return;
+  const row=projects.find(p=>p.name===name);if(!row||field!=="total"||!canEditProjectTotal(name))return;
   state.cellEditor={type:"summary",name,field};
   const input=document.getElementById("numEditInput");
-  document.getElementById("numEditLabel").textContent=`${name} · ${label}${field==="product"?"（万）":""}`;
-  input.value=field==="product"?row.product/AMOUNT_UNIT:row.total;
+  document.getElementById("numEditLabel").textContent=`${name} · ${label}`;
+  input.value=row.total;
   positionNumEditor(anchor);input.focus();if(input.select)input.select();
 }
 function openRegionCellEditor(anchor,kind,provinceName,ci,oi,projectName,label){
@@ -383,22 +820,79 @@ function saveCellEditor(){
   if(!state.cellEditor)return;
   const editor=state.cellEditor,inputValue=document.getElementById("numEditInput").value;
   if(editor.type==="summary"){
-    const row=projects.find(p=>p.name===editor.name);if(editor.field==="product")row.product=Math.max(0,parseAmount(inputValue));else row.total=Math.max(0,Math.round(unfmt(inputValue)));if(!row.locked)row.status="draft";
-    closeNumEditor();render();toast(`已保存${editor.field==="product"?"产品目标":"全部期数"}`);return;
+    const row=projects.find(p=>p.name===editor.name);row.total=Math.max(0,Math.round(unfmt(inputValue)));
+    closeNumEditor();render();toast("已保存全部期数");return;
   }
   const p=region[editor.provinceName],value=Math.max(0,parseAmount(inputValue));
-  if(editor.kind==="province"&&p.locked&&state.role!=="ops"){closeNumEditor();toast("该省汇总目标已锁定，暂不可修改");return}
+  if(editor.kind==="province"&&p.locked){closeNumEditor();toast("该省汇总目标已锁定，暂不可修改");return}
   if(p.confirmLocked&&(editor.kind==="province-project"||editor.kind==="owner-project")){closeNumEditor();toast("该省已确认，项目组和市级目标暂不可修改");return}
   if(editor.kind==="province"){p.target=value;p.status="draft";p.confirmLocked=false}
   if(editor.kind==="province-project"){p.projectMeta[editor.projectName].target=value;p.status="draft";p.confirmLocked=false}
   if(editor.kind==="owner-project"){
-    const c=p.cities[editor.ci],o=c.owners[editor.oi];o[5][editor.projectName]=value;o[1]=projects.reduce((s,project)=>s+(o[5][project.name]||0),0);c.p[editor.projectName][0]=c.owners.reduce((s,owner)=>s+(owner[5][editor.projectName]||0),0);c.target=projects.reduce((s,project)=>s+(c.p[project.name]?.[0]||0),0);c.status="draft";o[3]="draft";p.status="draft";p.confirmLocked=false;p.projectMeta[editor.projectName].status="draft";
+    const c=p.cities[editor.ci],o=c.owners[editor.oi];o[5][editor.projectName]=value;o[1]=projects.reduce((s,project)=>s+(o[5][project.name]||0),0);c.p[editor.projectName][0]=c.owners.reduce((s,owner)=>s+(owner[5][editor.projectName]||0),0);c.target=projects.reduce((s,project)=>s+(c.p[project.name]?.[0]||0),0);c.status="draft";o[3]="draft";
   }
   closeNumEditor();render();toast("已保存当前目标");
 }
+function syncCityOwnerProjectTargets(c,projectName){
+  if(!c.owners.length)return;
+  let assigned=0,total=c.p[projectName]?.[0]||0;
+  c.owners.forEach((o,oi)=>{
+    if(!o[5])o[5]={};
+    const value=oi===c.owners.length-1?total-assigned:Math.round(total*(o[1]/Math.max(c.target,1))/AMOUNT_UNIT)*AMOUNT_UNIT;
+    o[5][projectName]=Math.max(0,value);assigned+=o[5][projectName];
+  });
+  c.owners.forEach(o=>o[1]=projects.reduce((s,project)=>s+(o[5][project.name]||0),0));
+}
+function averageCityOwnerProjectTargets(c,projectName){
+  if(!c.owners.length)return;
+  const totalWan=Math.round((c.p[projectName]?.[0]||0)/AMOUNT_UNIT),base=Math.floor(totalWan/c.owners.length),remainder=totalWan%c.owners.length;
+  c.owners.forEach((o,oi)=>{
+    if(!o[5])o[5]={};
+    o[5][projectName]=amount(base+(oi<remainder?1:0));
+    o[1]=projects.reduce((s,project)=>s+(o[5][project.name]||0),0);
+    o[3]="draft";
+  });
+}
+function averageFillCityProjectTargets(provinceName,projectName){
+  const p=region[provinceName];if(!p||p.confirmLocked)return {changed:0,missing:0};
+  const diff=cityProjectProvinceDiff(p,projectName),missing=Math.max(0,-diff);
+  if(!missing)return {changed:0,missing:0};
+  const emptyCities=p.cities.filter(c=>(c.p[projectName]?.[0]||0)===0);
+  if(!emptyCities.length)return {changed:0,missing};
+  const missingWan=Math.round(missing/AMOUNT_UNIT),base=Math.floor(missingWan/emptyCities.length),remainder=missingWan%emptyCities.length;
+  let changed=0;
+  emptyCities.forEach((c,i)=>{
+    const addWan=base+(i<remainder?1:0);
+    if(!c.p[projectName])c.p[projectName]=[0,0];
+    c.p[projectName][0]=amount(addWan);
+    c.target=projects.reduce((s,project)=>s+(c.p[project.name]?.[0]||0),0);
+    averageCityOwnerProjectTargets(c,projectName);
+    if(addWan>0)changed++;
+  });
+  p.status="draft";p.confirmLocked=false;
+  return {changed,missing};
+}
+function hasZeroCityProjectTarget(p,projectName){return p.cities.some(c=>(c.p[projectName]?.[0]||0)===0)}
+function canShowAverageFillButton(p,projectName){return cityProjectProvinceDiff(p,projectName)<0&&hasZeroCityProjectTarget(p,projectName)}
 function pickerSet(type){return type==="summary"?summarySelectedProjects:regionSelectedProjects}
-function pickerVisibleProjects(type){return state.role==="project"&&type==="summary"?projects.filter(p=>p.name==="经典一刻"):projects}
+function pickerVisibleProjects(type){return projects}
 function closeProjectPickers(){state.openPicker=null;document.querySelectorAll(".project-pick-drop").forEach(x=>x.classList.remove("show"));document.querySelectorAll(".project-pick-btn").forEach(x=>x.classList.remove("open"))}
+const summarySortLabels={sales:"销售目标（万）",done:"年度总达成（万）",totalShare:"总达成占比",projectShare:"项目组达成占比",rate:"达成率",yoy:"达成同比率",gap:"缺口（万）",unverified:"未核销金额（万）",avg:"平均每期达成（万）",min:"剩余每期最小目标（万）",risk:"预警",q1:"Q1",q2:"Q2",q3:"Q3",q4:"Q4"};
+function sortHead(key,label,tip=""){
+  const active=state.summarySort.key===key,arrow=active?(state.summarySort.dir==="asc"?"↑":"↓"):"↕",tipHtml=tip?`<span class="hint" data-tip="${tip}">?</span>`:"";
+  return `<button class="sort-head ${active?"active":""}" data-action="sort-summary" data-sort-key="${key}"><span>${label}</span><span class="sort-arrow">${arrow}</span></button>${tipHtml}`;
+}
+function regionSortHead(key,label,tip=""){
+  const active=state.regionSort.key===key,arrow=active?(state.regionSort.dir==="asc"?"↑":"↓"):"↕",tipHtml=tip?`<span class="hint" data-tip="${tip}">?</span>`:"";
+  return `<button class="sort-head ${active?"active":""}" data-action="sort-region" data-sort-key="${key}"><span>${label}</span><span class="sort-arrow">${arrow}</span></button>${tipHtml}`;
+}
+function detailSortHead(key,label){
+  const active=state.detailSort.key===key,arrow=active?(state.detailSort.dir==="asc"?"↑":"↓"):"↕";
+  return `<button class="sort-head ${active?"active":""}" data-action="sort-detail" data-sort-key="${key}"><span>${label}</span><span class="sort-arrow">${arrow}</span></button>`;
+}
+function renderSummaryHead(){
+  document.getElementById("summaryHead").innerHTML=`<tr><th class="sticky" rowspan="2">${sortHead("name","项目组 / 省 / 市")}</th><th rowspan="2">${sortHead("sales","销售目标（万）")}</th><th rowspan="2">${sortHead("done","年度总达成（万）")}</th><th rowspan="2">${sortHead("totalShare","总达成占比","该地区/项目组达成占当前总达成的百分比")}</th><th rowspan="2">${sortHead("projectShare","项目组达成占比","该地区该项目的达成占该项目组总达成的百分比")}</th><th rowspan="2">${sortHead("rate","达成率")}</th><th rowspan="2">${sortHead("yoy","达成同比率")}</th><th rowspan="2">${sortHead("gap","缺口（万）")}</th><th rowspan="2">${sortHead("unverified","未核销金额（万）")}</th><th rowspan="2">全部期数</th><th rowspan="2">已开期数</th><th rowspan="2">剩余期数</th><th rowspan="2">${sortHead("avg","平均每期达成（万）")}</th><th rowspan="2">${sortHead("min","剩余每期最小目标（万）")}</th><th rowspan="2">${sortHead("risk","预警")}</th><th class="group-th" colspan="4">季度达成（万）</th></tr><tr><th>${sortHead("q1","Q1")}</th><th>${sortHead("q2","Q2")}</th><th>${sortHead("q3","Q3")}</th><th>${sortHead("q4","Q4")}</th></tr>`;
+}
 function renderProjectPicker(type){
   const set=pickerSet(type), visible=pickerVisibleProjects(type), search=document.querySelector(`[data-picker-search="${type}"]`), q=(search?.value||"").trim();
   const list=visible.filter(p=>p.name.includes(q));
@@ -408,112 +902,265 @@ function renderProjectPicker(type){
   if(type==="region") document.getElementById("regionProjectPickWarn").classList.toggle("hidden",selected<=4);
 }
 function refreshProjectSelection(type){renderProjectPicker(type);if(type==="summary")renderSummary();else renderRegion()}
-function isProvinceCompleted(p){return provinceProjectTargetSum(p)===p.target&&projects.every(project=>cityProjectProvinceDiff(p,project.name)===0)}
+function isProvinceConfirmable(p){return provinceProjectTargetSum(p)===p.target}
+function isProvinceCompleted(p){return p.target>0&&isProvinceConfirmable(p)&&projects.every(project=>cityProjectProvinceDiff(p,project.name)===0)}
 function isProvinceConfirmed(p){return !!p.confirmLocked}
 function syncProvinceConfirmations(){Object.values(region).forEach(p=>p.status=isProvinceCompleted(p)?"done":"draft")}
 function confirmationScopeNames(names=Object.keys(region)){return names.filter(name=>name!=="香港特别行政区"&&name!=="澳门特别行政区")}
+function syncStickyHeaderHeights(){
+  document.querySelectorAll(".table-wrap table").forEach(table=>{
+    const firstRow=table.querySelector("thead tr:first-child");
+    if(firstRow)table.style.setProperty("--head-row1-height",`${Math.ceil(firstRow.getBoundingClientRect().height)}px`);
+  });
+}
 function render(){
   syncProvinceConfirmations();
   applyRoleVisibility();
-  document.getElementById("roleTip").innerHTML=`当前角色：${document.querySelector("#role option:checked").textContent}<br>${state.role==="ops"?"可在每个省级行锁定汇总目标或项目组及下级目标。":"按区域权限编辑；省级确认后项目组和市级目标不可修改。"}`
-  document.getElementById("unlockAllProductBtn").disabled=!state.productTargetsLocked;
-  document.getElementById("lockAllProductBtn").disabled=state.productTargetsLocked;
-  renderProjectPicker("summary");renderProjectPicker("region");renderSummary();renderRegion();renderLogs();
+  renderProjectPicker("summary");renderProjectPicker("region");renderSummary();renderRegion();renderDetail();renderLogs();
+  requestAnimationFrame(syncStickyHeaderHeights);
 }
 function renderSummary(){
+  renderSummaryHead();
   const base=pickerVisibleProjects("summary").filter(p=>summarySelectedProjects.has(p.name));
-  const rows=base;
-  const sales=projects.reduce((s,p)=>s+p.sales,0), diff=sales-annualTarget;
-  document.getElementById("annualTargetText").textContent=fmtAmount(annualTarget);
-  document.getElementById("salesSumText").textContent=fmtAmount(sales);
-  document.getElementById("annualDiffText").innerHTML=`<span class="${diff>=0?"green":"red"}">${diff===0?"0":balanceText(diff)}</span>`;
-  document.getElementById("productTargetLockText").textContent=state.productTargetsLocked?"全部已锁定":"全部可编辑";
-  const disabled=canEditSummary()?"":"disabled";
+  const summaryTreeEnabled=state.role==="province"||state.role==="city";
+  const scoped=summaryTreeEnabled;
+  const provinceNames=roleProvinceNames();
+  const projectStats=(project,names=provinceNames)=>{
+    let sales=0,done=0;
+    names.forEach(provinceName=>{
+      const p=region[provinceName],cities=visibleCities(p);
+      sales+=cities.reduce((s,[c])=>s+(c.p[project.name]?.[0]||0),0);
+      done+=cities.reduce((s,[c])=>s+achieved(c.p[project.name]?.[1]||0),0);
+    });
+    return {sales,done,lastYearDone:lastYearAmount(done,project.name.length),total:project.total,opened:project.opened,q:splitDoneByPeriod(done,4,project.name.length)};
+  };
+  const rows=base.map(p=>({project:p,stats:projectStats(p)}));
+  const globalProjectDone=Object.fromEntries(base.map(p=>[p.name,projectStats(p,Object.keys(region)).done]));
+  const totalDoneForShare=rows.reduce((s,r)=>s+r.stats.done,0);
+  const summarySortValue=(item,key,projectDoneBase=0,totalShareBase=totalDoneForShare)=>{
+    const s=item.stats||item,project=item.project||{name:item.name||""};
+    const remain=Math.max(s.total-s.opened,0),gap=s.sales-s.done,avg=s.opened?s.done/s.opened:0,min=remain?(s.sales-s.done)/remain:(s.sales-s.done),last=s.lastYearDone||0;
+    if(key==="name")return item.name||project.name||"";
+    if(key==="sales")return s.sales;
+    if(key==="done")return s.done;
+    if(key==="totalShare")return totalShareBase?s.done/totalShareBase:-1;
+    if(key==="projectShare")return projectDoneBase?s.done/projectDoneBase:-1;
+    if(key==="rate")return s.sales?s.done/s.sales:-1;
+    if(key==="yoy")return last?(s.done-last)/last:-999;
+    if(key==="gap")return gap;
+    if(key==="unverified")return unverifiedAmount(s.sales,s.done,project.name.length);
+    if(key==="avg")return avg;
+    if(key==="min")return min;
+    if(key==="risk")return isHighRisk(s.done,s.sales,s.opened,s.total)?1:0;
+    if(key.startsWith("q"))return s.q[Number(key.slice(1))-1]||0;
+    return 0;
+  };
+  const sortSummaryItems=(items,projectDoneBase=0,totalShareBase=totalDoneForShare)=>{
+    const {key,dir}=state.summarySort;
+    if(!key)return items;
+    const sign=dir==="asc"?1:-1;
+    return [...items].sort((a,b)=>{
+      const av=summarySortValue(a,key,projectDoneBase,totalShareBase),bv=summarySortValue(b,key,projectDoneBase,totalShareBase);
+      if(typeof av==="string"||typeof bv==="string")return String(av).localeCompare(String(bv),"zh-CN")*sign;
+      return (av-bv)*sign;
+    });
+  };
+  const metricCells=(s,totalShareBase,projectShareBase,project,editable=false,provinceName="",cityName="")=>{
+    const remain=Math.max(s.total-s.opened,0),gap=s.sales-s.done,unverified=unverifiedAmount(s.sales,s.done,project.name.length),min=remain?Math.round(gap/remain):0,avg=s.opened?Math.round(s.done/s.opened):0,totalCell=editable?`<span class="cell-edit-wrap"><span>${s.total}</span>${editIcon(project.name,"total","全部期数")}</span>`:s.total,projectShare=provinceName?shareRate(s.done,projectShareBase):'<span class="muted">—</span>';
+    const riskHigh=isHighRisk(s.done,s.sales,s.opened,s.total);
+    return `<td class="num">${fmtAmount(s.sales)}</td><td class="num">${drillDone(fmtAmount(s.done),project.name,provinceName,cityName)}</td><td class="rate-cell">${shareRate(s.done,totalShareBase)}</td><td class="rate-cell">${projectShare}</td><td class="rate-cell">${rateBadge(s.done,s.sales)}</td><td class="rate-cell">${yoyRate(s.done,s.lastYearDone)}</td><td class="num">${fmtAmount(gap)}</td><td class="num">${fmtAmount(unverified)}</td><td class="num ${editable?"fillable-cell":""}" ${editable?'title="可填写全部期数"':""}>${totalCell}</td><td class="num">${s.opened}</td><td class="num">${remain}</td><td class="num">${fmtAmount(avg)}</td><td class="num ${riskHigh?"red":""}">${fmtAmount(min)}</td><td class="rate-cell">${riskTag(s.done,s.sales,s.opened,s.total)}</td>${s.q.map(q=>`<td class="num">${fmtAmount(q)}</td>`).join("")}`;
+  };
   const totalRow=rows.length?(()=>{
-    const total=rows.reduce((acc,p)=>{
-      const remain=Math.max(p.total-p.opened,0), gap=p.sales-p.done;
-      acc.product+=p.product;acc.sales+=p.sales;acc.diff+=p.sales-p.product;acc.done+=p.done;acc.gap+=gap;acc.total+=p.total;acc.opened+=p.opened;acc.remain+=remain;p.q.forEach((q,i)=>acc.q[i]+=q);
+    const total=rows.reduce((acc,r)=>{
+      const s=r.stats,remain=Math.max(s.total-s.opened,0), gap=s.sales-s.done;
+      acc.sales+=s.sales;acc.done+=s.done;acc.lastYearDone+=s.lastYearDone;acc.gap+=gap;acc.unverified+=unverifiedAmount(s.sales,s.done,r.project.name.length);acc.total+=s.total;acc.opened+=s.opened;acc.remain+=remain;s.q.forEach((q,i)=>acc.q[i]+=q);
       return acc;
-    },{product:0,sales:0,diff:0,done:0,gap:0,total:0,opened:0,remain:0,q:[0,0,0,0]});
-    const min=total.remain?Math.round(total.gap/total.remain):0;
-    return `<tr class="summary-total-row"><td class="sticky"><div class="tree"><span class="node">汇</span>合计</div></td><td class="num">${fmtAmount(total.product)}</td><td class="num">${fmtAmount(total.sales)}</td><td class="num">${fmtAmount(total.diff)}</td><td class="num">${fmtAmount(total.done)}</td><td class="rate-cell">${rateBadge(total.done,total.sales)}</td><td class="num">${fmtAmount(total.gap)}</td><td class="num">${total.total}</td><td class="num">${total.opened}</td><td class="num">${total.remain}</td><td class="num">${fmtAmount(min)}</td>${total.q.map(q=>`<td class="num">${fmtAmount(q)}</td>`).join("")}</tr>`;
+    },{sales:0,done:0,lastYearDone:0,gap:0,unverified:0,total:0,opened:0,remain:0,q:[0,0,0,0]});
+    const min=total.remain?Math.round(total.gap/total.remain):0,avg=total.opened?Math.round(total.done/total.opened):0;
+    const riskHigh=isHighRisk(total.done,total.sales,total.opened,total.total);
+    return `<tr class="summary-total-row"><td class="sticky"><div class="tree"><span class="node">汇</span>${scoped?"我负责区域合计":"合计"}</div></td><td class="num">${fmtAmount(total.sales)}</td><td class="num">${drillDone(fmtAmount(total.done),state.detailProject)}</td><td class="rate-cell">${shareRate(total.done,totalDoneForShare)}</td><td class="rate-cell"><span class="muted">—</span></td><td class="rate-cell">${rateBadge(total.done,total.sales)}</td><td class="rate-cell">${yoyRate(total.done,total.lastYearDone)}</td><td class="num">${fmtAmount(total.gap)}</td><td class="num">${fmtAmount(total.unverified)}</td><td class="num">${total.total}</td><td class="num">${total.opened}</td><td class="num">${total.remain}</td><td class="num">${fmtAmount(avg)}</td><td class="num ${riskHigh?"red":""}">${fmtAmount(min)}</td><td class="rate-cell">${riskTag(total.done,total.sales,total.opened,total.total)}</td>${total.q.map(q=>`<td class="num">${fmtAmount(q)}</td>`).join("")}</tr>`;
   })():"";
-  document.getElementById("summaryRows").innerHTML=rows.length?totalRow+rows.map((p,i)=>{
-    const remain=Math.max(p.total-p.opened,0), gap=p.sales-p.done, min=remain?Math.round(gap/remain):0;
-    const editable=canEditProjectRow(p.name);
-    const productCell=`<span class="cell-edit-wrap"><span>${fmtAmount(p.product)}</span>${editable?editIcon(p.name,"product","产品目标"):""}</span>`;
-    const totalCell=`<span class="cell-edit-wrap"><span>${p.total}</span>${editable?editIcon(p.name,"total","全部期数"):""}</span>`;
-    const projectCell=`<div class="project-name-cell"><strong>${p.name}</strong></div>`;
-    return `<tr><td class="sticky">${projectCell}</td><td class="num ${editable?"fillable-cell":""}" ${editable?'title="可填写产品目标"':""}>${productCell}</td><td class="num">${fmtAmount(p.sales)}</td><td class="num">${fmtAmount(p.sales-p.product)}</td><td class="num">${fmtAmount(p.done)}</td><td class="rate-cell">${rateBadge(p.done,p.sales)}</td><td class="num">${fmtAmount(gap)}</td><td class="num ${editable?"fillable-cell":""}" ${editable?'title="可填写全部期数"':""}>${totalCell}</td><td class="num">${p.opened}</td><td class="num">${remain}</td><td class="num">${fmtAmount(min)}</td>${p.q.map(q=>`<td class="num">${fmtAmount(q)}</td>`).join("")}</tr>`
-  }).join(""):`<tr><td class="empty-row" colspan="15">当前未选择可展示的项目组，请点击右上角「展示项目组」进行选择。</td></tr>`;
+  let html=totalRow;
+  sortSummaryItems(rows).forEach(({project,stats})=>{
+    const projectCollapsed=state.collapsedSummaryProjects.has(project.name);
+    const projectNameCell=summaryTreeEnabled?`<button class="tree-toggle" data-action="toggle-summary-tree" data-level="project" data-tree-key="${project.name}" title="${projectCollapsed?"展开":"折叠"}${project.name}">${projectCollapsed?"▶":"▼"}</button><strong>${project.name}</strong>`:`<span class="tree-spacer"></span><strong>${project.name}</strong>`;
+    html+=`<tr class="lv1"><td class="sticky"><div class="tree">${projectNameCell}</div></td>${metricCells(stats,totalDoneForShare,globalProjectDone[project.name],project,canEditProjectTotal(project.name))}</tr>`;
+    if(!summaryTreeEnabled||projectCollapsed)return;
+    const provinceItems=provinceNames.map((provinceName,pi)=>{
+      const p=region[provinceName],cities=visibleCities(p);
+      if(!cities.length)return null;
+      const provinceStats={sales:cities.reduce((sum,[c])=>sum+(c.p[project.name]?.[0]||0),0),done:cities.reduce((sum,[c])=>sum+achieved(c.p[project.name]?.[1]||0),0),lastYearDone:0,total:project.total,opened:project.opened,q:[]};
+      provinceStats.lastYearDone=lastYearAmount(provinceStats.done,pi);provinceStats.q=splitDoneByPeriod(provinceStats.done,4,pi);
+      return {name:provinceName,pi,p,cities,stats:provinceStats};
+    }).filter(Boolean);
+    sortSummaryItems(provinceItems,globalProjectDone[project.name]).forEach(({name:provinceName,pi,p,cities,stats:provinceStats})=>{
+      const provinceKey=`${project.name}|${provinceName}`,provinceCollapsed=state.collapsedSummaryProvinces.has(provinceKey);
+      html+=`<tr class="lv2"><td class="sticky"><div class="tree indent1"><button class="tree-toggle" data-action="toggle-summary-tree" data-level="province" data-tree-key="${provinceKey}" title="${provinceCollapsed?"展开":"折叠"}${provinceName}">${provinceCollapsed?"▶":"▼"}</button>${provinceName}</div></td>${metricCells(provinceStats,totalDoneForShare,globalProjectDone[project.name],project,false,provinceName)}</tr>`;
+      if(provinceCollapsed)return;
+      const cityItems=cities.map(([c,ci])=>{
+        const a=c.p[project.name]||[0,0],cityDone=achieved(a[1]),cityStats={sales:a[0],done:cityDone,lastYearDone:lastYearAmount(cityDone,ci),total:project.total,opened:project.opened,q:splitDoneByPeriod(cityDone,4,ci)};
+        return {name:c.name,c,ci,stats:cityStats};
+      });
+      sortSummaryItems(cityItems,globalProjectDone[project.name]).forEach(({name,c,ci,stats:cityStats})=>{
+        html+=`<tr class="lv3"><td class="sticky"><div class="tree indent2"><span class="tree-spacer"></span>${c.name}</div></td>${metricCells(cityStats,totalDoneForShare,globalProjectDone[project.name],project,false,provinceName,c.name)}</tr>`;
+      });
+    });
+  });
+  document.getElementById("summaryRows").innerHTML=rows.length?html:`<tr><td class="empty-row" colspan="19">当前未选择可展示的项目组，请点击右上角「展示项目组」进行选择。</td></tr>`;
+  updateSummaryToolbar();
+  requestAnimationFrame(syncStickyHeaderHeights);
 }
 function renderProvinceProjectCells(p,provinceName,shown){
-  return shown.map(projectName=>{
-    const meta=p.projectMeta[projectName],done=p.cities.reduce((s,c)=>s+(c.p[projectName]?.[1]||0),0),editable=canEditRegionRow("province-project",provinceName,null,null),cityAllocationDiff=cityProjectProvinceDiff(p,projectName),allocationHint=cityAllocationDiff===0?"":`<span class="inline-diff ${diffTone(cityAllocationDiff)}">${balanceText(cityAllocationDiff)}</span>`;
+  return shown.map((projectName,pi)=>{
+    const meta=p.projectMeta[projectName],done=p.cities.reduce((s,c)=>s+achieved(c.p[projectName]?.[1]||0),0),editable=canEditRegionRow("province-project",provinceName,null,null),cityAllocationDiff=cityProjectProvinceDiff(p,projectName),averageButton=canShowAverageFillButton(p,projectName)?`<button class="avg-fill-btn" data-action="average-fill-city-project" data-province="${provinceName}" data-project="${projectName}" title="将缺少值向下平均填写到市级空目标">向下平均</button>`:"",allocationHint=cityAllocationDiff===0?"":`<span class="inline-diff ${diffTone(cityAllocationDiff)}">各市合计：${balanceText(cityAllocationDiff)}${averageButton}</span>`;
     const goal=`<div class="project-goal-cell allocation-cell"><span class="cell-edit-wrap"><span>${fmtAmount(meta.target)}</span>${editable?regionEditIcon("province-project",provinceName,"","",projectName,`${provinceName} · ${projectName}目标`):""}</span>${allocationHint}</div>`;
-    return `<td class="num ${editable?"fillable-cell":""}" ${editable?'title="可填写省级项目组目标"':""}>${goal}</td><td class="num">${fmtAmount(done)}</td><td class="rate-cell">${rateBadge(done,meta.target)}</td>`;
+    return `<td class="num ${editable?"fillable-cell":""}" ${editable?'title="可填写省级项目组目标"':""}>${goal}</td><td class="num">${drillDone(fmtAmount(done),projectName,provinceName)}</td><td class="rate-cell">${rateBadge(done,meta.target)}</td><td class="rate-cell">${yoyRate(done,lastYearAmount(done,pi))}</td>`;
   }).join("");
 }
 function renderCityProjectCells(c,provinceName,ci,singleOwnerEditable,shown){
-  return shown.map(projectName=>{
-    const a=c.p[projectName]||[0,0],goal=`<span class="cell-edit-wrap"><span>${fmtAmount(a[0])}</span>${singleOwnerEditable?regionEditIcon("owner-project",provinceName,ci,0,projectName,`${provinceName} · ${c.name} · ${c.owners[0][0]} · ${projectName}目标`):""}</span>`;
-    return `<td class="num ${singleOwnerEditable?"fillable-cell":""}" ${singleOwnerEditable?'title="可填写城市项目组目标"':""}>${goal}</td><td class="num">${fmtAmount(a[1])}</td><td class="rate-cell">${rateBadge(a[1],a[0])}</td>`;
+  return shown.map((projectName,pi)=>{
+    const a=c.p[projectName]||[0,0],ownerName=c.owners[0]?.[0]||"",goal=`<span class="cell-edit-wrap"><span>${fmtAmount(a[0])}</span>${singleOwnerEditable?regionEditIcon("owner-project",provinceName,ci,0,projectName,`${provinceName} · ${c.name} · ${ownerName} · ${projectName}目标`):""}</span>`;
+    return `<td class="num ${singleOwnerEditable?"fillable-cell":""}" ${singleOwnerEditable?'title="可填写城市项目组目标"':""}>${goal}</td><td class="num">${drillDone(fmtAmount(achieved(a[1])),projectName,provinceName,c.name)}</td><td class="rate-cell">${rateBadge(achieved(a[1]),a[0])}</td><td class="rate-cell">${yoyRate(achieved(a[1]),lastYearAmount(achieved(a[1]),ci+pi))}</td>`;
   }).join("");
 }
 function renderOwnerProjectCells(owner,c,provinceName,ci,oi,editable,shown){
   return shown.map(projectName=>{
     const value=owner[5][projectName]||0;
     const goal=`<span class="cell-edit-wrap"><span>${fmtAmount(value)}</span>${editable?regionEditIcon("owner-project",provinceName,ci,oi,projectName,`${provinceName} · ${c.name} · ${owner[0]} · ${projectName}目标`):""}</span>`;
-    return `<td class="num ${editable?"fillable-cell":""}" ${editable?'title="可填写成长顾问项目目标"':""}>${goal}</td><td class="muted">按订单归属</td><td class="rate-cell">${rateBadge(0,0)}</td>`;
+    return `<td class="num ${editable?"fillable-cell":""}" ${editable?'title="可填写成长顾问项目目标"':""}>${goal}</td><td class="muted">按订单归属</td><td class="rate-cell">${rateBadge(0,0)}</td><td class="rate-cell">${yoyRate(0,0)}</td>`;
   }).join("");
 }
+function detailProjectOptions(){
+  document.getElementById("detailProjectSelect").innerHTML=projects.map(p=>`<option value="${p.name}" ${p.name===state.detailProject?"selected":""}>${p.name}</option>`).join("");
+}
+function detailScopeNames(){
+  if(state.detailProvince&&state.detailCity)return `${state.detailProvince} / ${state.detailCity}`;
+  if(state.detailProvince)return state.detailProvince;
+  return "全部可见省市";
+}
+function periodValues(done,periods,salt){return splitDoneByPeriod(done,periods,salt)}
+function periodCells(done,periods,salt){
+  return periodValues(done,periods,salt).map(value=>`<td class="num">${fmtAmount(value)}</td>`).join("");
+}
+function renderDetail(){
+  const project=projects.find(p=>p.name===state.detailProject)||projects[0];
+  if(!project)return;
+  state.detailProject=project.name;
+  detailProjectOptions();
+  const periods=Math.max(1,project.opened),periodHeads=Array.from({length:periods},(_,i)=>`<th class="group-th">${project.name}${periodLabel(i)}期</th>`).join("");
+  document.getElementById("detailScopeText").textContent=detailScopeNames();
+  document.getElementById("detailHead").innerHTML=`<tr><th class="sticky" rowspan="2">${detailSortHead("name","省 / 市")}</th><th class="group-th" colspan="4">汇总</th>${periodHeads}</tr><tr><th>${detailSortHead("target","目标（万）")}</th><th>${detailSortHead("done","达成（万）")}</th><th>${detailSortHead("rate","达成率")}</th><th>${detailSortHead("yoy","同比")}</th>${Array.from({length:periods},(_,i)=>`<th>${detailSortHead(`p${i}`,"达成（万）")}</th>`).join("")}</tr>`;
+  const provinceNames=roleProvinceNames().filter(name=>!state.detailProvince||name===state.detailProvince);
+  const detailMetric=(item,key)=>{
+    if(key==="name")return item.name||"";
+    if(key==="target")return item.target;
+    if(key==="done")return item.done;
+    if(key==="rate")return item.target?item.done/item.target:-1;
+    if(key==="yoy")return item.last?(item.done-item.last)/item.last:-999;
+    if(key.startsWith("p"))return item.periods[Number(key.slice(1))]||0;
+    return 0;
+  };
+  const sortDetailItems=items=>{
+    const {key,dir}=state.detailSort;if(!key)return items;
+    const sign=dir==="asc"?1:-1;
+    return [...items].sort((a,b)=>{
+      const av=detailMetric(a,key),bv=detailMetric(b,key);
+      if(typeof av==="string"||typeof bv==="string")return String(av).localeCompare(String(bv),"zh-CN")*sign;
+      return (av-bv)*sign;
+    });
+  };
+  let totalTarget=0,totalDone=0,html="";
+  provinceNames.forEach(name=>{
+    const p=region[name],cities=visibleCities(p).filter(([c])=>!state.detailCity||c.name===state.detailCity);
+    if(!cities.length)return;
+    totalTarget+=state.detailCity?cities.reduce((s,[c])=>s+(c.p[project.name]?.[0]||0),0):(p.projectMeta[project.name]?.target||0);
+    totalDone+=cities.reduce((s,[c])=>s+achieved(c.p[project.name]?.[1]||0),0);
+  });
+  html+=`<tr class="summary-total-row"><td class="sticky"><div class="tree"><span class="node">汇</span>${project.name}合计</div></td><td class="num">${fmtAmount(totalTarget)}</td><td class="num">${fmtAmount(totalDone)}</td><td class="rate-cell">${rateBadge(totalDone,totalTarget)}</td><td class="rate-cell">${yoyRate(totalDone,lastYearAmount(totalDone,2))}</td>${periodCells(totalDone,periods,2)}</tr>`;
+  const provinceItems=provinceNames.map((provinceName,pi)=>{
+    const p=region[provinceName],cities=visibleCities(p).filter(([c])=>!state.detailCity||c.name===state.detailCity);
+    if(!cities.length)return null;
+    const provinceTarget=state.detailCity?cities.reduce((s,[c])=>s+(c.p[project.name]?.[0]||0),0):(p.projectMeta[project.name]?.target||0),provinceDone=cities.reduce((s,[c])=>s+achieved(c.p[project.name]?.[1]||0),0);
+    return {name:provinceName,provinceName,pi,cities,target:provinceTarget,done:provinceDone,last:lastYearAmount(provinceDone,pi),periods:periodValues(provinceDone,periods,pi)};
+  }).filter(Boolean);
+  sortDetailItems(provinceItems).forEach(({name:provinceName,pi,cities,target:provinceTarget,done:provinceDone})=>{
+    const collapsed=state.collapsedDetailProvinces.has(provinceName)&&!state.detailCity;
+    const detailToggle=state.detailCity?`<span class="tree-spacer"></span>`:`<button class="tree-toggle" data-action="toggle-detail-tree" data-tree-key="${provinceName}" title="${collapsed?"展开":"折叠"}${provinceName}">${collapsed?"▶":"▼"}</button>`;
+    html+=`<tr class="lv1"><td class="sticky"><div class="tree">${detailToggle}${provinceName}</div></td><td class="num">${fmtAmount(provinceTarget)}</td><td class="num">${fmtAmount(provinceDone)}</td><td class="rate-cell">${rateBadge(provinceDone,provinceTarget)}</td><td class="rate-cell">${yoyRate(provinceDone,lastYearAmount(provinceDone,pi))}</td>${periodCells(provinceDone,periods,pi)}</tr>`;
+    if(collapsed)return;
+    const cityItems=cities.map(([c,ci])=>{
+      const a=c.p[project.name]||[0,0];
+      const cityDone=achieved(a[1]);
+      return {name:c.name,c,ci,target:a[0],done:cityDone,last:lastYearAmount(cityDone,ci),periods:periodValues(cityDone,periods,ci)};
+    });
+    sortDetailItems(cityItems).forEach(({c,ci,target,done:cityDone})=>{
+      html+=`<tr class="lv2"><td class="sticky"><div class="tree indent1"><span class="tree-spacer"></span>${c.name}</div></td><td class="num">${fmtAmount(target)}</td><td class="num">${fmtAmount(cityDone)}</td><td class="rate-cell">${rateBadge(cityDone,target)}</td><td class="rate-cell">${yoyRate(cityDone,lastYearAmount(cityDone,ci))}</td>${periodCells(cityDone,periods,ci)}</tr>`;
+    });
+  });
+  document.getElementById("detailRows").innerHTML=html;
+}
 function renderRegion(){
-  const allProvinceNames=roleProvinceNames(),provinceNames=allProvinceNames.filter(name=>{
-    if(state.provinceConfirmFilter==="all")return true;
-    if(state.role==="ops"&&["香港特别行政区","澳门特别行政区"].includes(name))return false;
-    return isProvinceConfirmed(region[name])===(state.provinceConfirmFilter==="done");
-  }),shown=projects.filter(x=>regionSelectedProjects.has(x.name)).map(x=>x.name),cityScoped=state.role==="city";
+  const provinceNames=currentRegionProvinceNames(),shown=projects.filter(x=>regionSelectedProjects.has(x.name)).map(x=>x.name);
   let totalTarget=0,totalDone=0,bad=[];
   provinceNames.forEach(provinceName=>{
     const p=region[provinceName],vc=visibleCities(p);
-    if(cityScoped){vc.forEach(([c])=>{totalTarget+=c.target;totalDone+=c.done})}else{totalTarget+=p.target;totalDone+=p.cities.reduce((s,c)=>s+c.done,0)}
-    if(!cityScoped&&projects.reduce((s,x)=>s+(p.projectMeta[x.name]?.target||0),0)!==p.target)bad.push(`${provinceName}的项目组目标合计与省目标不一致`);
-    projects.forEach(project=>{const diff=cityProjectProvinceDiff(p,project.name);if(diff!==0)bad.push(`${provinceName}-${project.name}：各市目标合计与省级项目目标相差 ${diff>0?"+":""}${fmtAmount(diff)}`)});
+    totalTarget+=p.target;totalDone+=p.cities.reduce((s,c)=>s+achieved(c.done),0);
+    if(projects.reduce((s,x)=>s+(p.projectMeta[x.name]?.target||0),0)!==p.target)bad.push(`${provinceName}的项目组目标合计与省目标不一致`);
   });
   const confirmFilterHead=`<select class="th-filter" id="provinceConfirmFilter" aria-label="筛选省级确认状态"><option value="all" ${state.provinceConfirmFilter==="all"?"selected":""}>省级确认</option><option value="draft" ${state.provinceConfirmFilter==="draft"?"selected":""}>待确认</option><option value="done" ${state.provinceConfirmFilter==="done"?"selected":""}>已确认</option></select>`;
-  document.getElementById("regionHead").innerHTML=`<tr><th class="sticky" rowspan="2">省 / 市</th><th class="sticky2" rowspan="2">成长顾问</th><th class="sticky3" rowspan="2">${confirmFilterHead}</th><th class="sticky4" rowspan="2">填写完成</th><th class="group-th" colspan="3">汇总</th>${shown.map(x=>`<th class="group-th" colspan="3">${x}</th>`).join("")}</tr><tr><th>目标（万）</th><th>达成（万）</th><th>达成率</th>${shown.map(()=>`<th>目标（万）</th><th>达成（万）</th><th>达成率</th>`).join("")}</tr>`;
-  const filterScopeText=state.provinceConfirmFilter==="draft"?`待确认省份（${provinceNames.length} 个省级区域）`:state.provinceConfirmFilter==="done"?`已确认省份（${provinceNames.length} 个省级区域）`:"",scopeText=filterScopeText||(state.role==="city"?"深圳市 / 王五":state.role==="province"?"浙江省":`全部可见省市（${provinceNames.length} 个省级区域）`);
-  const confirmScope=state.role==="ops"?confirmationScopeNames(provinceNames):provinceNames,confirmedCount=confirmScope.filter(name=>isProvinceConfirmed(region[name])).length,completedCount=confirmScope.filter(name=>isProvinceCompleted(region[name])).length,confirmedText=state.provinceConfirmFilter==="draft"?`${confirmScope.length} 个待确认`:state.provinceConfirmFilter==="done"?`${confirmedCount} 个已确认`:`${confirmedCount}/${confirmScope.length} 已确认`,completeText=`${completedCount}/${confirmScope.length} 已完成`,confirmTone=state.provinceConfirmFilter==="draft"?"draft":"done";
+  const allSummaryLocked=provinceNames.length>0&&provinceNames.every(name=>region[name].locked),anyConfirmLocked=provinceNames.some(name=>region[name].confirmLocked);
+  document.getElementById("regionHead").innerHTML=`<tr><th class="sticky" rowspan="2">省 / 市</th><th class="sticky2" rowspan="2">成长顾问</th><th class="sticky3" rowspan="2"><span class="status-cell">${confirmFilterHead}${headerLockIcon("toggle-all-province-project-lock",anyConfirmLocked,"省级确认")}</span></th><th class="sticky4" rowspan="2">对齐目标</th><th class="group-th" colspan="5">汇总</th>${shown.map(x=>`<th class="group-th" colspan="4">${x}</th>`).join("")}</tr><tr><th><span class="status-cell">${regionSortHead("target","目标（万）")}${headerLockIcon("toggle-all-province-summary-lock",allSummaryLocked,"汇总目标")}</span></th><th>${regionSortHead("done","达成（万）")}</th><th>${regionSortHead("efficiency","人效比","省人效= 全省总销售额 ÷ 全省总人天")}</th><th>${regionSortHead("rate","达成率")}</th><th>${regionSortHead("yoy","同比")}</th>${shown.map(()=>`<th>目标（万）</th><th>达成（万）</th><th>达成率</th><th>同比</th>`).join("")}</tr>`;
+  const filterScopeText=state.provinceConfirmFilter==="draft"?`待确认省份（${provinceNames.length} 个省级区域）`:state.provinceConfirmFilter==="done"?`已确认省份（${provinceNames.length} 个省级区域）`:"",scopeText=filterScopeText||(state.role==="city"?"山东省、浙江省":state.role==="province"?"浙江省":`全部可见省市（${provinceNames.length} 个省级区域）`);
+  const regionMetric=(item,key)=>{
+    const target=item.target||0,done=achieved(item.done||0),people=item.people||0,last=item.last||0;
+    if(key==="target")return target;
+    if(key==="done")return done;
+    if(key==="efficiency")return people?done/people:-1;
+    if(key==="rate")return target?done/target:-1;
+    if(key==="yoy")return last?(done-last)/last:-999;
+    return 0;
+  };
+  const sortRegionItems=items=>{
+    const {key,dir}=state.regionSort;
+    if(!key)return items;
+    const sign=dir==="asc"?1:-1;
+    return [...items].sort((a,b)=>(regionMetric(a,key)-regionMetric(b,key))*sign);
+  };
+  const confirmScope=state.role==="ops"?confirmationScopeNames(provinceNames):provinceNames,confirmedCount=confirmScope.filter(name=>isProvinceConfirmed(region[name])).length,completedCount=confirmScope.filter(name=>isProvinceCompleted(region[name])).length,confirmedText=state.provinceConfirmFilter==="draft"?`${confirmScope.length} 个待确认`:state.provinceConfirmFilter==="done"?`${confirmedCount} 个已确认`:`${confirmedCount}/${confirmScope.length} 已确认`,completeText=`${completedCount}/${confirmScope.length} 已对齐`,confirmTone=state.provinceConfirmFilter==="draft"?"draft":"done";
   const summaryProjectCells=shown.map(projectName=>{
     let target=0,done=0;
     provinceNames.forEach(provinceName=>{
       const p=region[provinceName],vc=visibleCities(p);
-      target+=cityScoped?vc.reduce((s,[c])=>s+(c.p[projectName]?.[0]||0),0):(p.projectMeta[projectName]?.target||0);
-      done+=vc.reduce((s,[c])=>s+(c.p[projectName]?.[1]||0),0);
+      target+=p.projectMeta[projectName]?.target||0;
+      done+=vc.reduce((s,[c])=>s+achieved(c.p[projectName]?.[1]||0),0);
     });
-    return `<td class="num">${fmtAmount(target)}</td><td class="num">${fmtAmount(done)}</td><td class="rate-cell">${rateBadge(done,target)}</td>`;
+    return `<td class="num">${fmtAmount(target)}</td><td class="num">${drillDone(fmtAmount(done),projectName)}</td><td class="rate-cell">${rateBadge(done,target)}</td><td class="rate-cell">${yoyRate(done,lastYearAmount(done,projectName.length))}</td>`;
   }).join("");
-  let html=`<tr class="summary-total-row"><td class="sticky"><div class="tree"><span class="node">汇</span>${scopeText}</div></td><td class="sticky2 muted">—</td><td class="sticky3"><span class="tag ${state.provinceConfirmFilter==="all"&&confirmedCount!==confirmScope.length?"draft":confirmTone}">${confirmedText}</span></td><td class="sticky4"><span class="tag ${completedCount===confirmScope.length?"done":"draft"}">${completeText}</span></td><td class="num">${fmtAmount(totalTarget)}</td><td class="num">${fmtAmount(totalDone)}</td><td class="rate-cell">${rateBadge(totalDone,totalTarget)}</td>${summaryProjectCells}</tr>`;
-  if(!provinceNames.length)html+=`<tr><td class="empty-row" colspan="${7+shown.length*3}">当前没有符合该确认状态的省级区域</td></tr>`;
-  provinceNames.forEach(provinceName=>{
-    const p=region[provinceName],vc=visibleCities(p),provinceCollapsed=state.collapsedProvinces.has(provinceName);
-    if(!cityScoped){
+  let html=`<tr class="summary-total-row"><td class="sticky"><div class="tree"><span class="node">汇</span>${scopeText}</div></td><td class="sticky2 muted">—</td><td class="sticky3"><span class="tag ${state.provinceConfirmFilter==="all"&&confirmedCount!==confirmScope.length?"draft":confirmTone}">${confirmedText}</span></td><td class="sticky4"><span class="tag ${completedCount===confirmScope.length?"done":"draft"}">${completeText}</span></td><td class="num">${fmtAmount(totalTarget)}</td><td class="num">${drillDone(fmtAmount(totalDone),state.detailProject)}</td><td class="rate-cell"><span class="muted">—</span></td><td class="rate-cell">${rateBadge(totalDone,totalTarget)}</td><td class="rate-cell">${yoyRate(totalDone,lastYearAmount(totalDone,3))}</td>${summaryProjectCells}</tr>`;
+  if(!provinceNames.length)html+=`<tr><td class="empty-row" colspan="${9+shown.length*4}">当前没有符合该确认状态的省级区域</td></tr>`;
+  const provinceItems=provinceNames.map(provinceName=>{
+    const p=region[provinceName],provinceDone=p.cities.reduce((s,c)=>s+achieved(c.done),0);
+    return {provinceName,p,target:p.target,done:provinceDone,people:provincePeople(p),last:lastYearAmount(provinceDone,provinceName.length)};
+  });
+  sortRegionItems(provinceItems).forEach(({provinceName,p})=>{
+    const vc=visibleCities(p),provinceCollapsed=state.collapsedProvinces.has(provinceName);
       const editable=canEditRegionRow("province",provinceName,null,null),confirmed=isProvinceConfirmed(p),completed=isProvinceCompleted(p);
       const targetCell=`<div class="goal-with-diff"><span class="cell-edit-wrap"><span>${fmtAmount(p.target)}</span>${editable?regionEditIcon("province",provinceName,"","","",`${provinceName} · 汇总目标`):""}${lockIcon("toggle-province-summary-lock",provinceName,p.locked,"汇总目标")}</span>${diffHint(provinceProjectDiff(p))}</div>`;
-      const provinceDone=p.cities.reduce((s,c)=>s+c.done,0);
-      html+=`<tr class="lv1"><td class="sticky"><div class="tree"><button class="tree-toggle" data-action="toggle-tree" data-level="province" data-tree-key="${provinceName}" title="${provinceCollapsed?"展开":"折叠"}${provinceName}">${provinceCollapsed?"▶":"▼"}</button>${provinceName}</div></td><td class="sticky2"><span class="advisor-list" title="省负责人：${p.owner}">${p.owner}</span></td><td class="sticky3"><span class="status-cell">${confirmTag(confirmed?"done":"draft")}${lockIcon("toggle-province-project-lock",provinceName,p.confirmLocked,"各项目组目标及下级市区目标")}</span></td><td class="sticky4">${completeTag(completed)}</td><td class="num ${editable?"fillable-cell":""}" ${editable?'title="可填写省级汇总目标"':""}>${targetCell}</td><td class="num">${fmtAmount(provinceDone)}</td><td class="rate-cell">${rateBadge(provinceDone,p.target)}</td>${renderProvinceProjectCells(p,provinceName,shown)}</tr>`;
-    }
-    if(provinceCollapsed&&!cityScoped)return;
-    vc.forEach(([c,ci])=>{
-    const cityTreeKey=`${provinceName}|${ci}`,hasMultipleOwners=c.owners.length>1,cityCollapsed=hasMultipleOwners&&state.collapsedCities.has(cityTreeKey),singleOwnerEditable=!hasMultipleOwners&&canEditRegionRow("owner",provinceName,c.name,c.owners[0][0]),advisorText=hasMultipleOwners?c.owners.map(o=>o[0]).join("、"):c.owners[0][0];
+      const provinceDone=p.cities.reduce((s,c)=>s+achieved(c.done),0);
+      html+=`<tr class="lv1"><td class="sticky"><div class="tree"><button class="tree-toggle" data-action="toggle-tree" data-level="province" data-tree-key="${provinceName}" title="${provinceCollapsed?"展开":"折叠"}${provinceName}">${provinceCollapsed?"▶":"▼"}</button>${provinceName}</div></td><td class="sticky2"><span class="advisor-list" title="成长顾问：${p.owner}">${p.owner}</span></td><td class="sticky3"><span class="status-cell">${confirmTag(confirmed?"done":"draft")}${lockIcon("toggle-province-project-lock",provinceName,p.confirmLocked,"各项目组目标及下级市区目标")}</span></td><td class="sticky4">${completeTag(completed)}</td><td class="num ${editable?"fillable-cell":""}" ${editable?'title="可填写省级汇总目标"':""}>${targetCell}</td><td class="num">${drillDone(fmtAmount(provinceDone),"",provinceName)}</td><td class="rate-cell">${efficiencyText(provinceDone,provincePeople(p))}</td><td class="rate-cell">${rateBadge(provinceDone,p.target)}</td><td class="rate-cell">${yoyRate(provinceDone,lastYearAmount(provinceDone,provinceName.length))}</td>${renderProvinceProjectCells(p,provinceName,shown)}</tr>`;
+    if(provinceCollapsed)return;
+    const cityItems=vc.map(([c,ci])=>({c,ci,target:c.target,done:c.done,people:0,last:lastYearAmount(achieved(c.done),ci)}));
+    sortRegionItems(cityItems).forEach(({c,ci})=>{
+    const cityTreeKey=`${provinceName}|${ci}`,hasMultipleOwners=c.owners.length>1,hasOwner=c.owners.length>0,cityCollapsed=hasMultipleOwners&&state.collapsedCities.has(cityTreeKey),singleOwnerEditable=c.owners.length===1&&canEditRegionRow("owner",provinceName,c.name,c.owners[0][0]),advisorText=hasOwner?c.owners.map(o=>o[0]).join("、"):"—";
     const targetCell=`<span class="value-history"><span>${fmtAmount(c.target)}</span></span>`;
     const cityToggle=hasMultipleOwners?`<button class="tree-toggle" data-action="toggle-tree" data-level="city" data-tree-key="${cityTreeKey}" title="${cityCollapsed?"展开":"折叠"}${c.name}">${cityCollapsed?"▶":"▼"}</button>`:`<span class="tree-spacer"></span>`;
-    html+=`<tr class="lv2"><td class="sticky"><div class="tree ${cityScoped?"":"indent1"}">${cityToggle}${c.name}</div></td><td class="sticky2"><span class="advisor-list" title="${advisorText}">${advisorText}</span></td><td class="sticky3"></td><td class="sticky4"></td><td class="num">${targetCell}</td><td class="num">${fmtAmount(c.done)}</td><td class="rate-cell">${rateBadge(c.done,c.target)}</td>${renderCityProjectCells(c,provinceName,ci,singleOwnerEditable,shown)}</tr>`;
+    html+=`<tr class="lv2"><td class="sticky"><div class="tree indent1">${cityToggle}${c.name}</div></td><td class="sticky2"><span class="advisor-list" title="${advisorText}">${advisorText}</span></td><td class="sticky3"></td><td class="sticky4"></td><td class="num">${targetCell}</td><td class="num">${drillDone(fmtAmount(achieved(c.done)),"",provinceName,c.name)}</td><td class="rate-cell"><span class="muted">—</span></td><td class="rate-cell">${rateBadge(achieved(c.done),c.target)}</td><td class="rate-cell">${yoyRate(achieved(c.done),lastYearAmount(achieved(c.done),ci))}</td>${renderCityProjectCells(c,provinceName,ci,singleOwnerEditable,shown)}</tr>`;
     if(!hasMultipleOwners||cityCollapsed)return;
-    c.owners.forEach((o,oi)=>{
+    const ownerItems=c.owners.map((o,oi)=>({o,oi,target:o[1],done:o[2],people:0,last:lastYearAmount(achieved(o[2]),oi)}));
+    sortRegionItems(ownerItems).forEach(({o,oi})=>{
       const ownerEditable=canEditRegionRow("owner",provinceName,c.name,o[0]);
       const ownerTarget=`<span class="value-history"><span>${fmtAmount(o[1])}</span></span>`;
-      html+=`<tr class="lv3"><td class="sticky"><div class="tree ${cityScoped?"indent1":"indent2"}"><span class="muted">↳</span></div></td><td class="sticky2">${o[0]}</td><td class="sticky3"></td><td class="sticky4"></td><td class="num">${ownerTarget}</td><td class="num">${fmtAmount(o[2])}</td><td class="rate-cell">${rateBadge(o[2],o[1])}</td>${renderOwnerProjectCells(o,c,provinceName,ci,oi,ownerEditable,shown)}</tr>`;
+      html+=`<tr class="lv3"><td class="sticky"><div class="tree indent2"><span class="muted">↳</span></div></td><td class="sticky2">${o[0]}</td><td class="sticky3"></td><td class="sticky4"></td><td class="num">${ownerTarget}</td><td class="num">${drillDone(fmtAmount(achieved(o[2])),"",provinceName,c.name)}</td><td class="rate-cell"><span class="muted">—</span></td><td class="rate-cell">${rateBadge(achieved(o[2]),o[1])}</td><td class="rate-cell">${yoyRate(achieved(o[2]),lastYearAmount(achieved(o[2]),oi))}</td>${renderOwnerProjectCells(o,c,provinceName,ci,oi,ownerEditable,shown)}</tr>`;
     });
     });
   });
@@ -522,23 +1169,53 @@ function renderRegion(){
 }
 function isRegionTreeFullyCollapsed(){
   const provinceNames=roleProvinceNames();
-  if(state.role!=="city")return provinceNames.length>0&&provinceNames.every(name=>state.collapsedProvinces.has(name));
-  const cityKeys=provinceNames.flatMap(name=>visibleCities(region[name]).filter(([c])=>c.owners.length>1).map(([,ci])=>`${name}|${ci}`));
-  return cityKeys.length>0&&cityKeys.every(key=>state.collapsedCities.has(key));
+  return provinceNames.length>0&&provinceNames.every(name=>state.collapsedProvinces.has(name));
+}
+function isSummaryTreeFullyCollapsed(){
+  const selected=pickerVisibleProjects("summary").filter(p=>summarySelectedProjects.has(p.name));
+  return selected.length>0&&selected.every(p=>state.collapsedSummaryProjects.has(p.name));
+}
+function updateSummaryToolbar(){
+  const btn=document.getElementById("toggleSummaryTreeBtn");
+  if(!btn)return;
+  const enabled=state.role==="province"||state.role==="city";
+  btn.classList.toggle("hidden",!enabled);
+  if(enabled)btn.textContent=isSummaryTreeFullyCollapsed()?"全部展开":"全部折叠";
 }
 function updateRegionToolbar(){
   const treeBtn=document.getElementById("toggleTreeBtn");
   treeBtn.textContent=isRegionTreeFullyCollapsed()?"全部展开":"全部折叠";
 }
 function renderLogs(){}
+function showFloatingTip(el){
+  let tip=document.getElementById("floatingTip");
+  if(!tip){tip=document.createElement("div");tip.id="floatingTip";tip.className="floating-tip";document.body.appendChild(tip)}
+  tip.textContent=el.dataset.tip||"";
+  const rect=el.getBoundingClientRect();
+  tip.classList.add("show");
+  const tipRect=tip.getBoundingClientRect(),gap=8;
+  let left=rect.left+rect.width/2-tipRect.width/2;
+  left=Math.max(8,Math.min(left,window.innerWidth-tipRect.width-8));
+  let top=rect.bottom+gap;
+  if(top+tipRect.height>window.innerHeight-8)top=rect.top-tipRect.height-gap;
+  tip.style.left=`${left}px`;
+  tip.style.top=`${Math.max(8,top)}px`;
+}
+function hideFloatingTip(){document.getElementById("floatingTip")?.classList.remove("show")}
 document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>{if(b.classList.contains("hidden"))return;switchTab(b.dataset.tab)});
+document.addEventListener("mouseover",e=>{const hint=e.target.closest(".hint");if(hint)showFloatingTip(hint)});
+document.addEventListener("mouseout",e=>{if(e.target.closest(".hint"))hideFloatingTip()});
+document.addEventListener("scroll",hideFloatingTip,true);
+window.addEventListener("resize",syncStickyHeaderHeights);
 document.addEventListener("input",e=>{
   const type=e.target.dataset.pickerSearch;if(type){renderProjectPicker(type);return}
   if(e.target.id==="numEditInput")updateNumEditExtra();
 });
 document.addEventListener("change",e=>{
   if(e.target.id==="role"){state.role=e.target.value;closeProjectPickers();render()}
+  if(e.target.id==="achievementMode"){state.achievementMode=e.target.value;render();toast(`已切换为${e.target.options[e.target.selectedIndex].text}`)}
   if(e.target.id==="provinceConfirmFilter"){state.provinceConfirmFilter=e.target.value;renderRegion()}
+  if(e.target.id==="detailProjectSelect"){state.detailProject=e.target.value;state.detailProvince="";state.detailCity="";renderDetail()}
   if(e.target.id==="projectFilter"){renderSummary()}
   const type=e.target.dataset.pickerCheck;if(type){const set=pickerSet(type);e.target.checked?set.add(e.target.dataset.project):set.delete(e.target.dataset.project);refreshProjectSelection(type)}
 });
@@ -552,38 +1229,102 @@ document.addEventListener("click",e=>{
   const btn=e.target.closest("[data-action]");
   if(!btn) return;
   const action=btn.dataset.action;
+  if(action==="sort-summary"){
+    const key=btn.dataset.sortKey;
+    state.summarySort=state.summarySort.key===key?{key,dir:state.summarySort.dir==="asc"?"desc":"asc"}:{key,dir:"desc"};
+    renderSummary();
+    requestAnimationFrame(syncStickyHeaderHeights);
+    return;
+  }
+  if(action==="sort-region"){
+    const key=btn.dataset.sortKey;
+    state.regionSort=state.regionSort.key===key?{key,dir:state.regionSort.dir==="asc"?"desc":"asc"}:{key,dir:"desc"};
+    renderRegion();
+    requestAnimationFrame(syncStickyHeaderHeights);
+    return;
+  }
+  if(action==="sort-detail"){
+    const key=btn.dataset.sortKey;
+    state.detailSort=state.detailSort.key===key?{key,dir:state.detailSort.dir==="asc"?"desc":"asc"}:{key,dir:"desc"};
+    renderDetail();
+    requestAnimationFrame(syncStickyHeaderHeights);
+    return;
+  }
   if(action==="toggle-tree"){
     const set=btn.dataset.level==="province"?state.collapsedProvinces:state.collapsedCities,key=btn.dataset.treeKey;
     set.has(key)?set.delete(key):set.add(key);
     renderRegion();
     return;
   }
+  if(action==="toggle-summary-tree"){
+    const set=btn.dataset.level==="project"?state.collapsedSummaryProjects:state.collapsedSummaryProvinces,key=btn.dataset.treeKey;
+    set.has(key)?set.delete(key):set.add(key);
+    renderSummary();
+    return;
+  }
+  if(action==="toggle-detail-tree"){
+    const key=btn.dataset.treeKey;
+    state.collapsedDetailProvinces.has(key)?state.collapsedDetailProvinces.delete(key):state.collapsedDetailProvinces.add(key);
+    renderDetail();
+    return;
+  }
   if(action==="edit-summary-cell"){openSummaryCellEditor(btn,btn.dataset.name,btn.dataset.field,btn.dataset.label);return}
   if(action==="edit-region-cell"){openRegionCellEditor(btn,btn.dataset.editKind,btn.dataset.province,btn.dataset.city,btn.dataset.owner,btn.dataset.project,btn.dataset.label);return}
+  if(action==="average-fill-city-project"){
+    const result=averageFillCityProjectTargets(btn.dataset.province,btn.dataset.project);
+    closeNumEditor();render();
+    toast(result.changed?`已向下平均填写 ${result.changed} 个城市`:"没有可填写的市级空目标");
+    return;
+  }
+  if(action==="open-project-detail"){
+    state.detailProject=btn.dataset.project||state.detailProject||"阳明心学";
+    state.detailProvince=btn.dataset.province||"";
+    state.detailCity=btn.dataset.city||"";
+    switchTab("detail");renderDetail();return;
+  }
   if(action==="toggle-province-summary-lock"){
     const provinceName=btn.dataset.province,p=region[provinceName],next=!p.locked,verb=next?"锁定":"放开";
     p.locked=next;closeNumEditor();addLog(`${provinceName}汇总目标已${verb}`,"系统直接操作");render();toast(`${provinceName}汇总目标已${verb}`);
     return;
   }
+  if(action==="toggle-all-province-summary-lock"){
+    const names=roleProvinceNames().filter(name=>region[name]),next=!names.every(name=>region[name].locked),verb=next?"锁定":"解锁";
+    names.forEach(name=>region[name].locked=next);
+    closeNumEditor();addLog(`可见省份汇总目标已一键${verb}`,"表头小锁操作");render();toast(`已一键${verb}汇总目标`);
+    return;
+  }
   if(action==="toggle-province-project-lock"){
     const provinceName=btn.dataset.province,p=region[provinceName],next=!p.confirmLocked,verb=next?"锁定":"放开";
-    if(next&&!isProvinceCompleted(p)){toast("该省填写未完成，暂不能锁定项目组及下级目标");return}
+    if(next&&!isProvinceConfirmable(p)){toast("该省项目组目标合计与汇总目标不一致，暂不能锁定");return}
     p.confirmLocked=next;closeNumEditor();addLog(`${provinceName}各项目组目标及下级市区目标已${verb}`,"系统直接操作");render();toast(`${provinceName}项目组及下级目标已${verb}`);
     return;
   }
+  if(action==="toggle-all-province-project-lock"){
+    const names=currentRegionProvinceNames().filter(name=>region[name]),anyLocked=names.some(name=>region[name].confirmLocked),next=!anyLocked,verb=next?"锁定":"解锁";
+    let changed=0,skipped=0;
+    names.forEach(name=>{const p=region[name];if(next&&!isProvinceConfirmable(p)){skipped++;return}if(p.confirmLocked!==next)changed++;p.confirmLocked=next});
+    closeNumEditor();addLog(`可见省份省级确认已一键${verb}`,"表头小锁操作");render();toast(next&&skipped?`已锁定 ${changed} 个，${skipped} 个省级目标不一致已跳过`:`已一键${verb}省级确认`);
+    return;
+  }
 });
-document.getElementById("lockAllProductBtn").onclick=()=>ask("一键锁定汇总查看全部编辑权限原因",reason=>{state.productTargetsLocked=true;projects.forEach(p=>p.locked=true);state.editing=null;closeNumEditor();addLog("汇总查看全部编辑权限已锁定",reason);render();toast("已一键锁定本页全部编辑权限")});
-document.getElementById("unlockAllProductBtn").onclick=()=>ask("一键放开汇总查看全部编辑权限原因",reason=>{state.productTargetsLocked=false;projects.forEach(p=>p.locked=false);addLog("汇总查看全部编辑权限已放开",reason);render();toast("已一键放开本页全部编辑权限")});
 document.getElementById("toggleTreeBtn").onclick=()=>{
   if(isRegionTreeFullyCollapsed()){
     state.collapsedProvinces.clear();state.collapsedCities.clear();renderRegion();toast("已展开全部省市");return;
   }
   state.collapsedProvinces.clear();state.collapsedCities.clear();
   roleProvinceNames().forEach(provinceName=>{
-    if(state.role!=="city")state.collapsedProvinces.add(provinceName);
+    state.collapsedProvinces.add(provinceName);
     visibleCities(region[provinceName]).filter(([c])=>c.owners.length>1).forEach(([,ci])=>state.collapsedCities.add(`${provinceName}|${ci}`));
   });
   renderRegion();toast("已折叠全部省市");
+};
+document.getElementById("toggleSummaryTreeBtn").onclick=()=>{
+  if(isSummaryTreeFullyCollapsed()){
+    state.collapsedSummaryProjects.clear();state.collapsedSummaryProvinces.clear();renderSummary();toast("项目组维度已展开");return;
+  }
+  state.collapsedSummaryProjects.clear();state.collapsedSummaryProvinces.clear();
+  pickerVisibleProjects("summary").filter(p=>summarySelectedProjects.has(p.name)).forEach(p=>state.collapsedSummaryProjects.add(p.name));
+  renderSummary();toast("项目组维度已折叠");
 };
 document.getElementById("numEditSave").onclick=e=>{e.stopPropagation();saveCellEditor()};
 document.getElementById("numEditCancel").onclick=e=>{e.stopPropagation();closeNumEditor()};
