@@ -738,7 +738,7 @@ Object.entries(chinaProvinceCities).forEach(([provinceName,cityText],pi)=>{
     const ownerWeights=ownerNames.map((name,i)=>departedOwnerNames.includes(name)?0.35:1+(currentOwnerNames.length-i));
     const ownerTargetWan=ownerNames.length?allocateWanTotal(Math.round(target/AMOUNT_UNIT),ownerWeights):[],ownerDoneWan=ownerNames.length?allocateWanTotal(Math.round(done/AMOUNT_UNIT),ownerWeights):[];
     const owners=ownerNames.map((name,i)=>[name,amount(ownerTargetWan[i]),amount(ownerDoneWan[i]),"draft",false,null,{departed:departedOwnerNames.includes(name)}]);
-    if(owners.length>1)state.collapsedCities.add(`${provinceName}|${ci}`);
+    if(owners.length>0)state.collapsedCities.add(`${provinceName}|${ci}`);
     return {name:cityName,target,done,status:"draft",confirmLocked:false,owners,p:{}};
   });
   region[provinceName]={owner:provinceOwners.join("、")||"—",target:cities.reduce((s,c)=>s+c.target,0),status:"draft",cities};
@@ -969,14 +969,15 @@ function updateNumEditExtra(){
   if(!editor||editor.type!=="region"){extra.classList.add("hidden");return}
   const p=region[editor.provinceName],next=Math.max(0,parseAmount(document.getElementById("numEditInput").value)),kind=editor.kind;
   let diff=0,label="";
-  if(kind==="province-project"){diff=provinceProjectTargetSum(p)-editor.oldValue+next-p.target;label="项目组合计"}
+  if(kind==="province-project"){diff=provinceProjectTargetSum(p)-editor.oldValue+next-p.target;label="距离省总目标"}
   if(kind==="owner-project"){
     const upperTarget=p.projectMeta[editor.projectName]?.target||0;
     const historyDone=departedProjectDoneInProvince(p,editor.projectName);
     const shouldAllocate=Math.max(0,upperTarget-historyDone);
     const currentAllocated=currentProjectTargetInProvince(p,editor.projectName,editor,next);
     diff=currentAllocated-shouldAllocate;
-    extra.textContent=balanceText(diff);
+    if(diff===0){extra.textContent="";extra.classList.add("hidden");return}
+    extra.textContent=`距离省项目目标：${balanceText(diff)}`;
     extra.classList.remove("hidden","deficit","surplus");extra.classList.add(diff===0?"surplus":diffTone(diff));
     return;
   }
@@ -1331,11 +1332,11 @@ function renderProvinceProjectCells(p,provinceName,shown){
     return `${m.has("target")?`<td class="num ${editable?"fillable-cell":""}" ${editable?'title="可填写省级项目组目标"':""}>${goal}</td>`:""}${m.has("done")?`<td class="num">${drillDone(fmtAmount(done),projectName,provinceName)}</td>`:""}${m.has("rate")?`<td class="rate-cell">${rateBadge(done,meta.target)}</td>`:""}${m.has("yoy")?`<td class="rate-cell">${yoyRate(done,lastYearAmount(done,pi))}</td>`:""}`;
   }).join("");
 }
-function renderCityProjectCells(c,provinceName,ci,singleOwnerEditable,shown){
+function renderCityProjectCells(c,provinceName,ci,shown){
   const m=state.regionMetrics;
   return shown.map((projectName,pi)=>{
-    const a=c.p[projectName]||[0,0],ownerName=c.owners[0]?.[0]||"",goal=`<span class="cell-edit-wrap"><span>${fmtAmount(a[0])}</span>${singleOwnerEditable?regionEditIcon("owner-project",provinceName,ci,0,projectName,`${provinceName} · ${c.name} · ${ownerName} · ${projectName}目标`):""}</span>`;
-    return `${m.has("target")?`<td class="num ${singleOwnerEditable?"fillable-cell":""}" ${singleOwnerEditable?'title="可填写城市项目组目标"':""}>${goal}</td>`:""}${m.has("done")?`<td class="num">${drillDone(fmtAmount(achieved(a[1])),projectName,provinceName,c.name)}</td>`:""}${m.has("rate")?`<td class="rate-cell">${rateBadge(achieved(a[1]),a[0])}</td>`:""}${m.has("yoy")?`<td class="rate-cell">${yoyRate(achieved(a[1]),lastYearAmount(achieved(a[1]),ci+pi))}</td>`:""}`;
+    const a=c.p[projectName]||[0,0],goal=`<span class="cell-edit-wrap"><span>${fmtAmount(a[0])}</span></span>`;
+    return `${m.has("target")?`<td class="num">${goal}</td>`:""}${m.has("done")?`<td class="num">${drillDone(fmtAmount(achieved(a[1])),projectName,provinceName,c.name)}</td>`:""}${m.has("rate")?`<td class="rate-cell">${rateBadge(achieved(a[1]),a[0])}</td>`:""}${m.has("yoy")?`<td class="rate-cell">${yoyRate(achieved(a[1]),lastYearAmount(achieved(a[1]),ci+pi))}</td>`:""}`;
   }).join("");
 }
 function ownerProjectDoneValues(c,projectName){
@@ -1536,11 +1537,11 @@ function regionProvinceRowHtml(provinceName,p,shown,rowCls="lv1",indentCls="",sh
   return `<tr class="${rowCls}"><td class="sticky"><div class="tree${indentCls}">${toggle}${provinceName}</div></td><td class="sticky2"><span class="advisor-list" title="成长顾问：${p.owner}">${p.owner}</span></td><td class="sticky3"><span class="status-cell">${confirmTag(confirmed?"done":"draft")}${lockIcon("toggle-province-project-lock",provinceName,p.confirmLocked,"省级项目目标")}</span></td><td class="sticky4">${completeTag(completed)}</td><td class="sticky5"><span class="status-cell"><span class="tag ${cityConfirmation.all?"done":"draft"}">${cityConfirmText}</span>${canManageCityConfirmation(provinceName)?lockIcon("toggle-province-city-lock",provinceName,cityConfirmation.all,"该省全部城市目标"):""}</span></td>${regionSummaryCellsHtml({target:`<td class="num ${editable?"fillable-cell":""}" ${editable?'title="可填写省级汇总目标"':""}>${targetCell}</td>`,done:`<td class="num">${fmtAmount(provinceDone)}</td>`,efficiency:`<td class="rate-cell">${efficiencyText(provinceDone,provincePeople(p))}</td>`,rate:`<td class="rate-cell">${rateBadge(provinceDone,p.target)}</td>`,yoy:`<td class="rate-cell">${yoyRate(provinceDone,lastYearAmount(provinceDone,provinceName.length))}</td>`})}${renderProvinceProjectCells(p,provinceName,shown)}</tr>`;
 }
 function regionCityRowHtml(provinceName,c,ci,shown,rowCls="lv2",indentCls=" indent1",expandOwners=true,nameOverride="",ownerIndentCls=" indent2"){
-  const currentNames=currentOwnerNamesOfCity(c),cityTreeKey=`${provinceName}|${ci}`,hasMultipleOwners=expandOwners&&c.owners.length>1,hasOwner=currentNames.length>0,cityCollapsed=hasMultipleOwners&&state.collapsedCities.has(cityTreeKey),singleOwnerEditable=currentNames.length===1&&c.owners.length===1&&canEditRegionRow("owner",provinceName,c.name,c.owners[0][0]),advisorText=hasOwner?currentNames.join("、"):"—";
+  const currentNames=currentOwnerNamesOfCity(c),cityTreeKey=`${provinceName}|${ci}`,hasOwnerLayer=expandOwners&&c.owners.length>0,hasOwner=currentNames.length>0,cityCollapsed=hasOwnerLayer&&state.collapsedCities.has(cityTreeKey),advisorText=hasOwner?currentNames.join("、"):"—";
   const targetCell=`<span class="value-history"><span>${fmtAmount(c.target)}</span></span>`;
-  const cityToggle=hasMultipleOwners?`<button class="tree-toggle" data-action="toggle-tree" data-level="city" data-tree-key="${cityTreeKey}" title="${cityCollapsed?"展开":"折叠"}${c.name}">${cityCollapsed?"▶":"▼"}</button>`:`<span class="tree-spacer"></span>`;
-  let html=`<tr class="${rowCls}"><td class="sticky"><div class="tree${indentCls}">${cityToggle}${nameOverride||c.name}</div></td><td class="sticky2"><span class="advisor-list" title="${advisorText}">${advisorText}</span></td><td class="sticky3"></td><td class="sticky4"></td><td class="sticky5"></td>${regionSummaryCellsHtml({target:`<td class="num">${targetCell}</td>`,done:`<td class="num">${fmtAmount(achieved(c.done))}</td>`,efficiency:'<td class="rate-cell"><span class="muted">—</span></td>',rate:`<td class="rate-cell">${rateBadge(achieved(c.done),c.target)}</td>`,yoy:`<td class="rate-cell">${yoyRate(achieved(c.done),lastYearAmount(achieved(c.done),ci))}</td>`})}${renderCityProjectCells(c,provinceName,ci,singleOwnerEditable,shown)}</tr>`;
-  if(hasMultipleOwners&&!cityCollapsed){
+  const cityToggle=hasOwnerLayer?`<button class="tree-toggle" data-action="toggle-tree" data-level="city" data-tree-key="${cityTreeKey}" title="${cityCollapsed?"展开":"折叠"}${c.name}">${cityCollapsed?"▶":"▼"}</button>`:`<span class="tree-spacer"></span>`;
+  let html=`<tr class="${rowCls}"><td class="sticky"><div class="tree${indentCls}">${cityToggle}${nameOverride||c.name}</div></td><td class="sticky2"><span class="advisor-list" title="${advisorText}">${advisorText}</span></td><td class="sticky3"></td><td class="sticky4"></td><td class="sticky5"></td>${regionSummaryCellsHtml({target:`<td class="num">${targetCell}</td>`,done:`<td class="num">${fmtAmount(achieved(c.done))}</td>`,efficiency:'<td class="rate-cell"><span class="muted">—</span></td>',rate:`<td class="rate-cell">${rateBadge(achieved(c.done),c.target)}</td>`,yoy:`<td class="rate-cell">${yoyRate(achieved(c.done),lastYearAmount(achieved(c.done),ci))}</td>`})}${renderCityProjectCells(c,provinceName,ci,shown)}</tr>`;
+  if(hasOwnerLayer&&!cityCollapsed){
     html+=regionOwnerRowsHtml(provinceName,c,ci,shown,ownerIndentCls);
   }
   return html;
@@ -1654,7 +1655,7 @@ function visibleRegionTreeKeys(){
   const cityKeys=[];
   provinceNames.forEach(provinceName=>{
     visibleCities(region[provinceName]).forEach(([c,ci])=>{
-      if(c.owners.length>1)cityKeys.push(`${provinceName}|${ci}`);
+      if(c.owners.length>0)cityKeys.push(`${provinceName}|${ci}`);
     });
   });
   return {view,provinceNames,groupNames,cityKeys};
