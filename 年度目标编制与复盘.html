@@ -30,6 +30,7 @@ button,input,select{font:inherit}button{cursor:pointer}
 .th-filter{height:24px;max-width:92px;border:0;background:transparent;color:#64748b;font-weight:800;text-align:center;outline:none;padding:0 2px}.th-filter:focus{color:var(--blue)}.sort-head{border:0;background:transparent;color:inherit;font:inherit;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:0;cursor:pointer}.sort-head:hover{color:var(--blue)}.sort-arrow{display:inline-block;min-width:14px;color:#64748b;font-size:14px;line-height:1;font-weight:900}.sort-head.active .sort-arrow{color:var(--blue)}
 .sticky3{min-width:86px}.sticky5{min-width:104px;text-align:center}thead .sticky5{z-index:27!important}.lv1 .sticky5{background:#f5f8ff!important}.lv2 .sticky5{background:#fbfefd!important}.lv3 .sticky5{background:#fffbf5!important}.summary-total-row .sticky5{background:#eaf2ff!important}
 .project-picker{position:relative}.project-pick-btn{height:30px;padding:0 11px;border:1px solid #d5deec;border-radius:7px;background:#fff;color:#334155;display:flex;align-items:center;gap:6px;white-space:nowrap}.project-pick-btn:hover,.project-pick-btn.open{border-color:var(--blue);color:var(--blue)}.project-pick-drop{position:absolute;top:calc(100% + 6px);right:0;width:300px;background:#fff;border:1px solid #d5deec;border-radius:10px;box-shadow:0 12px 32px #0f172a2b;z-index:40;display:none;overflow:hidden}.project-pick-drop.show{display:block}.project-pick-search{width:calc(100% - 16px);height:32px;margin:8px;border:1px solid #d5deec;border-radius:7px;padding:0 10px;outline:none}.project-pick-search:focus{border-color:var(--blue)}.project-pick-actions{display:flex;gap:14px;padding:0 10px 8px;color:var(--blue);font-size:12px;font-weight:700}.project-pick-actions button{border:0;background:none;color:inherit;font-weight:inherit}.project-pick-list{max-height:240px;overflow-y:auto;border-top:1px solid var(--line);padding:4px 0}.project-pick-item{display:flex;align-items:center;gap:8px;padding:7px 12px;cursor:pointer}.project-pick-item:hover{background:#f4f7fb}.project-pick-item input{width:15px;height:15px;accent-color:var(--blue)}.project-pick-empty{padding:18px;text-align:center;color:var(--muted)}.project-pick-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 10px;border-top:1px solid var(--line);background:#f8fafc}.project-pick-footer span{font-size:11px;color:var(--muted)}.project-pick-footer .mini-btn{min-width:66px}.empty-row{text-align:center!important;color:var(--muted);padding:34px!important}
+.detail-province-picker{display:inline-block;vertical-align:middle}.detail-province-picker .project-pick-drop{left:0;right:auto;width:230px}.detail-province-picker .project-pick-actions,.detail-province-picker .project-pick-list{display:flex}.detail-province-picker .project-pick-actions{padding-top:8px}.detail-province-picker .project-pick-list{display:block}.detail-province-picker .project-pick-item{color:#334155;font-size:12px}.detail-province-picker .project-pick-btn{font-weight:500}
 .lock-menu{position:relative}.lock-menu-drop{position:absolute;top:calc(100% + 6px);right:0;width:190px;background:#fff;border:1px solid #d5deec;border-radius:10px;box-shadow:0 12px 32px #0f172a2b;z-index:45;display:none;padding:5px}.lock-menu-drop.show{display:block}.lock-menu-drop button{width:100%;height:32px;border:0;background:#fff;border-radius:7px;text-align:left;padding:0 10px;color:#334155;font-weight:700}.lock-menu-drop button:hover{background:#f4f7fb;color:var(--blue)}
 .money{height:28px;width:120px;border:1px solid #d5deec;border-radius:7px;padding:0 8px;text-align:right;background:#fff}.money:disabled{background:#f1f5f9;color:#64748b}
 .tag{display:inline-flex;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:800}.done{background:var(--green2);color:#047857}.draft{background:var(--orange2);color:#b45309}.diff{background:var(--red2);color:var(--red)}.ok{background:var(--green2);color:#047857}.leave-tag{display:inline-flex;margin-left:5px;border-radius:999px;padding:1px 5px;background:var(--red2);color:var(--red);font-size:10px;font-weight:900;vertical-align:middle}
@@ -83,7 +84,7 @@ button,input,select{font:inherit}button{cursor:pointer}
             <button class="view-shortcut-btn" data-view="cityOnly" data-label="只看城市">只看城市</button>
           </div>
           <span class="bar-item">项目组：<select class="select" id="detailProjectSelect"></select></span>
-          <span class="bar-item">省份：<select class="select" id="detailProvinceSelect"></select></span>
+          <span class="bar-item">省份：<span class="project-picker detail-province-picker" id="detailProvincePicker"><button class="project-pick-btn" id="detailProvincePickBtn" data-detail-province-toggle><span id="detailProvincePickText">全部可见省份</span><span>▾</span></button><span class="project-pick-drop" id="detailProvincePickDrop"><span class="project-pick-actions"><button type="button" data-detail-province-all>全选</button><button type="button" data-detail-province-clear>清空</button></span><span class="project-pick-list" id="detailProvincePickList"></span></span></span></span>
           <span class="bar-item">城市：<select class="select" id="detailCitySelect"></select></span>
         </div>
         <div class="top-context summary-action hidden">
@@ -191,7 +192,7 @@ button,input,select{font:inherit}button{cursor:pointer}
 <div class="toast" id="toast"></div>
 
 <script>
-let state={role:"ops",activeTab:"region",provinceConfirmFilter:"all",cityAlignmentFilter:"all",cityConfirmFilter:"all",regionView:"default",detailView:"default",summaryProvince:"all",summaryDrillProject:"",regionMetrics:new Set(["target"]),summaryMetrics:new Set(["sales","done","rate","yoy","gap","unverified","remain","avg","min","risk","regionShare","q1","q2","q3","q4"]),summarySort:{key:"",dir:"desc"},regionSort:{key:"",dir:"desc"},detailSort:{key:"",dir:"desc"},detailProject:"阳明心学",detailProvince:"",detailCity:"",pending:null,editing:null,openPicker:null,regionProjectDraft:null,cellEditor:null,collapsedProvinces:new Set(),collapsedCities:new Set(),collapsedGroups:new Set(),collapsedSummaryProjects:new Set(),collapsedSummaryProvinces:new Set(),collapsedDetailProvinces:new Set(),collapsedDetailGroups:new Set(),logs:[
+let state={role:"ops",activeTab:"region",provinceConfirmFilter:"all",cityAlignmentFilter:"all",cityConfirmFilter:"all",regionView:"default",detailView:"default",summaryProvince:"all",summaryDrillProject:"",regionMetrics:new Set(["target"]),summaryMetrics:new Set(["sales","done","rate","yoy","gap","unverified","remain","avg","min","risk","regionShare","q1","q2","q3","q4"]),summarySort:{key:"",dir:"desc"},regionSort:{key:"",dir:"desc"},detailSort:{key:"",dir:"desc"},detailProject:"阳明心学",detailProvinces:null,detailCity:"",pending:null,editing:null,openPicker:null,regionProjectDraft:null,cellEditor:null,collapsedProvinces:new Set(),collapsedCities:new Set(),collapsedGroups:new Set(),collapsedSummaryProjects:new Set(),collapsedSummaryProvinces:new Set(),collapsedDetailProvinces:new Set(),collapsedDetailGroups:new Set(),logs:[
   ["广东省-广州市-张三-经典一刻","目标从 286 万调整为 300 万 · 会议后调整：是"],
   ["阳明心学","全年期数从 15 调整为 16 · 会议后调整：否"]
 ]};
@@ -1284,7 +1285,7 @@ function renderSummary(){
     const min=total.remain?Math.round(total.gap/total.remain):0,avg=total.opened?Math.round(total.done/total.opened):0;
     const riskHigh=isHighRisk(total.done,total.sales,total.opened,total.total);
     const cells={
-      sales:`<td class="num">${fmtAmount(total.sales)}</td>`,done:`<td class="num">${doneBarCell(total.done,total.sales,drillDone(fmtAmount(total.done),state.detailProject))}</td>`,rate:`<td class="rate-cell">${rateBarCell(total.done,total.sales)}</td>`,yoy:`<td class="rate-cell">${yoyBarCell(total.done,total.lastYearDone)}</td>`,gap:`<td class="num">${fmtAmount(total.gap)}</td>`,unverified:`<td class="num">${fmtAmount(total.unverified)}</td>`,
+      sales:`<td class="num">${fmtAmount(total.sales)}</td>`,done:`<td class="num">${doneBarCell(total.done,total.sales,fmtAmount(total.done))}</td>`,rate:`<td class="rate-cell">${rateBarCell(total.done,total.sales)}</td>`,yoy:`<td class="rate-cell">${yoyBarCell(total.done,total.lastYearDone)}</td>`,gap:`<td class="num">${fmtAmount(total.gap)}</td>`,unverified:`<td class="num">${fmtAmount(total.unverified)}</td>`,
       total:`<td class="num">${total.total}</td>`,opened:`<td class="num">${total.opened}</td>`,remain:`<td class="num">${total.remain}</td>`,avg:`<td class="num">${fmtAmount(avg)}</td>`,min:`<td class="num ${riskHigh?"red":""}">${fmtAmount(min)}</td>`,risk:`<td class="rate-cell">${riskTag(total.done,total.sales,total.opened,total.total)}</td>`,
       regionShare:`<td class="rate-cell">${shareRate(total.done,totalDoneForShare)}</td>`,companyShare:`<td class="rate-cell"><span class="muted">—</span></td>`,projectShare:`<td class="rate-cell"><span class="muted">—</span></td>`,
       q1:`<td class="num">${fmtAmount(total.q[0])}</td>`,q2:`<td class="num">${fmtAmount(total.q[1])}</td>`,q3:`<td class="num">${fmtAmount(total.q[2])}</td>`,q4:`<td class="num">${fmtAmount(total.q[3])}</td>`
@@ -1361,21 +1362,34 @@ function renderOwnerProjectCells(owner,c,provinceName,ci,oi,editable,shown){
 function detailProjectOptions(){
   document.getElementById("detailProjectSelect").innerHTML=projects.map(p=>`<option value="${p.name}" ${p.name===state.detailProject?"selected":""}">${p.name}</option>`).join("");
 }
+function detailAvailableProvinceNames(){return roleProvinceNames().filter(name=>region[name])}
+function selectedDetailProvinceNames(){
+  const available=detailAvailableProvinceNames();
+  return state.detailProvinces instanceof Set?available.filter(name=>state.detailProvinces.has(name)):available;
+}
 function detailFilterOptions(){
-  const provinceSelect=document.getElementById("detailProvinceSelect"),citySelect=document.getElementById("detailCitySelect");
-  if(!provinceSelect||!citySelect)return;
-  const provinceNames=roleProvinceNames().filter(name=>region[name]);
-  if(state.detailProvince&&!provinceNames.includes(state.detailProvince)){state.detailProvince="";state.detailCity=""}
-  provinceSelect.innerHTML=`<option value="">全部可见省份</option>${provinceNames.map(name=>`<option value="${name}" ${state.detailProvince===name?"selected":""}>${name}</option>`).join("")}`;
-  const cityNames=state.detailProvince?(region[state.detailProvince]?.cities||[]).map(c=>c.name):[];
+  const citySelect=document.getElementById("detailCitySelect"),pickText=document.getElementById("detailProvincePickText"),pickList=document.getElementById("detailProvincePickList");
+  if(!citySelect||!pickText||!pickList)return;
+  const provinceNames=detailAvailableProvinceNames();
+  if(state.detailProvinces instanceof Set)state.detailProvinces=new Set([...state.detailProvinces].filter(name=>provinceNames.includes(name)));
+  if(state.detailProvinces instanceof Set&&state.detailProvinces.size===provinceNames.length)state.detailProvinces=null;
+  const selected=selectedDetailProvinceNames(),allSelected=state.detailProvinces===null;
+  pickText.textContent=allSelected?"全部可见省份":selected.length===0?"未选择省份":selected.length===1?selected[0]:`已选 ${selected.length} 个省份`;
+  pickList.innerHTML=provinceNames.map(name=>`<label class="project-pick-item"><input type="checkbox" data-detail-province-check="${name}" ${selected.includes(name)?"checked":""}><span>${name}</span></label>`).join("");
+  const singleProvince=selected.length===1?selected[0]:"";
+  if(!singleProvince)state.detailCity="";
+  const cityNames=singleProvince?(region[singleProvince]?.cities||[]).map(c=>c.name):[];
   if(state.detailCity&&!cityNames.includes(state.detailCity))state.detailCity="";
   citySelect.innerHTML=`<option value="">全部城市</option>${cityNames.map(name=>`<option value="${name}" ${state.detailCity===name?"selected":""}>${name}</option>`).join("")}`;
-  citySelect.disabled=!state.detailProvince;
+  citySelect.disabled=!singleProvince;
+  citySelect.title=singleProvince?"选择该省城市":"选择多个省份时默认查看全部城市";
 }
 function detailScopeNames(){
-  if(state.detailProvince&&state.detailCity)return `${state.detailProvince} / ${state.detailCity}`;
-  if(state.detailProvince)return state.detailProvince;
-  return "全部可见省市";
+  const selected=selectedDetailProvinceNames(),available=detailAvailableProvinceNames();
+  if(selected.length===1&&state.detailCity)return `${selected[0]} / ${state.detailCity}`;
+  if(selected.length===1)return selected[0];
+  if(selected.length===available.length)return "全部可见省市";
+  return `${selected.length} 个省份`;
 }
 function periodValues(done,periods,salt){return splitDoneByPeriod(done,periods,salt)}
 function periodCells(done,periods,salt){
@@ -1403,7 +1417,7 @@ function renderDetail(){
     });
   }
   const view=effectiveDetailView();
-  const provinceNames=roleProvinceNames().filter(name=>!state.detailProvince||name===state.detailProvince);
+  const provinceNames=selectedDetailProvinceNames();
   const detailMetric=(item,key)=>{
     if(key==="name")return item.name||"";
     if(key==="target")return item.target;
@@ -1726,7 +1740,7 @@ document.addEventListener("input",e=>{
 });
 document.addEventListener("change",e=>{
   if(e.target.id==="role"){
-    state.role=e.target.value;state.summaryDrillProject="";state.regionView="default";state.detailView="default";
+    state.role=e.target.value;state.summaryDrillProject="";state.regionView="default";state.detailView="default";state.detailProvinces=null;state.detailCity="";
     normalizeSummaryProvince();
     closeProjectPickers();render();
   }
@@ -1735,8 +1749,15 @@ document.addEventListener("change",e=>{
   if(e.target.id==="cityAlignmentFilter"){state.cityAlignmentFilter=e.target.value;renderRegion()}
   if(e.target.id==="cityConfirmFilter"){state.cityConfirmFilter=e.target.value;renderRegion()}
   if(e.target.id==="detailProjectSelect"){state.detailProject=e.target.value;renderDetail()}
-  if(e.target.id==="detailProvinceSelect"){state.detailProvince=e.target.value;state.detailCity="";renderDetail();requestAnimationFrame(syncStickyHeaderHeights)}
   if(e.target.id==="detailCitySelect"){state.detailCity=e.target.value;renderDetail();requestAnimationFrame(syncStickyHeaderHeights)}
+  const detailProvince=e.target.dataset.detailProvinceCheck;
+  if(detailProvince){
+    const available=detailAvailableProvinceNames();
+    if(state.detailProvinces===null)state.detailProvinces=new Set(available);
+    e.target.checked?state.detailProvinces.add(detailProvince):state.detailProvinces.delete(detailProvince);
+    if(state.detailProvinces.size===available.length)state.detailProvinces=null;
+    state.detailCity="";renderDetail();requestAnimationFrame(syncStickyHeaderHeights);
+  }
   if(e.target.id==="projectFilter"){renderSummary()}
   const type=e.target.dataset.pickerCheck;if(type){const set=pickerSet(type);e.target.checked?set.add(e.target.dataset.project):set.delete(e.target.dataset.project);refreshProjectSelection(type)}
   const mk=e.target.dataset.metricCheck;if(mk){if(e.target.checked){state.regionMetrics.add(mk)}else{state.regionMetrics.delete(mk);if(!state.regionMetrics.size){state.regionMetrics.add(mk);e.target.checked=true;toast("至少保留 1 项指标");return}}renderMetricPicker();renderRegion();requestAnimationFrame(syncStickyHeaderHeights)}
@@ -1744,6 +1765,13 @@ document.addEventListener("change",e=>{
 });
 document.addEventListener("click",e=>{
   if(!e.target.closest("#numEditPop")&&!e.target.closest('[data-action="edit-summary-cell"]')&&!e.target.closest('[data-action="edit-region-cell"]'))closeNumEditor();
+  if(!e.target.closest("#detailProvincePicker")){document.getElementById("detailProvincePickDrop")?.classList.remove("show");document.getElementById("detailProvincePickBtn")?.classList.remove("open")}
+  const detailProvinceToggle=e.target.closest("[data-detail-province-toggle]");
+  if(detailProvinceToggle){e.stopPropagation();document.getElementById("detailProvincePickDrop").classList.toggle("show");detailProvinceToggle.classList.toggle("open");return}
+  const detailProvinceAll=e.target.closest("[data-detail-province-all]");
+  if(detailProvinceAll){e.stopPropagation();state.detailProvinces=null;state.detailCity="";renderDetail();requestAnimationFrame(syncStickyHeaderHeights);return}
+  const detailProvinceClear=e.target.closest("[data-detail-province-clear]");
+  if(detailProvinceClear){e.stopPropagation();state.detailProvinces=new Set();state.detailCity="";renderDetail();requestAnimationFrame(syncStickyHeaderHeights);return}
   const pickerToggle=e.target.closest("[data-picker-toggle]");
   if(pickerToggle){e.stopPropagation();const type=pickerToggle.dataset.pickerToggle,willOpen=state.openPicker!==type;closeProjectPickers();if(willOpen){state.openPicker=type;document.getElementById(`${type}ProjectPickDrop`).classList.add("show");pickerToggle.classList.add("open");if(type==="metrics"){renderMetricPicker()}else if(type==="summaryMetrics"){renderSummaryMetricPicker()}else{if(type==="region")state.regionProjectDraft=new Set(regionSelectedProjects);const search=document.querySelector(`[data-picker-search="${type}"]`);search.value="";renderProjectPicker(type);search.focus()}}return}
   const metricAll=e.target.closest("[data-metric-all]");if(metricAll){e.stopPropagation();regionMetricDefs.forEach(([k])=>state.regionMetrics.add(k));renderMetricPicker();renderRegion();requestAnimationFrame(syncStickyHeaderHeights);return}
@@ -1811,8 +1839,8 @@ document.addEventListener("click",e=>{
   }
   if(action==="open-project-detail"){
     state.detailProject=btn.dataset.project||state.detailProject||"阳明心学";
-    state.detailProvince=btn.dataset.province||"";
-    state.detailCity=btn.dataset.city||"";
+    state.detailProvinces=btn.dataset.province?new Set([btn.dataset.province]):null;
+    state.detailCity=btn.dataset.province?btn.dataset.city||"":"";
     switchTab("detail");renderDetail();return;
   }
   if(action==="toggle-province-summary-lock"){
